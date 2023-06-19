@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width", initial-scale="1.0">
+    <link rel="icon" type="image/x-icon" href="images/favicon.png">   <!-- Favicon descargado de icons8.com -->
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Ferr O'Tec - Login" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="login.html" />
+    <meta property="og:image" content="" />
+    <meta property="og:description" content="Login" />
+    <title>
+      Ferr O' Tec 
+    </title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+  </head>
+
+  <body style="background-color: #f2f2f2">
+    <div class="container align-items-center justify-content-center">
+      <div class="row justify-content-center">
+        <div class="col-md-6 mt-5">
+          <div class="card">
+            <div class="card-header" >
+                <h4 style="float: left;">
+                    Abm de Usuarios
+                </h4>
+                <img style="float: right;" width="30px" height="30px" src="images/favicon.png">
+            </div>
+            <div class="card-body">
+                <form>
+                    <div class="row">
+                        <div class="col-4 justify-content-center">
+                            <h5>
+                                Acción:
+                            </h5>
+                        </div>
+                        <div class="col-8 container-fluid">
+                            <div class="dropdown" id="dropdown-acciones">
+                                <button type="button" class="dropdown-toggle btn btn-secondary bg-opacity-25 container-fluid" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Seleccione...
+                                </button>
+                                <ul class="dropdown-menu container-fluid" id="dropdown-items-acciones">
+                                  <li><a class="dropdown-item" id="dropdown-items-acciones-alta" href="#"> Alta </a></li>
+                                  <li><hr class="dropdown-divider" ></li>
+                                  <li><a class="dropdown-item" id="dropdown-items-acciones-baja" href="#"> Baja </a></li>
+                                  <li><hr class="dropdown-divider"></li>
+                                  <li><a class="dropdown-item" id="dropdown-items-acciones-modificacion" href="#"> Modificación </a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4 justify-content-center">
+                            <h6> 
+                                Nombre De Usuario:
+                            </h6>
+                        </div>
+                        <div class="col-8 container-fluid">
+                            <input id="nombre-usuario" placeholder="Ingrese Nombre" ></input>                            
+                        </div>
+                    </div>
+                </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+  </body>
+
+</html>
