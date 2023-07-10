@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
   </head>
 
-  <body style="background-color: #f2f2f2">
+  <body onload="habilitar_opciones(0)" style="background-color: #f2f2f2">
     <div class="container align-items-center justify-content-center">
       <div class="row justify-content-center">
         <div class="col-md-6 mt-5">
@@ -33,38 +33,157 @@
                 <img style="float: right;" width="30px" height="30px" src="images/favicon.png">
             </div>
             <div class="card-body">
-                <form>
-                    <div class="row">
+                <form id="formulario-alta">
+                    <div class="row py-2">
                         <div class="col-4 justify-content-center">
                             <h5>
                                 Acción:
                             </h5>
                         </div>
-                        <div class="col-8 container-fluid">
-                            <div class="dropdown" id="dropdown-acciones">
-                                <button type="button" class="dropdown-toggle btn btn-secondary bg-opacity-25 container-fluid" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Seleccione...
-                                </button>
-                                <ul class="dropdown-menu container-fluid" id="dropdown-items-acciones">
-                                  <li><a class="dropdown-item" id="dropdown-items-acciones-alta" href="#"> Alta </a></li>
-                                  <li><hr class="dropdown-divider" ></li>
-                                  <li><a class="dropdown-item" id="dropdown-items-acciones-baja" href="#"> Baja </a></li>
-                                  <li><hr class="dropdown-divider"></li>
-                                  <li><a class="dropdown-item" id="dropdown-items-acciones-modificacion" href="#"> Modificación </a></li>
-                                </ul>
-                            </div>
-                        </div>
+                        <div class="col-8 container-fluid justify-content-center align-content-center">
+                          <select onchange="habilitar_opciones(value)"class="form-select" id="acciones">
+                            <option id="acciones-seleccione" value="0"> Seleccione </option>
+                            <option id="acciones-alta" value="1"> Alta </option>
+                            <option id="acciones-baja" value="2"> Baja </option>
+                            <option id="acciones-modificacion" value="3"> Modificación </option>
+                          </select>                            
+                      </div>
                     </div>
-                    <div class="row">
-                        <div class="col-4 justify-content-center">
-                            <h6> 
+                    <div class="row py-2" id="nombre-usuario-fila">
+                        <div class="col-4 justify-content-center align-content-center" id="nombre-usuario-titulo">
+                            <h6 id="nombre-usuario-label"> 
                                 Nombre De Usuario:
                             </h6>
                         </div>
-                        <div class="col-8 container-fluid">
-                            <input id="nombre-usuario" placeholder="Ingrese Nombre" ></input>                            
+                        <div class="col-8 container-fluid justify-content-center align-content-center">
+                            <input class="col-12 form-control" id="nombre-usuario-input" placeholder="Ingrese Nombre" ></input>                            
                         </div>
                     </div>
+                    <div class="row py-2" id="acceso-ventas-fila">
+                        <div class="col-4 justify-content-center align-content-center" id="nombre-usuario-titulo">
+                            <h6> 
+                                Acceso a Módulo Ventas:
+                            </h6>
+                        </div>
+                        <div class="col-8 container-fluid justify-content-center align-content-center">
+                            <select class="form-select" id="acceso-ventas-opciones">
+                              <option id="acceso-ventas-opcion-seleccione" value="0"> Seleccione </option>
+                              <option id="acceso-ventas-opcion-si" aria-required="true" value="1"> Si </option>
+                              <option id="acceso-ventas-opcion-no" aria-required="true" value="2"> No </option>
+                            </select>                            
+                        </div>
+                    </div>
+                    <div class="row py-2" id="acceso-compras-fila">
+                        <div class="col-4 justify-content-center align-content-center" id="nombre-compras-titulo">
+                            <h6> 
+                                Acceso a Módulo Compras:
+                            </h6>
+                        </div>
+                        <div class="col-8 container-fluid justify-content-center align-content-center">
+                            <select class="form-select" id="acceso-compras-opciones">
+                              <option id="acceso-compras-opcion-seleccione" value="0"> Seleccione </option>
+                              <option id="acceso-compraS-opcion-si" aria-required="true" value="1"> Si </option>
+                              <option id="acceso-Compras-opcion-no" aria-required="true" value="2"> No </option>
+                            </select>                            
+                        </div>
+                    </div>
+                    <div class="row py-2" id="acceso-informes-fila">
+                      <div class="col-4 justify-content-center align-content-center" id="nombre-informes-titulo">
+                          <h6> 
+                              Acceso a Módulo Informes:
+                          </h6>
+                      </div>
+                      <div class="col-8 container-fluid justify-content-center align-content-center">
+                          <select class="form-select" id="acceso-informes-opciones">
+                            <option id="acceso-informes-opcion-seleccione" value="0"> Seleccione </option>
+                            <option id="acceso-informes-opcion-si" aria-required="true" value="1"> Si </option>
+                            <option id="acceso-informes-opcion-no" aria-required="true" value="2"> No </option>
+                          </select>                            
+                      </div>
+                    </div>
+                    <div class="row py-2" id="acceso-consultas-fila">
+                      <div class="col-4 justify-content-center align-content-center" id="nombre-consultas-titulo">
+                          <h6> 
+                              Acceso a Módulo Consultas:
+                          </h6>
+                      </div>
+                      <div class="col-8 container-fluid justify-content-center align-content-center">
+                          <select class="form-select" id="acceso-consultas-opciones">
+                            <option id="acceso-consultas-opcion-seleccione" value="0"> Seleccione </option>
+                            <option id="acceso-consultas-opcion-si" aria-required="true" value="1"> Si </option>
+                            <option id="acceso-consultas-opcion-no" aria-required="true" value="2"> No </option>
+                          </select>                            
+                      </div>
+                    </div>
+                    <div class="row py-2" id="acceso-usuarios-fila">
+                      <div class="col-4 justify-content-center align-content-center" id="nombre-usuarios-titulo">
+                          <h6> 
+                              Acceso a Módulo Usuarios:
+                          </h6>
+                      </div>
+                      <div class="col-8 container-fluid justify-content-center align-content-center">
+                          <select class="form-select" id="acceso-usuarios-opciones">
+                            <option id="acceso-usuarios-opcion-seleccione" value="0"> Seleccione </option>
+                            <option id="acceso-usuarios-opcion-si" aria-required="true" value="1"> Si </option>
+                            <option id="acceso-usuarios-opcion-no" aria-required="true" value="2"> No </option>
+                          </select>                            
+                      </div>
+                    </div>
+                    <div class="row py-2" id="botones-alta-fila">
+                      <div class="col-4 justify-content-end align-content-end" id="botones-alta-volver">
+                        <button onclick="volver_alta()"  type="button" class="btn btn-primary col-12">
+                          Volver
+                        </button>
+                      </div>
+                      <div class="col-4 justify-content-end align-content-end" id="botones-alta-crear">
+                        <button onclick="crear()" type="button" class="btn btn-success col-12">
+                          Crear
+                        </button>
+                      </div>
+                      <div class="col-4 justify-content-end align-content-end" id="botones-alta-cancelar">
+                        <button onclick="cancelar_alta()" type="button" class="btn btn-danger col-12">
+                          Cancelar
+                        </button>
+                      </div>
+                    </div>
+                </form>
+                <!-- FIN SECCIÓN ALTA 
+                      FIN SECCIÓN ALTA            
+                -->
+                <!-- EMPIEZA SECCIÒN BAJA 
+                     EMPIEZA SECCIÒN BAJA            
+                -->
+                <form id="formulario-baja">
+                  <div class="row py-2" id="nombre-usuario-baja-fila">
+                    <div class="col-4 justify-content-center align-content-center" id="nombre-usuario-titulo-baja">
+                        <h6 id="nombre-usuario-label-baja"> 
+                            Nombre De Usuario:
+                        </h6>
+                    </div>
+                    <div class="col-8 container-fluid justify-content-center align-content-center">
+                        <select class="form-select" id="seleccion-usuario-baja">
+                          <option id="seleccion-usuario-baja-seleccione" value="0"> Seleccione </option>
+                          <option id="seleccion-usuario-baja-usuario1" aria-required="true" value="1"> ListaUsuarios </option>
+                        </select>                          
+                    </div>
+                  </div>
+                  <div class="row py-2" id="botones-baja-fila">
+                      <div class="col-4 justify-content-end align-content-end" id="botones-baja-volver">
+                        <button onclick="volver_baja()"  type="button" class="btn btn-primary col-12">
+                          Volver
+                        </button>
+                      </div>
+                      <div class="col-4 justify-content-end align-content-end" id="botones-baja-dardebaja">
+                        <button onclick="dardebaja()" type="button" class="btn btn-success col-12">
+                          Dar de Baja
+                        </button>
+                      </div>
+                      <div class="col-4 justify-content-end align-content-end" id="botones-baja-cancelar">
+                        <button onclick="cancelar_baja()" type="button" class="btn btn-danger col-12">
+                          Cancelar
+                        </button>
+                      </div>
+                  </div>
                 </form>
             </div>
           </div>
@@ -74,6 +193,142 @@
 
     <!-- Bootstrap JS -->
     <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript">
+        function habilitar_opciones(codigoaccion){ //funcion que habilita los diferentes inputs y botones segùn la acciòn a realizar
+          
+          if(codigoaccion==0){ // Inicialización / Seleccione
+              // Filas de Alta
+              document.getElementById("nombre-usuario-fila").style.display = "none";
+              document.getElementById("acceso-ventas-fila").style.display = "none";
+              document.getElementById("acceso-compras-fila").style.display = "none";
+              document.getElementById("acceso-informes-fila").style.display = "none";
+              document.getElementById("acceso-consultas-fila").style.display = "none";
+              document.getElementById("acceso-usuarios-fila").style.display = "none";
+              document.getElementById("botones-alta-fila").style.display = "none";
+              // Filas de Baja
+              document.getElementById("nombre-usuario-baja-fila").style.display = "none";
+              document.getElementById("botones-baja-fila").style.display = "none";
+          }
+
+          if(codigoaccion==1){ // Alta
+              // Filas de Alta
+              document.getElementById("nombre-usuario-fila").style.display = '';
+              document.getElementById("acceso-ventas-fila").style.display = '';
+              document.getElementById("acceso-compras-fila").style.display = '';
+              document.getElementById("acceso-informes-fila").style.display = '';
+              document.getElementById("acceso-consultas-fila").style.display = '';
+              document.getElementById("acceso-usuarios-fila").style.display = '';
+              document.getElementById("botones-alta-fila").style.display = '';
+              // Filas de Baja
+              document.getElementById("nombre-usuario-baja-fila").style.display = 'none';
+              document.getElementById("botones-baja-fila").style.display = 'none';
+          }
+
+          if(codigoaccion==2){  // Baja
+              // Filas de Alta
+              document.getElementById("nombre-usuario-fila").style.display = "none";
+              document.getElementById("acceso-ventas-fila").style.display = "none";
+              document.getElementById("acceso-compras-fila").style.display = "none";
+              document.getElementById("acceso-informes-fila").style.display = "none";
+              document.getElementById("acceso-consultas-fila").style.display = "none";
+              document.getElementById("acceso-usuarios-fila").style.display = "none";
+              document.getElementById("botones-alta-fila").style.display = "none";
+              // Filas de Baja
+              document.getElementById("nombre-usuario-baja-fila").style.display = '';
+              document.getElementById("botones-baja-fila").style.display = '';
+          }
+          
+          if(codigoaccion==3){ // Modificación
+              // Filas de Alta
+              document.getElementById("nombre-usuario-fila").style.display = "none";
+              document.getElementById("acceso-ventas-fila").style.display = "none";
+              document.getElementById("acceso-compras-fila").style.display = "none";
+              document.getElementById("acceso-informes-fila").style.display = "none";
+              document.getElementById("acceso-consultas-fila").style.display = "none";
+              document.getElementById("acceso-usuarios-fila").style.display = "none";
+              document.getElementById("botones-alta-fila").style.display = "none";
+              // Filas de Baja
+              document.getElementById("nombre-usuario-baja-fila").style.display = "none";
+              document.getElementById("botones-baja-fila").style.display = "none";
+          }
+        }
+        
+        // FUNCIONES BOTONES DE ALTA
+
+        function volver_alta(){
+          if (document.getElementById("nombre-usuario-input").value != ""){
+            if (confirm("¿Desea Salir sin Guardar Cambios?")) {
+              location="index.html";
+            } else {
+              
+            }
+          }
+        }
+
+        function crear(){
+            var usuarioalta = document.getElementById("nombre-usuario-input").value;
+            if (document.getElementById("nombre-usuario-input").value == ""){
+               alert("Por favor escriba un nombre de usuario.");
+            }
+            else if (confirm("¿Desea Crear el Usuario " + document.getElementById("nombre-usuario-input").value + "?")) {
+              
+            } 
+            else {
+              
+            }
+        }
+
+        function cancelar_alta(){
+          if (document.getElementById("nombre-usuario-input").value != ""){
+            if (confirm("¿Desea Cancelar?")) {
+              document.getElementById("nombre-usuario-input").value = "";
+              document.getElementById("acceso-ventas-opciones").value = "0";
+              document.getElementById("acceso-compras-opciones").value = "0";
+              document.getElementById("acceso-informes-opciones").value = "0";
+              document.getElementById("acceso-consultas-opciones").value = "0";
+              document.getElementById("acceso-usuarios-opciones").value = "0";
+            } else {
+              
+            }
+          }
+        }
+        
+        // FUNCIONES BOTONES BAJA
+
+        function volver_baja(){
+          if (document.getElementById("seleccion-usuario-baja").value = "0"){
+            if (confirm("¿Desea Salir sin Guardar Cambios?")) {
+              location="index.html";
+            } else {
+              
+            }
+          }
+        }
+
+        function dardebaja(){
+            var usuariobaja = document.getElementById("seleccion-usuario-baja").value;
+            if (document.getElementById("seleccion-usuario-baja").value == 0){
+               alert("Por favor seleccione un usuario para dar de baja.")
+            }
+            else if (confirm("¿Desea Dar de Baja al Usuario" + document.getElementById("seleccion-usuario-baja")[usuariobaja].textContent + "?")) {
+                
+            } 
+            else {
+                
+            }
+        }  
+        
+        function cancelar_baja(){
+          if (document.getElementById("seleccion-usuario-baja").value != "0"){
+            if (confirm("¿Desea Cancelar?")) {
+              document.getElementById("seleccion-usuario-baja").value = "0";
+            } else {
+              
+            }
+          }
+        }
+
+    </script>
   </body>
 
 </html>
