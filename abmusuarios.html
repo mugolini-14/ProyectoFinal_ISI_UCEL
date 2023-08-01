@@ -56,9 +56,26 @@
                             </h6>
                         </div>
                         <div class="col-8 container-fluid justify-content-center align-content-center">
-                            <input class="col-12 form-control" id="nombre-usuario-alta-input" placeholder="Ingrese Nombre" ></input>                            
+                            <input class="col-12 form-control" onchange="habilitar_perfil_usuario(1)" id="nombre-usuario-alta-input" placeholder="Ingrese Nombre" ></input>                            
                         </div>
                     </div>
+                    <div class="row py-2" id="perfil-acceso-alta-usuario">
+                      <div class="col-4 justify-content-center align-content-center" id="acceso-ventas-alta-titulo">
+                          <h6> 
+                              Perfil de Usuario:
+                          </h6>
+                      </div>
+                      <div class="col-8 container-fluid justify-content-center align-content-center">
+                          <select onchange="perfiles_usuario_alta(value)" class="form-select" id="perfil-acceso-alta-usuario-opciones">
+                            <option id="acceso-ventas-opcion-seleccione" value="0"> Seleccione </option>
+                            <option id="perfil-usuario-vendedor" aria-required="true" value="1"> Usuario Vendedor </option>
+                            <option id="perfil-usuario-contador" aria-required="true" value="2"> Usuario Contador </option>
+                            <option id="perfil-usuario-duenio" aria-required="true" value="3"> Usuario Dueño </option>
+                            <option id="perfil-usuario-admin" aria-required="true" value="4"> Usuario Administrador </option>
+                            <option id="perfil-usuario-admin" aria-required="true" value="5"> Usuario Personalizado </option>
+                          </select>                            
+                      </div>
+                  </div>
                     <div class="row py-2" id="acceso-ventas-alta-fila">
                         <div class="col-4 justify-content-center align-content-center" id="acceso-ventas-alta-titulo">
                             <h6> 
@@ -199,10 +216,27 @@
                         </h6>
                     </div>
                     <div class="col-8 container-fluid justify-content-center align-content-center">
-                        <select class="form-select" id="seleccion-usuario-modificacion">
+                        <select class="form-select" onchange="habilitar_perfil_usuario_modificacion(value);" id="seleccion-usuario-modificacion">
                           <option id="seleccion-usuario-baja-seleccione" value="0"> Seleccione </option>
                           <option id="seleccion-usuario-baja-usuario1" aria-required="true" value="1"> ListaUsuarios </option>
                         </select>                          
+                    </div>
+                  </div>
+                  <div class="row py-2" id="perfil-acceso-modificacion-usuario">
+                    <div class="col-4 justify-content-center align-content-center" id="acceso-ventas-alta-titulo">
+                        <h6> 
+                            Perfil de Usuario:
+                        </h6>
+                    </div>
+                    <div class="col-8 container-fluid justify-content-center align-content-center">
+                        <select onchange="perfiles_usuario_modificacion(value)" class="form-select" id="perfil-acceso-modificacion-usuario-opciones">
+                          <option id="acceso-ventas-opcion-seleccione" value="0"> Seleccione </option>
+                          <option id="perfil-usuario-vendedor" aria-required="true" value="1"> Usuario Vendedor </option>
+                          <option id="perfil-usuario-contador" aria-required="true" value="2"> Usuario Contador </option>
+                          <option id="perfil-usuario-duenio" aria-required="true" value="3"> Usuario Dueño </option>
+                          <option id="perfil-usuario-admin" aria-required="true" value="4"> Usuario Administrador </option>
+                          <option id="perfil-usuario-admin" aria-required="true" value="5"> Usuario Personalizado </option>
+                        </select>                            
                     </div>
                   </div>
                   <div class="row py-2" id="acceso-ventas-modificacion-fila">
@@ -240,7 +274,7 @@
                         </h6>
                     </div>
                     <div class="col-8 container-fluid justify-content-center align-content-center">
-                        <select class="form-select" id="acceso-informes-opciones">
+                        <select class="form-select" id="acceso-informes-modificacion-opciones">
                           <option id="acceso-informes-opcion-seleccione" value="0"> Seleccione </option>
                           <option id="acceso-informes-opcion-si" aria-required="true" value="1"> Si </option>
                           <option id="acceso-informes-opcion-no" aria-required="true" value="2"> No </option>
@@ -310,6 +344,7 @@
 
               // Filas de Alta
               document.getElementById("nombre-usuario-alta-fila").style.display = "none";
+              document.getElementById("perfil-acceso-alta-usuario").style.display = "none";
               document.getElementById("acceso-ventas-alta-fila").style.display = "none";
               document.getElementById("acceso-compras-alta-fila").style.display = "none";
               document.getElementById("acceso-informes-alta-fila").style.display = "none";
@@ -323,6 +358,7 @@
               
               // Filas de Modificaciòn
               document.getElementById("nombre-usuario-modificacion-fila").style.display = "none";
+              document.getElementById("perfil-acceso-modificacion-usuario").style.display = "none";
               document.getElementById("acceso-ventas-modificacion-fila").style.display = "none";
               document.getElementById("acceso-compras-modificacion-fila").style.display = "none";
               document.getElementById("acceso-informes-modificacion-fila").style.display = "none";
@@ -336,6 +372,7 @@
 
               // Filas de Alta
               document.getElementById("nombre-usuario-alta-fila").style.display = '';
+              document.getElementById("perfil-acceso-alta-usuario").style.display = '';
               document.getElementById("acceso-ventas-alta-fila").style.display = '';
               document.getElementById("acceso-compras-alta-fila").style.display = '';
               document.getElementById("acceso-informes-alta-fila").style.display = '';
@@ -349,18 +386,23 @@
 
               // Filas de Modificación
               document.getElementById("nombre-usuario-modificacion-fila").style.display = "none";
+              document.getElementById("perfil-acceso-modificacion-usuario").style.display = "none";
               document.getElementById("acceso-ventas-modificacion-fila").style.display = "none";
               document.getElementById("acceso-compras-modificacion-fila").style.display = "none";
               document.getElementById("acceso-informes-modificacion-fila").style.display = "none";
               document.getElementById("acceso-consultas-modificacion-fila").style.display = "none";
               document.getElementById("acceso-usuarios-modificacion-fila").style.display = "none";
               document.getElementById("botones-modificacion-fila").style.display = "none";
+
+              perfiles_usuario_alta(0);
+              habilitar_perfil_usuario(0);
           }
 
           if(codigoaccion==2){  // Baja
 
               // Filas de Alta
               document.getElementById("nombre-usuario-alta-fila").style.display = "none";
+              document.getElementById("perfil-acceso-alta-usuario").style.display = "none";
               document.getElementById("acceso-ventas-alta-fila").style.display = "none";
               document.getElementById("acceso-compras-alta-fila").style.display = "none";
               document.getElementById("acceso-informes-alta-fila").style.display = "none";
@@ -374,6 +416,7 @@
 
               // Filas de Modificación
               document.getElementById("nombre-usuario-modificacion-fila").style.display = "none";
+              document.getElementById("perfil-acceso-modificacion-usuario").style.display = "none";
               document.getElementById("acceso-ventas-modificacion-fila").style.display = "none";
               document.getElementById("acceso-compras-modificacion-fila").style.display = "none";
               document.getElementById("acceso-informes-modificacion-fila").style.display = "none";
@@ -387,6 +430,7 @@
 
               // Filas de Alta
               document.getElementById("nombre-usuario-alta-fila").style.display = "none";
+              document.getElementById("perfil-acceso-alta-usuario").style.display = "none";
               document.getElementById("acceso-ventas-alta-fila").style.display = "none";
               document.getElementById("acceso-compras-alta-fila").style.display = "none";
               document.getElementById("acceso-informes-alta-fila").style.display = "none";
@@ -400,6 +444,7 @@
 
               // Filas de Modificación
               document.getElementById("nombre-usuario-modificacion-fila").style.display = '';
+              document.getElementById("perfil-acceso-modificacion-usuario").style.display = '';
               document.getElementById("acceso-ventas-modificacion-fila").style.display = '';
               document.getElementById("acceso-compras-modificacion-fila").style.display = '';
               document.getElementById("acceso-informes-modificacion-fila").style.display = '';
@@ -407,6 +452,8 @@
               document.getElementById("acceso-usuarios-modificacion-fila").style.display = '';
               document.getElementById("botones-modificacion-fila").style.display = '';
 
+              perfiles_usuario_modificacion(0);
+              habilitar_perfil_usuario_modificacion(0);
           }
         }
         
@@ -482,6 +529,254 @@
             } else {
               
             }
+          }
+        }
+
+        function habilitar_perfil_usuario(codigoacceso){
+          if(codigoacceso==0){
+            document.getElementById("perfil-acceso-alta-usuario-opciones").value = '0';
+            document.getElementById("perfil-acceso-alta-usuario-opciones").disabled = true;
+          }
+          if(codigoacceso==1){
+            document.getElementById("perfil-acceso-alta-usuario-opciones").value = '0';
+            document.getElementById("perfil-acceso-alta-usuario-opciones").disabled = false;
+          }
+          if(document.getElementById("nombre-usuario-alta-input").value==''){
+            document.getElementById("perfil-acceso-alta-usuario-opciones").value = '0';
+            document.getElementById("perfil-acceso-alta-usuario-opciones").disabled = true;
+          }
+        }
+
+        function habilitar_perfil_usuario_modificacion(codigoacceso){
+          if(codigoacceso==0){
+            document.getElementById("perfil-acceso-modificacion-usuario-opciones").value = '0';
+            document.getElementById("perfil-acceso-modificacion-usuario-opciones").disabled = true;
+          }
+          if(codigoacceso!=0){
+            document.getElementById("perfil-acceso-modificacion-usuario-opciones").value = '0';
+            document.getElementById("perfil-acceso-modificacion-usuario-opciones").disabled = false;
+          }
+        }
+
+        function perfiles_usuario_alta(tipoperfil){
+
+          // Seleccione / Inicializar
+          if(tipoperfil==0){
+            document.getElementById("acceso-ventas-alta-opciones").value = '0';
+            document.getElementById("acceso-ventas-alta-opciones").disabled = true;
+
+            document.getElementById("acceso-compras-alta-opciones").value = '0';
+            document.getElementById("acceso-compras-alta-opciones").disabled = true;
+
+            document.getElementById("acceso-informes-alta-opciones").value = '0';
+            document.getElementById("acceso-informes-alta-opciones").disabled = true;
+
+            document.getElementById("acceso-consultas-alta-opciones").value = '0';
+            document.getElementById("acceso-consultas-alta-opciones").disabled = true;
+
+            document.getElementById("acceso-usuarios-alta-opciones").value = '0';
+            document.getElementById("acceso-usuarios-alta-opciones").disabled = true;
+          }
+          
+          // Usuario Vendedor
+          if(tipoperfil==1){
+            document.getElementById("acceso-ventas-alta-opciones").value = '1';
+            document.getElementById("acceso-ventas-alta-opciones").disabled = true;
+
+            document.getElementById("acceso-compras-alta-opciones").value = '2';
+            document.getElementById("acceso-compras-alta-opciones").disabled = true;
+
+            document.getElementById("acceso-informes-alta-opciones").value = '2';
+            document.getElementById("acceso-informes-alta-opciones").disabled = true;
+
+            document.getElementById("acceso-consultas-alta-opciones").value = '1';
+            document.getElementById("acceso-consultas-alta-opciones").disabled = true;
+
+            document.getElementById("acceso-usuarios-alta-opciones").value = '2';
+            document.getElementById("acceso-usuarios-alta-opciones").disabled = true;
+          }
+          
+          // Usuario Contador
+          if(tipoperfil==2){
+            document.getElementById("acceso-ventas-alta-opciones").value = '1';
+            document.getElementById("acceso-ventas-alta-opciones").disabled = true;
+
+            document.getElementById("acceso-compras-alta-opciones").value = '1';
+            document.getElementById("acceso-compras-alta-opciones").disabled = true;
+
+            document.getElementById("acceso-informes-alta-opciones").value = '2';
+            document.getElementById("acceso-informes-alta-opciones").disabled = true;
+
+            document.getElementById("acceso-consultas-alta-opciones").value = '1';
+            document.getElementById("acceso-consultas-alta-opciones").disabled = true;
+
+            document.getElementById("acceso-usuarios-alta-opciones").value = '2';
+            document.getElementById("acceso-usuarios-alta-opciones").disabled = true;
+          }
+          
+          // Usuario Dueño
+          if(tipoperfil==3){
+            document.getElementById("acceso-ventas-alta-opciones").value = '1';
+            document.getElementById("acceso-ventas-alta-opciones").disabled = true;
+
+            document.getElementById("acceso-compras-alta-opciones").value = '1';
+            document.getElementById("acceso-compras-alta-opciones").disabled = true;
+
+            document.getElementById("acceso-informes-alta-opciones").value = '1';
+            document.getElementById("acceso-informes-alta-opciones").disabled = true;
+
+            document.getElementById("acceso-consultas-alta-opciones").value = '1';
+            document.getElementById("acceso-consultas-alta-opciones").disabled = true;
+
+            document.getElementById("acceso-usuarios-alta-opciones").value = '2';
+            document.getElementById("acceso-usuarios-alta-opciones").disabled = true;
+          }
+
+          // Usuario Administrador
+          if(tipoperfil==4){
+            document.getElementById("acceso-ventas-alta-opciones").value = '1';
+            document.getElementById("acceso-ventas-alta-opciones").disabled = true;
+
+            document.getElementById("acceso-compras-alta-opciones").value = '1';
+            document.getElementById("acceso-compras-alta-opciones").disabled = true;
+
+            document.getElementById("acceso-informes-alta-opciones").value = '1';
+            document.getElementById("acceso-informes-alta-opciones").disabled = true;
+
+            document.getElementById("acceso-consultas-alta-opciones").value = '1';
+            document.getElementById("acceso-consultas-alta-opciones").disabled = true;
+
+            document.getElementById("acceso-usuarios-alta-opciones").value = '1';
+            document.getElementById("acceso-usuarios-alta-opciones").disabled = true;
+          }
+
+          // Usuario Personalizado
+          if(tipoperfil==5){
+            document.getElementById("acceso-ventas-alta-opciones").value = '0';
+            document.getElementById("acceso-ventas-alta-opciones").disabled = false;
+
+            document.getElementById("acceso-compras-alta-opciones").value = '0';
+            document.getElementById("acceso-compras-alta-opciones").disabled = false;
+
+            document.getElementById("acceso-informes-alta-opciones").value = '0';
+            document.getElementById("acceso-informes-alta-opciones").disabled = false;
+
+            document.getElementById("acceso-consultas-alta-opciones").value = '0';
+            document.getElementById("acceso-consultas-alta-opciones").disabled = false;
+
+            document.getElementById("acceso-usuarios-alta-opciones").value = '0';
+            document.getElementById("acceso-usuarios-alta-opciones").disabled = false;
+          }
+        }
+
+        function perfiles_usuario_modificacion(tipoperfil){
+
+          // Seleccione / Inicializar
+          if(tipoperfil==0){
+            document.getElementById("acceso-ventas-modificacion-opciones").value = '0';
+            document.getElementById("acceso-ventas-modificacion-opciones").disabled = true;
+
+            document.getElementById("acceso-compras-modificacion-opciones").value = '0';
+            document.getElementById("acceso-compras-modificacion-opciones").disabled = true;
+
+            document.getElementById("acceso-informes-modificacion-opciones").value = '0';
+            document.getElementById("acceso-informes-modificacion-opciones").disabled = true;
+
+            document.getElementById("acceso-consultas-modificacion-opciones").value = '0';
+            document.getElementById("acceso-consultas-modificacion-opciones").disabled = true;
+
+            document.getElementById("acceso-usuarios-modificacion-opciones").value = '0';
+            document.getElementById("acceso-usuarios-modificacion-opciones").disabled = true;
+          }
+
+          // Usuario Vendedor
+          if(tipoperfil==1){
+            document.getElementById("acceso-ventas-modificacion-opciones").value = '1';
+            document.getElementById("acceso-ventas-modificacion-opciones").disabled = true;
+
+            document.getElementById("acceso-compras-modificacion-opciones").value = '2';
+            document.getElementById("acceso-compras-modificacion-opciones").disabled = true;
+
+            document.getElementById("acceso-informes-modificacion-opciones").value = '2';
+            document.getElementById("acceso-informes-modificacion-opciones").disabled = true;
+
+            document.getElementById("acceso-consultas-modificacion-opciones").value = '1';
+            document.getElementById("acceso-consultas-modificacion-opciones").disabled = true;
+
+            document.getElementById("acceso-usuarios-modificacion-opciones").value = '2';
+            document.getElementById("acceso-usuarios-modificacion-opciones").disabled = true;
+          }
+
+          // Usuario Contador
+          if(tipoperfil==2){
+            document.getElementById("acceso-ventas-modificacion-opciones").value = '1';
+            document.getElementById("acceso-ventas-modificacion-opciones").disabled = true;
+
+            document.getElementById("acceso-compras-modificacion-opciones").value = '1';
+            document.getElementById("acceso-compras-modificacion-opciones").disabled = true;
+
+            document.getElementById("acceso-informes-modificacion-opciones").value = '2';
+            document.getElementById("acceso-informes-modificacion-opciones").disabled = true;
+
+            document.getElementById("acceso-consultas-modificacion-opciones").value = '1';
+            document.getElementById("acceso-consultas-modificacion-opciones").disabled = true;
+
+            document.getElementById("acceso-usuarios-modificacion-opciones").value = '2';
+            document.getElementById("acceso-usuarios-modificacion-opciones").disabled = true;
+          }
+
+          // Usuario Dueño
+          if(tipoperfil==3){
+            document.getElementById("acceso-ventas-modificacion-opciones").value = '1';
+            document.getElementById("acceso-ventas-modificacion-opciones").disabled = true;
+
+            document.getElementById("acceso-compras-modificacion-opciones").value = '1';
+            document.getElementById("acceso-compras-modificacion-opciones").disabled = true;
+
+            document.getElementById("acceso-informes-modificacion-opciones").value = '1';
+            document.getElementById("acceso-informes-modificacion-opciones").disabled = true;
+
+            document.getElementById("acceso-consultas-modificacion-opciones").value = '1';
+            document.getElementById("acceso-consultas-modificacion-opciones").disabled = true;
+
+            document.getElementById("acceso-usuarios-modificacion-opciones").value = '2';
+            document.getElementById("acceso-usuarios-modificacion-opciones").disabled = true;
+          }
+
+          // Usuario Administrador
+          if(tipoperfil==4){
+            document.getElementById("acceso-ventas-modificacion-opciones").value = '1';
+            document.getElementById("acceso-ventas-modificacion-opciones").disabled = true;
+
+            document.getElementById("acceso-compras-modificacion-opciones").value = '1';
+            document.getElementById("acceso-compras-modificacion-opciones").disabled = true;
+
+            document.getElementById("acceso-informes-modificacion-opciones").value = '1';
+            document.getElementById("acceso-informes-modificacion-opciones").disabled = true;
+
+            document.getElementById("acceso-consultas-modificacion-opciones").value = '1';
+            document.getElementById("acceso-consultas-modificacion-opciones").disabled = true;
+
+            document.getElementById("acceso-usuarios-modificacion-opciones").value = '1';
+            document.getElementById("acceso-usuarios-modificacion-opciones").disabled = true;
+          }
+
+          // Usuario Personalizado
+          if(tipoperfil==5){
+            document.getElementById("acceso-ventas-modificacion-opciones").value = '0';
+            document.getElementById("acceso-ventas-modificacion-opciones").disabled = false;
+
+            document.getElementById("acceso-compras-modificacion-opciones").value = '0';
+            document.getElementById("acceso-compras-modificacion-opciones").disabled = false;
+
+            document.getElementById("acceso-informes-modificacion-opciones").value = '0';
+            document.getElementById("acceso-informes-modificacion-opciones").disabled = false;
+
+            document.getElementById("acceso-consultas-modificacion-opciones").value = '0';
+            document.getElementById("acceso-consultas-modificacion-opciones").disabled = false;
+
+            document.getElementById("acceso-usuarios-modificacion-opciones").value = '0';
+            document.getElementById("acceso-usuarios-modificacion-opciones").disabled = false;
           }
         }
 
