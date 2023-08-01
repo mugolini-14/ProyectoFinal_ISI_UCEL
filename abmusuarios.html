@@ -34,22 +34,22 @@
             </div>
             <div class="card-body">
                 <div class="row py-2">
-                        <div class="col-4 justify-content-center">
-                            <h5>
-                                Acción:
-                            </h5>
-                        </div>
-                        <div class="col-8 container-fluid justify-content-center align-content-center">
-                          <select onchange="habilitar_opciones(value)"class="form-select" id="acciones">
-                            <option id="acciones-seleccione" value="0"> Seleccione </option>
-                            <option id="acciones-alta" value="1"> Alta </option>
-                            <option id="acciones-baja" value="2"> Baja </option>
-                            <option id="acciones-modificacion" value="3"> Modificación </option>
-                          </select>                            
-                      </div>
+                    <div class="col-4 justify-content-center">
+                        <h5>
+                            Acción:
+                        </h5>
+                    </div>
+                    <div class="col-8 container-fluid justify-content-center align-content-center">
+                      <select onchange="habilitar_opciones(value)"class="form-select" id="acciones">
+                        <option id="acciones-seleccione" value="0"> Seleccione </option>
+                        <option id="acciones-alta" value="1"> Alta </option>
+                        <option id="acciones-baja" value="2"> Baja </option>
+                        <option id="acciones-modificacion" value="3"> Modificación </option>
+                      </select>                            
+                  </div>
                 </div>
                 <form id="formulario-alta">
-                    <div class="row py-2" id="nombre-usuario-fila">
+                    <div class="row py-2" id="nombre-usuario-alta-fila">
                         <div class="col-4 justify-content-center align-content-center" id="nombre-usuario-alta-titulo">
                             <h6 id="nombre-usuario-label"> 
                                 Nombre De Usuario:
@@ -59,7 +59,7 @@
                             <input class="col-12 form-control" id="nombre-usuario-alta-input" placeholder="Ingrese Nombre" ></input>                            
                         </div>
                     </div>
-                    <div class="row py-2" id="acceso-ventas-fila">
+                    <div class="row py-2" id="acceso-ventas-alta-fila">
                         <div class="col-4 justify-content-center align-content-center" id="acceso-ventas-alta-titulo">
                             <h6> 
                                 Acceso a Módulo Ventas:
@@ -73,7 +73,7 @@
                             </select>                            
                         </div>
                     </div>
-                    <div class="row py-2" id="acceso-compras-fila">
+                    <div class="row py-2" id="acceso-compras-alta-fila">
                         <div class="col-4 justify-content-center align-content-center" id="acceso-compras-alta-titulo">
                             <h6> 
                                 Acceso a Módulo Compras:
@@ -87,7 +87,7 @@
                             </select>                            
                         </div>
                     </div>
-                    <div class="row py-2" id="acceso-informes-fila">
+                    <div class="row py-2" id="acceso-informes-alta-fila">
                       <div class="col-4 justify-content-center align-content-center" id="acceso-informes-alta-titulo">
                           <h6> 
                               Acceso a Módulo Informes:
@@ -101,7 +101,7 @@
                           </select>                            
                       </div>
                     </div>
-                    <div class="row py-2" id="acceso-consultas-fila">
+                    <div class="row py-2" id="acceso-consultas-alta-fila">
                       <div class="col-4 justify-content-center align-content-center" id="acceso-consultas-alta-titulo">
                           <h6> 
                               Acceso a Módulo Consultas:
@@ -115,7 +115,7 @@
                           </select>                            
                       </div>
                     </div>
-                    <div class="row py-2" id="acceso-usuarios-fila">
+                    <div class="row py-2" id="acceso-usuarios-alta-fila">
                       <div class="col-4 justify-content-center align-content-center" id="acceso-usuarios-alta-titulo">
                           <h6> 
                               Acceso a Módulo Usuarios:
@@ -205,17 +205,7 @@
                         </select>                          
                     </div>
                   </div>
-                  <div class="row py-2" id="nombre-usuario-fila">
-                    <div class="col-4 justify-content-center align-content-center" id="nombre-usuario-modificacion-titulo">
-                        <h6 id="nombre-usuario-label"> 
-                            Nombre De Usuario:
-                        </h6>
-                    </div>
-                    <div class="col-8 container-fluid justify-content-center align-content-center">
-                        <input class="col-12 form-control" id="nombre-usuario-input" placeholder="Ingrese Nombre" ></input>                            
-                    </div>
-                </div>
-                <div class="row py-2" id="acceso-ventas-fila">
+                  <div class="row py-2" id="acceso-ventas-modificacion-fila">
                     <div class="col-4 justify-content-center align-content-center" id="acceso-ventas-titulo">
                         <h6> 
                             Acceso a Módulo Ventas:
@@ -228,8 +218,8 @@
                           <option id="acceso-ventas-opcion-no" aria-required="true" value="2"> No </option>
                         </select>                            
                     </div>
-                </div>
-                <div class="row py-2" id="acceso-compras-fila">
+                  </div>
+                  <div class="row py-2" id="acceso-compras-modificacion-fila">
                     <div class="col-4 justify-content-center align-content-center" id="acceso-compras-modificacion-titulo">
                         <h6> 
                             Acceso a Módulo Compras:
@@ -242,66 +232,66 @@
                           <option id="acceso-Compras-opcion-no" aria-required="true" value="2"> No </option>
                         </select>                            
                     </div>
-                </div>
-                <div class="row py-2" id="acceso-informes-fila">
-                  <div class="col-4 justify-content-center align-content-center" id="acceso-informes-modificacion-titulo">
-                      <h6> 
-                          Acceso a Módulo Informes:
-                      </h6>
                   </div>
-                  <div class="col-8 container-fluid justify-content-center align-content-center">
-                      <select class="form-select" id="acceso-informes-opciones">
-                        <option id="acceso-informes-opcion-seleccione" value="0"> Seleccione </option>
-                        <option id="acceso-informes-opcion-si" aria-required="true" value="1"> Si </option>
-                        <option id="acceso-informes-opcion-no" aria-required="true" value="2"> No </option>
-                      </select>                            
+                  <div class="row py-2" id="acceso-informes-modificacion-fila">
+                    <div class="col-4 justify-content-center align-content-center" id="acceso-informes-modificacion-titulo">
+                        <h6> 
+                            Acceso a Módulo Informes:
+                        </h6>
+                    </div>
+                    <div class="col-8 container-fluid justify-content-center align-content-center">
+                        <select class="form-select" id="acceso-informes-opciones">
+                          <option id="acceso-informes-opcion-seleccione" value="0"> Seleccione </option>
+                          <option id="acceso-informes-opcion-si" aria-required="true" value="1"> Si </option>
+                          <option id="acceso-informes-opcion-no" aria-required="true" value="2"> No </option>
+                        </select>                            
+                    </div>
                   </div>
-                </div>
-                <div class="row py-2" id="acceso-consultas-fila">
-                  <div class="col-4 justify-content-center align-content-center" id="acceso-consultas-modificacion-titulo">
-                      <h6> 
-                          Acceso a Módulo Consultas:
-                      </h6>
+                  <div class="row py-2" id="acceso-consultas-modificacion-fila">
+                    <div class="col-4 justify-content-center align-content-center" id="acceso-consultas-modificacion-titulo">
+                        <h6> 
+                            Acceso a Módulo Consultas:
+                        </h6>
+                    </div>
+                    <div class="col-8 container-fluid justify-content-center align-content-center">
+                        <select class="form-select" id="acceso-consultas-modificacion-opciones">
+                          <option id="acceso-consultas-opcion-seleccione" value="0"> Seleccione </option>
+                          <option id="acceso-consultas-opcion-si" aria-required="true" value="1"> Si </option>
+                          <option id="acceso-consultas-opcion-no" aria-required="true" value="2"> No </option>
+                        </select>                            
+                    </div>
                   </div>
-                  <div class="col-8 container-fluid justify-content-center align-content-center">
-                      <select class="form-select" id="acceso-consultas-modificacion-opciones">
-                        <option id="acceso-consultas-opcion-seleccione" value="0"> Seleccione </option>
-                        <option id="acceso-consultas-opcion-si" aria-required="true" value="1"> Si </option>
-                        <option id="acceso-consultas-opcion-no" aria-required="true" value="2"> No </option>
-                      </select>                            
+                  <div class="row py-2" id="acceso-usuarios-modificacion-fila">
+                    <div class="col-4 justify-content-center align-content-center" id="acceso-usuarios-modificacion-titulo">
+                        <h6> 
+                            Acceso a Módulo Usuarios:
+                        </h6>
+                    </div>
+                    <div class="col-8 container-fluid justify-content-center align-content-center">
+                        <select class="form-select" id="acceso-usuarios-modificacion-opciones">
+                          <option id="acceso-usuarios-opcion-seleccione" value="0"> Seleccione </option>
+                          <option id="acceso-usuarios-opcion-si" aria-required="true" value="1"> Si </option>
+                          <option id="acceso-usuarios-opcion-no" aria-required="true" value="2"> No </option>
+                        </select>                            
+                    </div>
                   </div>
-                </div>
-                <div class="row py-2" id="acceso-usuarios-fila">
-                  <div class="col-4 justify-content-center align-content-center" id="acceso-usuarios-modificacion-titulo">
-                      <h6> 
-                          Acceso a Módulo Usuarios:
-                      </h6>
+                  <div class="row py-2" id="botones-modificacion-fila">
+                    <div class="col-4 justify-content-end align-content-end" id="botones-modificacion-volver">
+                      <button onclick="volver_modificacion()"  type="button" class="btn btn-primary col-12">
+                        Volver
+                      </button>
+                    </div>
+                    <div class="col-4 justify-content-end align-content-end" id="botones-modificacion-modificar">
+                      <button onclick="modificar()" type="button" class="btn btn-success col-12">
+                        Modificar
+                      </button>
+                    </div>
+                    <div class="col-4 justify-content-end align-content-end" id="botones-modificacion-cancelar">
+                      <button onclick="modificar_cancelar()" type="button" class="btn btn-danger col-12">
+                        Cancelar
+                      </button>
+                    </div>
                   </div>
-                  <div class="col-8 container-fluid justify-content-center align-content-center">
-                      <select class="form-select" id="acceso-usuarios-modificacion-opciones">
-                        <option id="acceso-usuarios-opcion-seleccione" value="0"> Seleccione </option>
-                        <option id="acceso-usuarios-opcion-si" aria-required="true" value="1"> Si </option>
-                        <option id="acceso-usuarios-opcion-no" aria-required="true" value="2"> No </option>
-                      </select>                            
-                  </div>
-                </div>
-                <div class="row py-2" id="botones-modificacion-fila">
-                  <div class="col-4 justify-content-end align-content-end" id="botones-modificacion-volver">
-                    <button onclick="volver_modificacion()"  type="button" class="btn btn-primary col-12">
-                      Volver
-                    </button>
-                  </div>
-                  <div class="col-4 justify-content-end align-content-end" id="botones-modificacion-modificar">
-                    <button onclick="modificar()" type="button" class="btn btn-success col-12">
-                      Modificar
-                    </button>
-                  </div>
-                  <div class="col-4 justify-content-end align-content-end" id="botones-modificacion-cancelar">
-                    <button onclick="modificar_cancelar()" type="button" class="btn btn-danger col-12">
-                      Cancelar
-                    </button>
-                  </div>
-                </div>
                 </form>
             </div>
           </div>
@@ -317,61 +307,106 @@
         function habilitar_opciones(codigoaccion){ //funcion que habilita los diferentes inputs y botones segùn la acciòn a realizar
           
           if(codigoaccion==0){ // Inicialización / Seleccione
+
               // Filas de Alta
-              document.getElementById("nombre-usuario-fila").style.display = "none";
-              document.getElementById("acceso-ventas-fila").style.display = "none";
-              document.getElementById("acceso-compras-fila").style.display = "none";
-              document.getElementById("acceso-informes-fila").style.display = "none";
-              document.getElementById("acceso-consultas-fila").style.display = "none";
-              document.getElementById("acceso-usuarios-fila").style.display = "none";
+              document.getElementById("nombre-usuario-alta-fila").style.display = "none";
+              document.getElementById("acceso-ventas-alta-fila").style.display = "none";
+              document.getElementById("acceso-compras-alta-fila").style.display = "none";
+              document.getElementById("acceso-informes-alta-fila").style.display = "none";
+              document.getElementById("acceso-consultas-alta-fila").style.display = "none";
+              document.getElementById("acceso-usuarios-alta-fila").style.display = "none";
               document.getElementById("botones-alta-fila").style.display = "none";
+
               // Filas de Baja
               document.getElementById("nombre-usuario-baja-fila").style.display = "none";
               document.getElementById("botones-baja-fila").style.display = "none";
-              // Filas de Modificación
-              document.getElementById("acceso").style.display = "none";
+              
+              // Filas de Modificaciòn
+              document.getElementById("nombre-usuario-modificacion-fila").style.display = "none";
+              document.getElementById("acceso-ventas-modificacion-fila").style.display = "none";
+              document.getElementById("acceso-compras-modificacion-fila").style.display = "none";
+              document.getElementById("acceso-informes-modificacion-fila").style.display = "none";
+              document.getElementById("acceso-consultas-modificacion-fila").style.display = "none";
+              document.getElementById("acceso-usuarios-modificacion-fila").style.display = "none";
+              document.getElementById("botones-modificacion-fila").style.display = "none";
+
           }
 
           if(codigoaccion==1){ // Alta
+
               // Filas de Alta
-              document.getElementById("nombre-usuario-fila").style.display = '';
-              document.getElementById("acceso-ventas-fila").style.display = '';
-              document.getElementById("acceso-compras-fila").style.display = '';
-              document.getElementById("acceso-informes-fila").style.display = '';
-              document.getElementById("acceso-consultas-fila").style.display = '';
-              document.getElementById("acceso-usuarios-fila").style.display = '';
+              document.getElementById("nombre-usuario-alta-fila").style.display = '';
+              document.getElementById("acceso-ventas-alta-fila").style.display = '';
+              document.getElementById("acceso-compras-alta-fila").style.display = '';
+              document.getElementById("acceso-informes-alta-fila").style.display = '';
+              document.getElementById("acceso-consultas-alta-fila").style.display = '';
+              document.getElementById("acceso-usuarios-alta-fila").style.display = '';
               document.getElementById("botones-alta-fila").style.display = '';
+
               // Filas de Baja
               document.getElementById("nombre-usuario-baja-fila").style.display = 'none';
               document.getElementById("botones-baja-fila").style.display = 'none';
+
+              // Filas de Modificación
+              document.getElementById("nombre-usuario-modificacion-fila").style.display = "none";
+              document.getElementById("acceso-ventas-modificacion-fila").style.display = "none";
+              document.getElementById("acceso-compras-modificacion-fila").style.display = "none";
+              document.getElementById("acceso-informes-modificacion-fila").style.display = "none";
+              document.getElementById("acceso-consultas-modificacion-fila").style.display = "none";
+              document.getElementById("acceso-usuarios-modificacion-fila").style.display = "none";
+              document.getElementById("botones-modificacion-fila").style.display = "none";
           }
 
           if(codigoaccion==2){  // Baja
+
               // Filas de Alta
-              document.getElementById("nombre-usuario-fila").style.display = "none";
-              document.getElementById("acceso-ventas-fila").style.display = "none";
-              document.getElementById("acceso-compras-fila").style.display = "none";
-              document.getElementById("acceso-informes-fila").style.display = "none";
-              document.getElementById("acceso-consultas-fila").style.display = "none";
-              document.getElementById("acceso-usuarios-fila").style.display = "none";
+              document.getElementById("nombre-usuario-alta-fila").style.display = "none";
+              document.getElementById("acceso-ventas-alta-fila").style.display = "none";
+              document.getElementById("acceso-compras-alta-fila").style.display = "none";
+              document.getElementById("acceso-informes-alta-fila").style.display = "none";
+              document.getElementById("acceso-consultas-alta-fila").style.display = "none";
+              document.getElementById("acceso-usuarios-alta-fila").style.display = "none";
               document.getElementById("botones-alta-fila").style.display = "none";
+
               // Filas de Baja
               document.getElementById("nombre-usuario-baja-fila").style.display = '';
               document.getElementById("botones-baja-fila").style.display = '';
+
+              // Filas de Modificación
+              document.getElementById("nombre-usuario-modificacion-fila").style.display = "none";
+              document.getElementById("acceso-ventas-modificacion-fila").style.display = "none";
+              document.getElementById("acceso-compras-modificacion-fila").style.display = "none";
+              document.getElementById("acceso-informes-modificacion-fila").style.display = "none";
+              document.getElementById("acceso-consultas-modificacion-fila").style.display = "none";
+              document.getElementById("acceso-usuarios-modificacion-fila").style.display = "none";
+              document.getElementById("botones-modificacion-fila").style.display = "none";
+
           }
           
           if(codigoaccion==3){ // Modificación
+
               // Filas de Alta
-              document.getElementById("nombre-usuario-fila").style.display = "none";
-              document.getElementById("acceso-ventas-fila").style.display = "none";
-              document.getElementById("acceso-compras-fila").style.display = "none";
-              document.getElementById("acceso-informes-fila").style.display = "none";
-              document.getElementById("acceso-consultas-fila").style.display = "none";
-              document.getElementById("acceso-usuarios-fila").style.display = "none";
+              document.getElementById("nombre-usuario-alta-fila").style.display = "none";
+              document.getElementById("acceso-ventas-alta-fila").style.display = "none";
+              document.getElementById("acceso-compras-alta-fila").style.display = "none";
+              document.getElementById("acceso-informes-alta-fila").style.display = "none";
+              document.getElementById("acceso-consultas-alta-fila").style.display = "none";
+              document.getElementById("acceso-usuarios-alta-fila").style.display = "none";
               document.getElementById("botones-alta-fila").style.display = "none";
+
               // Filas de Baja
               document.getElementById("nombre-usuario-baja-fila").style.display = "none";
               document.getElementById("botones-baja-fila").style.display = "none";
+
+              // Filas de Modificación
+              document.getElementById("nombre-usuario-modificacion-fila").style.display = '';
+              document.getElementById("acceso-ventas-modificacion-fila").style.display = '';
+              document.getElementById("acceso-compras-modificacion-fila").style.display = '';
+              document.getElementById("acceso-informes-modificacion-fila").style.display = '';
+              document.getElementById("acceso-consultas-modificacion-fila").style.display = '';
+              document.getElementById("acceso-usuarios-modificacion-fila").style.display = '';
+              document.getElementById("botones-modificacion-fila").style.display = '';
+
           }
         }
         
