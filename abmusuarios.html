@@ -33,8 +33,7 @@
                 <img style="float: right;" width="30px" height="30px" src="images/favicon.png">
             </div>
             <div class="card-body">
-                <form id="formulario-alta">
-                    <div class="row py-2">
+                <div class="row py-2">
                         <div class="col-4 justify-content-center">
                             <h5>
                                 Acción:
@@ -48,25 +47,26 @@
                             <option id="acciones-modificacion" value="3"> Modificación </option>
                           </select>                            
                       </div>
-                    </div>
+                </div>
+                <form id="formulario-alta">
                     <div class="row py-2" id="nombre-usuario-fila">
-                        <div class="col-4 justify-content-center align-content-center" id="nombre-usuario-titulo">
+                        <div class="col-4 justify-content-center align-content-center" id="nombre-usuario-alta-titulo">
                             <h6 id="nombre-usuario-label"> 
                                 Nombre De Usuario:
                             </h6>
                         </div>
                         <div class="col-8 container-fluid justify-content-center align-content-center">
-                            <input class="col-12 form-control" id="nombre-usuario-input" placeholder="Ingrese Nombre" ></input>                            
+                            <input class="col-12 form-control" id="nombre-usuario-alta-input" placeholder="Ingrese Nombre" ></input>                            
                         </div>
                     </div>
                     <div class="row py-2" id="acceso-ventas-fila">
-                        <div class="col-4 justify-content-center align-content-center" id="nombre-usuario-titulo">
+                        <div class="col-4 justify-content-center align-content-center" id="acceso-ventas-alta-titulo">
                             <h6> 
                                 Acceso a Módulo Ventas:
                             </h6>
                         </div>
                         <div class="col-8 container-fluid justify-content-center align-content-center">
-                            <select class="form-select" id="acceso-ventas-opciones">
+                            <select class="form-select" id="acceso-ventas-alta-opciones">
                               <option id="acceso-ventas-opcion-seleccione" value="0"> Seleccione </option>
                               <option id="acceso-ventas-opcion-si" aria-required="true" value="1"> Si </option>
                               <option id="acceso-ventas-opcion-no" aria-required="true" value="2"> No </option>
@@ -74,13 +74,13 @@
                         </div>
                     </div>
                     <div class="row py-2" id="acceso-compras-fila">
-                        <div class="col-4 justify-content-center align-content-center" id="nombre-compras-titulo">
+                        <div class="col-4 justify-content-center align-content-center" id="acceso-compras-alta-titulo">
                             <h6> 
                                 Acceso a Módulo Compras:
                             </h6>
                         </div>
                         <div class="col-8 container-fluid justify-content-center align-content-center">
-                            <select class="form-select" id="acceso-compras-opciones">
+                            <select class="form-select" id="acceso-compras-alta-opciones">
                               <option id="acceso-compras-opcion-seleccione" value="0"> Seleccione </option>
                               <option id="acceso-compraS-opcion-si" aria-required="true" value="1"> Si </option>
                               <option id="acceso-Compras-opcion-no" aria-required="true" value="2"> No </option>
@@ -88,13 +88,13 @@
                         </div>
                     </div>
                     <div class="row py-2" id="acceso-informes-fila">
-                      <div class="col-4 justify-content-center align-content-center" id="nombre-informes-titulo">
+                      <div class="col-4 justify-content-center align-content-center" id="acceso-informes-alta-titulo">
                           <h6> 
                               Acceso a Módulo Informes:
                           </h6>
                       </div>
                       <div class="col-8 container-fluid justify-content-center align-content-center">
-                          <select class="form-select" id="acceso-informes-opciones">
+                          <select class="form-select" id="acceso-informes-alta-opciones">
                             <option id="acceso-informes-opcion-seleccione" value="0"> Seleccione </option>
                             <option id="acceso-informes-opcion-si" aria-required="true" value="1"> Si </option>
                             <option id="acceso-informes-opcion-no" aria-required="true" value="2"> No </option>
@@ -102,13 +102,13 @@
                       </div>
                     </div>
                     <div class="row py-2" id="acceso-consultas-fila">
-                      <div class="col-4 justify-content-center align-content-center" id="nombre-consultas-titulo">
+                      <div class="col-4 justify-content-center align-content-center" id="acceso-consultas-alta-titulo">
                           <h6> 
                               Acceso a Módulo Consultas:
                           </h6>
                       </div>
                       <div class="col-8 container-fluid justify-content-center align-content-center">
-                          <select class="form-select" id="acceso-consultas-opciones">
+                          <select class="form-select" id="acceso-consultas-alta-opciones">
                             <option id="acceso-consultas-opcion-seleccione" value="0"> Seleccione </option>
                             <option id="acceso-consultas-opcion-si" aria-required="true" value="1"> Si </option>
                             <option id="acceso-consultas-opcion-no" aria-required="true" value="2"> No </option>
@@ -116,13 +116,13 @@
                       </div>
                     </div>
                     <div class="row py-2" id="acceso-usuarios-fila">
-                      <div class="col-4 justify-content-center align-content-center" id="nombre-usuarios-titulo">
+                      <div class="col-4 justify-content-center align-content-center" id="acceso-usuarios-alta-titulo">
                           <h6> 
                               Acceso a Módulo Usuarios:
                           </h6>
                       </div>
                       <div class="col-8 container-fluid justify-content-center align-content-center">
-                          <select class="form-select" id="acceso-usuarios-opciones">
+                          <select class="form-select" id="acceso-usuarios-alta-opciones">
                             <option id="acceso-usuarios-opcion-seleccione" value="0"> Seleccione </option>
                             <option id="acceso-usuarios-opcion-si" aria-required="true" value="1"> Si </option>
                             <option id="acceso-usuarios-opcion-no" aria-required="true" value="2"> No </option>
@@ -185,6 +185,124 @@
                       </div>
                   </div>
                 </form>
+                <!-- FIN SECCIÓN BAJA 
+                      FIN SECCIÓN BAJA            
+                -->
+                <!-- EMPIEZA SECCIÒN MODIFICACIÓN 
+                     EMPIEZA SECCIÒN MODIFICACIÓN            
+                -->
+                <form id="formulario-modificacion">
+                  <div class="row py-2" id="nombre-usuario-modificacion-fila">
+                    <div class="col-4 justify-content-center align-content-center" id="nombre-usuario-titulo-baja">
+                        <h6 id="nombre-usuario-label-baja"> 
+                            Nombre De Usuario:
+                        </h6>
+                    </div>
+                    <div class="col-8 container-fluid justify-content-center align-content-center">
+                        <select class="form-select" id="seleccion-usuario-modificacion">
+                          <option id="seleccion-usuario-baja-seleccione" value="0"> Seleccione </option>
+                          <option id="seleccion-usuario-baja-usuario1" aria-required="true" value="1"> ListaUsuarios </option>
+                        </select>                          
+                    </div>
+                  </div>
+                  <div class="row py-2" id="nombre-usuario-fila">
+                    <div class="col-4 justify-content-center align-content-center" id="nombre-usuario-modificacion-titulo">
+                        <h6 id="nombre-usuario-label"> 
+                            Nombre De Usuario:
+                        </h6>
+                    </div>
+                    <div class="col-8 container-fluid justify-content-center align-content-center">
+                        <input class="col-12 form-control" id="nombre-usuario-input" placeholder="Ingrese Nombre" ></input>                            
+                    </div>
+                </div>
+                <div class="row py-2" id="acceso-ventas-fila">
+                    <div class="col-4 justify-content-center align-content-center" id="acceso-ventas-titulo">
+                        <h6> 
+                            Acceso a Módulo Ventas:
+                        </h6>
+                    </div>
+                    <div class="col-8 container-fluid justify-content-center align-content-center">
+                        <select class="form-select" id="acceso-ventas-modificacion-opciones">
+                          <option id="acceso-ventas-opcion-seleccione" value="0"> Seleccione </option>
+                          <option id="acceso-ventas-opcion-si" aria-required="true" value="1"> Si </option>
+                          <option id="acceso-ventas-opcion-no" aria-required="true" value="2"> No </option>
+                        </select>                            
+                    </div>
+                </div>
+                <div class="row py-2" id="acceso-compras-fila">
+                    <div class="col-4 justify-content-center align-content-center" id="acceso-compras-modificacion-titulo">
+                        <h6> 
+                            Acceso a Módulo Compras:
+                        </h6>
+                    </div>
+                    <div class="col-8 container-fluid justify-content-center align-content-center">
+                        <select class="form-select" id="acceso-compras-modificacion-opciones">
+                          <option id="acceso-compras-opcion-seleccione" value="0"> Seleccione </option>
+                          <option id="acceso-compraS-opcion-si" aria-required="true" value="1"> Si </option>
+                          <option id="acceso-Compras-opcion-no" aria-required="true" value="2"> No </option>
+                        </select>                            
+                    </div>
+                </div>
+                <div class="row py-2" id="acceso-informes-fila">
+                  <div class="col-4 justify-content-center align-content-center" id="acceso-informes-modificacion-titulo">
+                      <h6> 
+                          Acceso a Módulo Informes:
+                      </h6>
+                  </div>
+                  <div class="col-8 container-fluid justify-content-center align-content-center">
+                      <select class="form-select" id="acceso-informes-opciones">
+                        <option id="acceso-informes-opcion-seleccione" value="0"> Seleccione </option>
+                        <option id="acceso-informes-opcion-si" aria-required="true" value="1"> Si </option>
+                        <option id="acceso-informes-opcion-no" aria-required="true" value="2"> No </option>
+                      </select>                            
+                  </div>
+                </div>
+                <div class="row py-2" id="acceso-consultas-fila">
+                  <div class="col-4 justify-content-center align-content-center" id="acceso-consultas-modificacion-titulo">
+                      <h6> 
+                          Acceso a Módulo Consultas:
+                      </h6>
+                  </div>
+                  <div class="col-8 container-fluid justify-content-center align-content-center">
+                      <select class="form-select" id="acceso-consultas-modificacion-opciones">
+                        <option id="acceso-consultas-opcion-seleccione" value="0"> Seleccione </option>
+                        <option id="acceso-consultas-opcion-si" aria-required="true" value="1"> Si </option>
+                        <option id="acceso-consultas-opcion-no" aria-required="true" value="2"> No </option>
+                      </select>                            
+                  </div>
+                </div>
+                <div class="row py-2" id="acceso-usuarios-fila">
+                  <div class="col-4 justify-content-center align-content-center" id="acceso-usuarios-modificacion-titulo">
+                      <h6> 
+                          Acceso a Módulo Usuarios:
+                      </h6>
+                  </div>
+                  <div class="col-8 container-fluid justify-content-center align-content-center">
+                      <select class="form-select" id="acceso-usuarios-modificacion-opciones">
+                        <option id="acceso-usuarios-opcion-seleccione" value="0"> Seleccione </option>
+                        <option id="acceso-usuarios-opcion-si" aria-required="true" value="1"> Si </option>
+                        <option id="acceso-usuarios-opcion-no" aria-required="true" value="2"> No </option>
+                      </select>                            
+                  </div>
+                </div>
+                <div class="row py-2" id="botones-modificacion-fila">
+                  <div class="col-4 justify-content-end align-content-end" id="botones-modificacion-volver">
+                    <button onclick="volver_modificacion()"  type="button" class="btn btn-primary col-12">
+                      Volver
+                    </button>
+                  </div>
+                  <div class="col-4 justify-content-end align-content-end" id="botones-modificacion-modificar">
+                    <button onclick="modificar()" type="button" class="btn btn-success col-12">
+                      Modificar
+                    </button>
+                  </div>
+                  <div class="col-4 justify-content-end align-content-end" id="botones-modificacion-cancelar">
+                    <button onclick="modificar_cancelar()" type="button" class="btn btn-danger col-12">
+                      Cancelar
+                    </button>
+                  </div>
+                </div>
+                </form>
             </div>
           </div>
         </div>
@@ -193,6 +311,8 @@
 
     <!-- Bootstrap JS -->
     <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Funciones Propias JS -->
     <script type="text/javascript">
         function habilitar_opciones(codigoaccion){ //funcion que habilita los diferentes inputs y botones segùn la acciòn a realizar
           
@@ -208,6 +328,8 @@
               // Filas de Baja
               document.getElementById("nombre-usuario-baja-fila").style.display = "none";
               document.getElementById("botones-baja-fila").style.display = "none";
+              // Filas de Modificación
+              document.getElementById("acceso").style.display = "none";
           }
 
           if(codigoaccion==1){ // Alta
