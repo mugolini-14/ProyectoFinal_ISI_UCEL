@@ -56,7 +56,7 @@
                             </h6>
                         </div>
                         <div class="col-8 container-fluid justify-content-center align-content-center">
-                            <input class="col-12 form-control" onchange="fnAltaHabilitarPerfilUsuario(1)" id="nombre-usuario-alta-input" placeholder="Ingrese Nombre" ></input>                            
+                            <input class="col-12 form-control" maxlength="50" onchange="fnAltaHabilitarPerfilUsuario(1)" id="nombre-usuario-alta-input" placeholder="Ingrese Nombre" ></input>                            
                         </div>
                     </div>
                     <div class="row py-2" id="perfil-acceso-alta-usuario">
@@ -68,11 +68,11 @@
                       <div class="col-8 container-fluid justify-content-center align-content-center">
                           <select onchange="fnAltaPerfilesDeUsuario(value)" class="form-select" id="perfil-acceso-alta-usuario-opciones">
                             <option id="acceso-ventas-opcion-seleccione" value="0"> Seleccione </option>
-                            <option id="perfil-usuario-vendedor" aria-required="true" value="1"> Usuario Vendedor </option>
-                            <option id="perfil-usuario-contador" aria-required="true" value="2"> Usuario Contador </option>
-                            <option id="perfil-usuario-duenio" aria-required="true" value="3"> Usuario Dueño </option>
-                            <option id="perfil-usuario-admin" aria-required="true" value="4"> Usuario Administrador </option>
-                            <option id="perfil-usuario-admin" aria-required="true" value="5"> Usuario Personalizado </option>
+                            <option id="perfil-usuario-alta-vendedor" aria-required="true" value="1"> Usuario Vendedor </option>
+                            <option id="perfil-usuario-alta-contador" aria-required="true" value="2"> Usuario Contador </option>
+                            <option id="perfil-usuario-alta-duenio" aria-required="true" value="3"> Usuario Dueño </option>
+                            <option id="perfil-usuario-alta-admin" aria-required="true" value="4"> Usuario Administrador </option>
+                            <option id="perfil-usuario-alta-personalizado" aria-required="true" value="5"> Usuario Personalizado </option>
                           </select>                            
                       </div>
                   </div>
@@ -148,7 +148,7 @@
                     </div>
                     <div class="row py-2" id="botones-alta-fila">
                       <div class="col-4 justify-content-end align-content-end" id="botones-alta-volver">
-                        <button onclick="volver_alta()"  type="button" class="btn btn-primary col-12">
+                        <button onclick="fnSinCambios('A','V')"  type="button" class="btn btn-primary col-12">
                           Volver
                         </button>
                       </div>
@@ -158,7 +158,7 @@
                         </button>
                       </div>
                       <div class="col-4 justify-content-end align-content-end" id="botones-alta-cancelar">
-                        <button onclick="cancelar_alta()" type="button" class="btn btn-danger col-12">
+                        <button onclick="fnSinCambios('A','C')" type="button" class="btn btn-danger col-12">
                           Cancelar
                         </button>
                       </div>
@@ -186,7 +186,7 @@
                   </div>
                   <div class="row py-2" id="botones-baja-fila">
                       <div class="col-4 justify-content-end align-content-end" id="botones-baja-volver">
-                        <button onclick="volver_baja()"  type="button" class="btn btn-primary col-12">
+                        <button onclick="fnSinCambios('B','V')"  type="button" class="btn btn-primary col-12">
                           Volver
                         </button>
                       </div>
@@ -196,7 +196,7 @@
                         </button>
                       </div>
                       <div class="col-4 justify-content-end align-content-end" id="botones-baja-cancelar">
-                        <button onclick="cancelar_baja()" type="button" class="btn btn-danger col-12">
+                        <button onclick="fnSinCambios('B','C')" type="button" class="btn btn-danger col-12">
                           Cancelar
                         </button>
                       </div>
@@ -231,11 +231,11 @@
                     <div class="col-8 container-fluid justify-content-center align-content-center">
                         <select onchange="fnModificacionPerfilesDeUsuario(value)" class="form-select" id="perfil-acceso-modificacion-usuario-opciones">
                           <option id="acceso-ventas-opcion-seleccione" value="0"> Seleccione </option>
-                          <option id="perfil-usuario-vendedor" aria-required="true" value="1"> Usuario Vendedor </option>
-                          <option id="perfil-usuario-contador" aria-required="true" value="2"> Usuario Contador </option>
-                          <option id="perfil-usuario-duenio" aria-required="true" value="3"> Usuario Dueño </option>
-                          <option id="perfil-usuario-admin" aria-required="true" value="4"> Usuario Administrador </option>
-                          <option id="perfil-usuario-admin" aria-required="true" value="5"> Usuario Personalizado </option>
+                          <option id="perfil-usuario-modificacion-vendedor" aria-required="true" value="1"> Usuario Vendedor </option>
+                          <option id="perfil-usuario-modificacion-contador" aria-required="true" value="2"> Usuario Contador </option>
+                          <option id="perfil-usuario-modificacion-duenio" aria-required="true" value="3"> Usuario Dueño </option>
+                          <option id="perfil-usuario-modificacion-admin" aria-required="true" value="4"> Usuario Administrador </option>
+                          <option id="perfil-usuario-modificacion-personalizado" aria-required="true" value="5"> Usuario Personalizado </option>
                         </select>                            
                     </div>
                   </div>
@@ -311,7 +311,7 @@
                   </div>
                   <div class="row py-2" id="botones-modificacion-fila">
                     <div class="col-4 justify-content-end align-content-end" id="botones-modificacion-volver">
-                      <button onclick="volver_modificacion()"  type="button" class="btn btn-primary col-12">
+                      <button onclick="fnSinCambios('M','V')"  type="button" class="btn btn-primary col-12">
                         Volver
                       </button>
                     </div>
@@ -321,7 +321,7 @@
                       </button>
                     </div>
                     <div class="col-4 justify-content-end align-content-end" id="botones-modificacion-cancelar">
-                      <button onclick="modificar_cancelar()" type="button" class="btn btn-danger col-12">
+                      <button onclick="fnSinCambios('M','C')" type="button" class="btn btn-danger col-12">
                         Cancelar
                       </button>
                     </div>
@@ -342,19 +342,8 @@
     <script type="text/javascript" src="js/abmusuarios/fnModificacionHabilitarPerfilUsuario.js"></script>
     <script type="text/javascript" src="js/abmusuarios/fnAltaPerfilesDeUsuario.js"></script>
     <script type="text/javascript" src="js/abmusuarios/fnModificacionPerfilesDeUsuario.js"></script>
+    <script type="text/javascript" src="js/abmusuarios/fnSinCambios.js"></script>
     <script type="text/javascript">   
-        // FUNCIONES BOTONES DE ALTA
-
-        function volver_alta(){
-          if (document.getElementById("nombre-usuario-input").value != ""){
-            if (confirm("¿Desea Salir sin Guardar Cambios?")) {
-              location="index.html";
-            } else {
-              
-            }
-          }
-        }
-
         function crear(){
             var usuarioalta = document.getElementById("nombre-usuario-input").value;
             if (document.getElementById("nombre-usuario-input").value == ""){
@@ -367,34 +356,7 @@
               
             }
         }
-
-        function cancelar_alta(){
-          if (document.getElementById("nombre-usuario-input").value != ""){
-            if (confirm("¿Desea Cancelar?")) {
-              document.getElementById("nombre-usuario-input").value = "";
-              document.getElementById("acceso-ventas-opciones").value = "0";
-              document.getElementById("acceso-compras-opciones").value = "0";
-              document.getElementById("acceso-informes-opciones").value = "0";
-              document.getElementById("acceso-consultas-opciones").value = "0";
-              document.getElementById("acceso-usuarios-opciones").value = "0";
-            } else {
-              
-            }
-          }
-        }
-        
-        // FUNCIONES BOTONES BAJA
-
-        function volver_baja(){
-          if (document.getElementById("seleccion-usuario-baja").value = "0"){
-            if (confirm("¿Desea Salir sin Guardar Cambios?")) {
-              location="index.html";
-            } else {
-              
-            }
-          }
-        }
-
+      
         function dardebaja(){
             var usuariobaja = document.getElementById("seleccion-usuario-baja").value;
             if (document.getElementById("seleccion-usuario-baja").value == 0){
@@ -407,17 +369,6 @@
                 
             }
         }  
-        
-        function cancelar_baja(){
-          if (document.getElementById("seleccion-usuario-baja").value != "0"){
-            if (confirm("¿Desea Cancelar?")) {
-              document.getElementById("seleccion-usuario-baja").value = "0";
-            } else {
-              
-            }
-          }
-        }
-
     </script>
   </body>
 
