@@ -54,7 +54,7 @@ function fnSinCambios(tipoFormulario,tipoAccion){
               // Hacer Nada
             }
           if(tipoAccion == 'C'){
-              // Hacer Nada
+            // Hacer Nada
           } 
           else { 
             // Hacer nada
@@ -83,7 +83,20 @@ function fnSinCambios(tipoFormulario,tipoAccion){
       }
     }
     else{
-      location="index.html"
+      if( document.getElementById("seleccion-usuario-baja").value == '0'){ 
+        if(tipoAccion == 'V'){
+            location="index.html";
+        }
+        else {
+            // Hacer nada
+        }
+        if(tipoAccion == 'C'){
+          // Hacer Nada
+        }
+        else {
+            // Hacer nada
+        }
+      }
     }
   }
 
