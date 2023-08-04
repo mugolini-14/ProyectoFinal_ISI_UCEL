@@ -16,30 +16,50 @@ function fnSinCambios(tipoFormulario,tipoAccion){
         document.getElementById("acceso-consultas-alta-opciones").value != '0' ||
         document.getElementById("acceso-usuarios-alta-opciones").value != '0'){ 
           if(tipoAccion == 'V'){
-            if (confirm("¿Desea Salir Sin Guardar Cambios?")) {
-              location="index.html";
-            } 
-            else {
-              // Hacer nada
+              if (confirm("¿Desea Salir Sin Guardar Cambios?")) {
+                location="index.html";
+              } 
+              else {
+                // Hacer Nada
+              }
             }
-          }
           if(tipoAccion == 'C'){
             if (confirm("¿Desea Cancelar la Operación?")) {
               document.getElementById("nombre-usuario-alta-input").value = '';
               document.getElementById("perfil-acceso-alta-usuario-opciones").value = '0';
+              document.getElementById("perfil-acceso-alta-usuario-opciones").disabled = "true";
               document.getElementById("acceso-ventas-alta-opciones").value = '0';
               document.getElementById("acceso-compras-alta-opciones").value = '0';
               document.getElementById("acceso-informes-alta-opciones").value = '0';
               document.getElementById("acceso-consultas-alta-opciones").value = '0';
               document.getElementById("acceso-usuarios-alta-opciones").value = '0';
             } 
-            else {
+            else { 
               // Hacer nada
             }
-          }
-    }
+          } 
+        }
     else{
-      location="index.html"
+      if( document.getElementById("nombre-usuario-alta-input").value == '' ||
+        document.getElementById("perfil-acceso-alta-usuario-opciones").value == '0' ||
+        document.getElementById("acceso-ventas-alta-opciones").value == '0' ||
+        document.getElementById("acceso-compras-alta-opciones").value == '0' ||
+        document.getElementById("acceso-informes-alta-opciones").value == '0' ||
+        document.getElementById("acceso-consultas-alta-opciones").value == '0' ||
+        document.getElementById("acceso-usuarios-alta-opciones").value == '0'){
+          if(tipoAccion == 'V'){
+              location="index.html";
+           } 
+            else {
+              // Hacer Nada
+            }
+          if(tipoAccion == 'C'){
+              // Hacer Nada
+          } 
+          else { 
+            // Hacer nada
+          }
+      }
     }
   }
 
