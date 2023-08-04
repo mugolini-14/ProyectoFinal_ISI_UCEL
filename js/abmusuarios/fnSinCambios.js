@@ -120,6 +120,7 @@ function fnSinCambios(tipoFormulario,tipoAccion){
             if (confirm("¿Desea Cancelar la Operación?")) {
               document.getElementById("seleccion-usuario-modificacion").value = '0';
               document.getElementById("perfil-acceso-modificacion-usuario-opciones").value = '0';
+              document.getElementById("perfil-acceso-modificacion-usuario-opciones").disabled = "True";
               document.getElementById("acceso-ventas-modificacion-opciones").value = '0';
               document.getElementById("acceso-compras-modificacion-opciones").value = '0';
               document.getElementById("acceso-informes-modificacion-opciones").value = '0';
@@ -132,8 +133,28 @@ function fnSinCambios(tipoFormulario,tipoAccion){
           }
     }
     else{
-      location="index.html";
+      if( document.getElementById("seleccion-usuario-modificacion").value == '0' ||
+        document.getElementById("perfil-acceso-modificacion-usuario-opciones").value == '0' ||
+        document.getElementById("acceso-ventas-modificacion-opciones").value == '0' ||
+        document.getElementById("acceso-compras-modificacion-opciones").value == '0' ||
+        document.getElementById("acceso-informes-modificacion-opciones").value == '0' ||
+        document.getElementById("acceso-consultas-modificacion-opciones").value == '0' ||
+        document.getElementById("acceso-usuarios-modificacion-opciones").value == '0'){ 
+          if(tipoAccion == 'V'){
+            location="index.html";
+          }
+          else {
+            // Hacer nada
+          }
+          if(tipoAccion == 'C'){
+            // Hacer Nada
+          }
+          else {
+            // Hacer nada
+          }
+      }      
     }
   }
 }
+
     
