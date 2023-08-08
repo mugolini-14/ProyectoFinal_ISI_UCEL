@@ -2,7 +2,7 @@
 //  Descripción:  Función de los Botones Cancelar y Volver del ABM de Usuarios
 //                Verifica si hay valores ingresados / seleccionados y pregunta según la cadena recibida 
 //  Parámetros:
-//  tipoFormulario: A --> Alta / B --> Baja / M --> Modificación
+//  tipoFormulario: P--> Principal / A --> Alta / B --> Baja / M --> Modificación
 //  tipoAccion:     V --> Volver / C --> Cancelar
 
 function fnSinCambios(tipoFormulario,tipoAccion){
@@ -155,6 +155,10 @@ function fnSinCambios(tipoFormulario,tipoAccion){
       }      
     }
   }
-}
 
-    
+  if(tipoFormulario == 'P'){
+    if(tipoAccion == 'V'){
+      location="index.html";
+    }
+  }
+}    

@@ -28,7 +28,9 @@ function fnHabilitarOpciones(codigoaccion){
         document.getElementById("acceso-consultas-modificacion-fila").style.display = "none";
         document.getElementById("acceso-usuarios-modificacion-fila").style.display = "none";
         document.getElementById("botones-modificacion-fila").style.display = "none";
-
+        
+        // Boton Principal Volver
+        document.getElementById("botones-principal-volver-fila").style.display = '';
     }
 
     if(codigoaccion==1){ // Alta
@@ -57,10 +59,13 @@ function fnHabilitarOpciones(codigoaccion){
         document.getElementById("acceso-usuarios-modificacion-fila").style.display = "none";
         document.getElementById("botones-modificacion-fila").style.display = "none";
 
+        // Boton Principal Volver
+        document.getElementById("botones-principal-volver-fila").style.display = "none";
+
         // Funciones a habilitar por defecto
 
-        fnAltaHabilitarPerfilUsuario(0);
-        fnAltaPerfilesDeUsuario(0);
+        fnHabilitarPerfilUsuario('A',0);
+        fnPerfilesDeUsuario('A',0);
     }
 
     if(codigoaccion==2){  // Baja
@@ -89,6 +94,8 @@ function fnHabilitarOpciones(codigoaccion){
         document.getElementById("acceso-usuarios-modificacion-fila").style.display = "none";
         document.getElementById("botones-modificacion-fila").style.display = "none";
 
+        // Boton Principal Volver
+        document.getElementById("botones-principal-volver-fila").style.display = "none";
     }
     
     if(codigoaccion==3){ // Modificación
@@ -117,9 +124,12 @@ function fnHabilitarOpciones(codigoaccion){
         document.getElementById("acceso-usuarios-modificacion-fila").style.display = '';
         document.getElementById("botones-modificacion-fila").style.display = '';
 
+        // Boton Principal Volver
+        document.getElementById("botones-principal-volver-fila").style.display = "none";
+
         // Funciones a habilitar por defecto
 
-        fnModificacionHabilitarPerfilUsuario(0);
-        fnModificacionPerfilesDeUsuario(0);
+        fnHabilitarPerfilUsuario('M',0);
+        fnPerfilesDeUsuario('M',0);
     }
   }

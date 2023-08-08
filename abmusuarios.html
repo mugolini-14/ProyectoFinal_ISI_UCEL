@@ -48,6 +48,13 @@
                       </select>                            
                   </div>
                 </div>
+                <div class="row py-2" id="botones-principal-volver-fila">
+                  <div class="col-12 justify-content-center">
+                      <button onclick="fnSinCambios('P','V')" id="botones-principal-volver" type="button" class="btn btn-primary col-12">
+                        Volver
+                      </button>
+                  </div>
+                </div>
                 <form id="formulario-alta">
                     <div class="row py-2" id="nombre-usuario-alta-fila">
                         <div class="col-4 justify-content-center align-content-center" id="nombre-usuario-alta-titulo">
@@ -56,7 +63,7 @@
                             </h6>
                         </div>
                         <div class="col-8 container-fluid justify-content-center align-content-center">
-                            <input class="col-12 form-control" maxlength="50" onchange="fnAltaHabilitarPerfilUsuario(1)" id="nombre-usuario-alta-input" placeholder="Ingrese Nombre" ></input>                            
+                            <input class="col-12 form-control" minlength="8" maxlength="30" onchange="fnHabilitarPerfilUsuario('A',1)" id="nombre-usuario-alta-input" placeholder="Ingrese Nombre" ></input>                            
                         </div>
                     </div>
                     <div class="row py-2" id="perfil-acceso-alta-usuario">
@@ -66,7 +73,7 @@
                           </h6>
                       </div>
                       <div class="col-8 container-fluid justify-content-center align-content-center">
-                          <select onchange="fnAltaPerfilesDeUsuario(value)" class="form-select" id="perfil-acceso-alta-usuario-opciones">
+                          <select onchange="fnPerfilesDeUsuario('A',value)" class="form-select" id="perfil-acceso-alta-usuario-opciones">
                             <option id="acceso-ventas-opcion-seleccione" value="0"> Seleccione </option>
                             <option id="perfil-usuario-alta-vendedor" aria-required="true" value="1"> Usuario Vendedor </option>
                             <option id="perfil-usuario-alta-contador" aria-required="true" value="2"> Usuario Contador </option>
@@ -216,7 +223,7 @@
                         </h6>
                     </div>
                     <div class="col-8 container-fluid justify-content-center align-content-center">
-                        <select class="form-select" onchange="fnModificacionHabilitarPerfilUsuario(value);" id="seleccion-usuario-modificacion">
+                        <select class="form-select" onchange="fnHabilitarPerfilUsuario('M',value);" id="seleccion-usuario-modificacion">
                           <option id="seleccion-usuario-baja-seleccione" value="0"> Seleccione </option>
                           <option id="seleccion-usuario-baja-usuario1" aria-required="true" value="1"> ListaUsuarios </option>
                         </select>                          
@@ -229,7 +236,7 @@
                         </h6>
                     </div>
                     <div class="col-8 container-fluid justify-content-center align-content-center">
-                        <select onchange="fnModificacionPerfilesDeUsuario(value)" class="form-select" id="perfil-acceso-modificacion-usuario-opciones">
+                        <select onchange="fnPerfilesDeUsuario('M',value)" class="form-select" id="perfil-acceso-modificacion-usuario-opciones">
                           <option id="acceso-ventas-opcion-seleccione" value="0"> Seleccione </option>
                           <option id="perfil-usuario-modificacion-vendedor" aria-required="true" value="1"> Usuario Vendedor </option>
                           <option id="perfil-usuario-modificacion-contador" aria-required="true" value="2"> Usuario Contador </option>
@@ -343,6 +350,9 @@
     <script type="text/javascript" src="js/abmusuarios/fnAltaPerfilesDeUsuario.js"></script>
     <script type="text/javascript" src="js/abmusuarios/fnModificacionPerfilesDeUsuario.js"></script>
     <script type="text/javascript" src="js/abmusuarios/fnSinCambios.js"></script>
+    <script type="text/javascript" src="js/abmusuarios/fnHabilitarPerfilUsuario.js"></script>
+    <script type="text/javascript" src="js/abmusuarios/fnPerfilesDeUsuario.js"></script>
+
     <script type="text/javascript">   
         function crear(){
             var usuarioalta = document.getElementById("nombre-usuario-input").value;
@@ -371,5 +381,4 @@
         }  
     </script>
   </body>
-
 </html>
