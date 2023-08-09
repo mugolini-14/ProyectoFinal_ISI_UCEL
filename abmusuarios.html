@@ -160,7 +160,7 @@
                         </button>
                       </div>
                       <div class="col-4 justify-content-end align-content-end" id="botones-alta-crear">
-                        <button onclick="crear()" type="button" class="btn btn-success col-12">
+                        <button onclick="fnCrearUsuario()" type="button" class="btn btn-success col-12">
                           Crear
                         </button>
                       </div>
@@ -352,21 +352,11 @@
     <script type="text/javascript" src="js/abmusuarios/fnSinCambios.js"></script>
     <script type="text/javascript" src="js/abmusuarios/fnHabilitarPerfilUsuario.js"></script>
     <script type="text/javascript" src="js/abmusuarios/fnPerfilesDeUsuario.js"></script>
+    <script type="text/javascript" src="js/abmusuarios/fnCrearUsuario.js"></script>
+
 
     <script type="text/javascript">   
-        function crear(){
-            var usuarioalta = document.getElementById("nombre-usuario-input").value;
-            if (document.getElementById("nombre-usuario-input").value == ""){
-               alert("Por favor escriba un nombre de usuario.");
-            }
-            else if (confirm("¿Desea Crear el Usuario " + document.getElementById("nombre-usuario-input").value + "?")) {
-              
-            } 
-            else {
-              
-            }
-        }
-      
+          
         function dardebaja(){
             var usuariobaja = document.getElementById("seleccion-usuario-baja").value;
             if (document.getElementById("seleccion-usuario-baja").value == 0){
