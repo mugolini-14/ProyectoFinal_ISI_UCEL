@@ -198,7 +198,7 @@
                         </button>
                       </div>
                       <div class="col-4 justify-content-end align-content-end" id="botones-baja-dardebaja">
-                        <button onclick="dardebaja()" type="button" class="btn btn-success col-12">
+                        <button onclick="fnBajaUsuario()" type="button" class="btn btn-success col-12">
                           Dar de Baja
                         </button>
                       </div>
@@ -353,22 +353,7 @@
     <script type="text/javascript" src="js/abmusuarios/fnHabilitarPerfilUsuario.js"></script>
     <script type="text/javascript" src="js/abmusuarios/fnPerfilesDeUsuario.js"></script>
     <script type="text/javascript" src="js/abmusuarios/fnCrearUsuario.js"></script>
+    <script type="text/javascript" src="js/abmusuarios/fnBajaUsuario.js"></script>
 
-
-    <script type="text/javascript">   
-          
-        function dardebaja(){
-            var usuariobaja = document.getElementById("seleccion-usuario-baja").value;
-            if (document.getElementById("seleccion-usuario-baja").value == 0){
-               alert("Por favor seleccione un usuario para dar de baja.")
-            }
-            else if (confirm("¿Desea Dar de Baja al Usuario" + document.getElementById("seleccion-usuario-baja")[usuariobaja].textContent + "?")) {
-                
-            } 
-            else {
-                
-            }
-        }  
-    </script>
   </body>
 </html>

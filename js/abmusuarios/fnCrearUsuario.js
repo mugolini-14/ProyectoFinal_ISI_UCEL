@@ -6,7 +6,6 @@
 
 function fnCrearUsuario(){
     // Verifica que haya escrito un Usuario
-    var usuarioalta = document.getElementById("nombre-usuario-alta-input").value;
     if (document.getElementById("nombre-usuario-alta-input").value == ''){
         alert("Por favor escriba un nombre de usuario.");
     }
