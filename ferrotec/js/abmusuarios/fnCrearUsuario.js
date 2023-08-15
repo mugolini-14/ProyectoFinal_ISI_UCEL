@@ -15,14 +15,15 @@ function fnCrearUsuario(){
                 document.getElementById("acceso-ventas-alta-opciones").value == '0' ||
                 document.getElementById("acceso-compras-alta-opciones").value == '0' ||
                 document.getElementById("acceso-informes-alta-opciones").value == '0' ||
+                document.getElementById("acceso-consultas-alta-opciones").value == '0' ||
                 document.getElementById("acceso-usuarios-alta-opciones").value == '0'
             ){
                 alert("No se han completado algunos campos. Por favor, complételos para poder continuar.");
     }
     else {
         if(confirm("¿Desea Crear el Usuario " + document.getElementById("nombre-usuario-alta-input").value + "?")) {
+            document.getElementById("formulario-alta").submit();
             alert("Usuario " + document.getElementById("nombre-usuario-alta-input").value + " creado con éxito."); 
-            // Puesto para colocar submit y backend aquí
         } 
         else{   
             // Botón Cancelar sin Hacer Alta
