@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <!-- saved from url=(0044)file:///G:/ProyectoFinal_ISI_UCEL/index.html -->
+<<<<<<< HEAD
 <html lang="en">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -21,6 +22,27 @@
 		<link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
 		<style type="text/css" id="operaUserStyle"></style>
 	</head>
+=======
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width" ,="" initial-scale="1.0">
+    <link rel="icon" type="image/x-icon" href="../images/favicon.png">   <!-- Favicon descargado de icons8.com -->
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Ferr O&#39;Tec - Login">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="login.html">
+    <meta property="og:image" content="">
+    <meta property="og:description" content="Login">
+    <title>
+        Ferr O' Tec 
+    </title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+    <style type="text/css" id="operaUserStyle"></style></head>
+>>>>>>> 9ed6aac468f495ef8bb78adcba4a200c90a777ed
 
     <body style="background-color: #f2f2f2" onload="getTime()">
         <div class="container-fluid justify-content-center">
@@ -33,7 +55,11 @@
                             </h4>
                                 <img style="float: left;" width="30px" height="30px" src="../images/favicon.png">
                             <h4 style="float: right;">
+<<<<<<< HEAD
                                 <label id="texto-fecha-hora"> </label>
+=======
+                                <label id="texto-fecha-hora">15/8/2023 - 0:51:08</label>
+>>>>>>> 9ed6aac468f495ef8bb78adcba4a200c90a777ed
                             </h4>
                         </div>
                         <div class="card-body">
