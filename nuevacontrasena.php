@@ -43,7 +43,7 @@
               <br>
               <div class="form-group">
                 <button type="submit" class="btn btn-primary">
-                    Ingresar
+                    Cambiar
                 </button>
               </div>
             </form>
