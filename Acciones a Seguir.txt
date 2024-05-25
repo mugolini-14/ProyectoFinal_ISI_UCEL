@@ -13,4 +13,6 @@ RESTO DE LOS ABMs
 TABLAS
 	- Mover campos de registros de fecha a la posición 2 (luego del id)
 	- Eliminar fecha y usuario de baja en todos los ABMs, salvo usuarios
+LIBRERÍAS
+	- Investigar librerías de envío de mail (php o js)
 
