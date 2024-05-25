@@ -1,7 +1,12 @@
-<!DOCTYPE html>
-<!-- saved from url=(0044)file:///G:/ProyectoFinal_ISI_UCEL/index.html -->
-<<<<<<< HEAD
-<html lang="en">
+<?php
+session_start();
+if(!$_SESSION['logged']){
+   header("Location: ../login.html");
+   
+}
+?>
+
+<html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge">
@@ -15,15 +20,16 @@
 		<meta property="og:image" content="">
 		<meta property="og:description" content="Login">
 		<title>
-			Ferr O' Tec 
+			Ferr O Tec 
 		</title>
 
 		<!-- Bootstrap CSS -->
 		<link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
 		<style type="text/css" id="operaUserStyle"></style>
 	</head>
-=======
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html lang="en">
+    <a href="../logout/logout.php" class="btn btn-primary">Logout</a>
+    <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta name="viewport" content="width=device-width" ,="" initial-scale="1.0">
@@ -36,13 +42,13 @@
     <meta property="og:image" content="">
     <meta property="og:description" content="Login">
     <title>
-        Ferr O' Tec 
+        Ferr O Tec 
     </title>
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
     <style type="text/css" id="operaUserStyle"></style></head>
->>>>>>> 9ed6aac468f495ef8bb78adcba4a200c90a777ed
+
 
     <body style="background-color: #f2f2f2" onload="getTime()">
         <div class="container-fluid justify-content-center">
@@ -51,15 +57,12 @@
                     <div class="card">
                         <div class="card-header">
                             <h4 style="float: left;">
-                                Ferr O' Tec &nbsp;
+                                Ferr O Tec &nbsp;
                             </h4>
                                 <img style="float: left;" width="30px" height="30px" src="../images/favicon.png">
                             <h4 style="float: right;">
-<<<<<<< HEAD
                                 <label id="texto-fecha-hora"> </label>
-=======
-                                <label id="texto-fecha-hora">15/8/2023 - 0:51:08</label>
->>>>>>> 9ed6aac468f495ef8bb78adcba4a200c90a777ed
+                                <label id="texto-fecha-hora"></label>
                             </h4>
                         </div>
                         <div class="card-body">
@@ -88,6 +91,24 @@
                                                 <div id="accordion-item-compras" class="accordion-collapse collapse">
                                                     <div class="accordion-body bg-opacity-25 bg-warning">
                                                         (Contenido Módulo Compras)
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="accordion-item" id="modulo-articulos">
+                                                <h2 class="accordion-header">
+                                                    <button class="accordion-button collapsed bg-opacity-50 bg-primary" type="button" data-bs-toggle="collapse" data-bs-target="#accordion-item-articulos" aria-expanded="true" aria-controls="accordion-item-articulos">
+                                                        Artículos
+                                                    </button>
+                                                </h2>
+                                                <div id="accordion-item-articulos" class="accordion-collapse collapse">
+                                                    <div class="accordion-body bg-opacity-25 bg-secondary">
+                                                        <a href="../abmarticulos/abmarticulos.php"> Abm de Articulos </a>
+                                                    </div>
+                                                    <div class="accordion-body bg-opacity-25 bg-secondary">
+                                                        <a href="../abmcategorias/abmcategorias.php"> Abm de Categorías de Artículos</a>
+                                                    </div>
+                                                    <div class="accordion-body bg-opacity-25 bg-secondary">
+                                                        <a href="../abmtipos/abmtipos.php"> Abm de Tipos de Artículos </a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -123,7 +144,7 @@
                                                 </h2>
                                                 <div id="accordion-item-usuarios" class="accordion-collapse collapse">
                                                     <div class="accordion-body bg-opacity-25 bg-secondary">
-                                                        <a href=""> Abm de Usuarios </a>
+                                                        <a href="../abmusuarios/abmusuarios.php"> Abm de Usuarios </a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -136,7 +157,7 @@
                                 <br>
                                 <div class="row justify-content-center">
                                     <div class="col">
-                                        <i> Usuario: <label> [NOMBRE_USUARIO] </label></i> 
+                                        <i> Usuario: <label><?php echo $_SESSION['usu_nombre']." ".$_SESSION['usu_apellido']; ?></label></i> 
                                     </div>
                                     <div class="col align-items-center text-center">
                                         <a class="btn btn-primary" href="file:///G:/ProyectoFinal_ISI_UCEL/acercade.html"> Acerca De </a>

@@ -17,7 +17,7 @@ function fnSinCambios(tipoFormulario,tipoAccion){
         document.getElementById("acceso-usuarios-alta-opciones").value != '0'){ 
           if(tipoAccion == 'V'){
               if (confirm("¿Desea Salir Sin Guardar Cambios?")) {
-                location="index.html";
+                location="../../index/index.php";
               } 
               else {
                 // Hacer Nada
@@ -26,6 +26,10 @@ function fnSinCambios(tipoFormulario,tipoAccion){
           if(tipoAccion == 'C'){
             if (confirm("¿Desea Cancelar la Operación?")) {
               document.getElementById("nombre-usuario-alta-input").value = '';
+              document.getElementById("nombrepila-usuario-alta-input").value = '';
+              document.getElementById("apellido-usuario-alta-input").value = '';
+              document.getElementById("direccion-usuario-alta-input").value = '';
+              document.getElementById("email-usuario-alta-input").value = '';
               document.getElementById("perfil-acceso-alta-usuario-opciones").value = '0';
               document.getElementById("perfil-acceso-alta-usuario-opciones").disabled = "true";
               document.getElementById("acceso-ventas-alta-opciones").value = '0';
@@ -48,7 +52,7 @@ function fnSinCambios(tipoFormulario,tipoAccion){
         document.getElementById("acceso-consultas-alta-opciones").value == '0' ||
         document.getElementById("acceso-usuarios-alta-opciones").value == '0'){
           if(tipoAccion == 'V'){
-              location="index.html";
+              location="../index/index.php";
            } 
             else {
               // Hacer Nada
@@ -64,10 +68,10 @@ function fnSinCambios(tipoFormulario,tipoAccion){
   }
 
   if(tipoFormulario == 'B'){
-    if( document.getElementById("seleccion-usuario-baja").value != '0'){ 
+    if( document.getElementById("nombre-usuario-baja-input").value != ''){ 
       if(tipoAccion == 'V'){
         if (confirm("¿Desea Salir Sin Guardar Cambios?")) {
-          location="index.html";
+          location="../index/index.php";
         } 
         else {
           // Hacer nada
@@ -75,7 +79,7 @@ function fnSinCambios(tipoFormulario,tipoAccion){
       }
       if(tipoAccion == 'C'){
         if (confirm("¿Desea Cancelar?")) {
-          document.getElementById("seleccion-usuario-baja").value = '0';
+          document.getElementById("nombre-usuario-baja-input").value = '';
         } 
         else {
           // Hacer nada
@@ -83,9 +87,9 @@ function fnSinCambios(tipoFormulario,tipoAccion){
       }
     }
     else{
-      if( document.getElementById("seleccion-usuario-baja").value == '0'){ 
+      if( document.getElementById("nombre-usuario-baja-input").value == ''){ 
         if(tipoAccion == 'V'){
-            location="index.html";
+          location="../index/index.php";
         }
         else {
             // Hacer nada
@@ -110,7 +114,7 @@ function fnSinCambios(tipoFormulario,tipoAccion){
         document.getElementById("acceso-usuarios-modificacion-opciones").value != '0'){ 
           if(tipoAccion == 'V'){
             if (confirm("¿Desea Salir Sin Guardar Cambios?")) {
-              location="index.html";
+              location="../index/index.php";
             } 
             else {
               // Hacer nada
@@ -141,7 +145,7 @@ function fnSinCambios(tipoFormulario,tipoAccion){
         document.getElementById("acceso-consultas-modificacion-opciones").value == '0' ||
         document.getElementById("acceso-usuarios-modificacion-opciones").value == '0'){ 
           if(tipoAccion == 'V'){
-            location="index.html";
+            location="../index/index.php";
           }
           else {
             // Hacer nada
@@ -158,7 +162,7 @@ function fnSinCambios(tipoFormulario,tipoAccion){
 
   if(tipoFormulario == 'P'){
     if(tipoAccion == 'V'){
-      location="index.html";
+      location="../index/index.php";
     }
   }
 }    

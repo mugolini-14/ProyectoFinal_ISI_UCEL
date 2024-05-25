@@ -2,11 +2,14 @@
 // Descripción: Función que habilita los diferentes formularios según la acción a realizar
 
 function fnHabilitarOpciones(codigoaccion){ 
-          
     if(codigoaccion==0){ // Inicialización / Seleccione
 
         // Filas de Alta
         document.getElementById("nombre-usuario-alta-fila").style.display = "none";
+        document.getElementById("nombrepila-usuario-alta-fila").style.display = "none";
+        document.getElementById("direccion-usuario-alta-fila").style.display = "none";
+        document.getElementById("apellido-usuario-alta-fila").style.display = "none";
+        document.getElementById("email-usuario-alta-fila").style.display = "none";
         document.getElementById("perfil-acceso-alta-usuario").style.display = "none";
         document.getElementById("acceso-ventas-alta-fila").style.display = "none";
         document.getElementById("acceso-compras-alta-fila").style.display = "none";
@@ -21,6 +24,10 @@ function fnHabilitarOpciones(codigoaccion){
         
         // Filas de Modificaciòn
         document.getElementById("nombre-usuario-modificacion-fila").style.display = "none";
+        document.getElementById("nombrepila-usuario-modificacion-fila").style.display = "none";
+        document.getElementById("apellido-usuario-modificacion-fila").style.display = "none";
+        document.getElementById("direccion-usuario-modificacion-fila").style.display = "none";
+        document.getElementById("email-usuario-modificacion-fila").style.display = "none";
         document.getElementById("perfil-acceso-modificacion-usuario").style.display = "none";
         document.getElementById("acceso-ventas-modificacion-fila").style.display = "none";
         document.getElementById("acceso-compras-modificacion-fila").style.display = "none";
@@ -37,6 +44,10 @@ function fnHabilitarOpciones(codigoaccion){
 
         // Filas de Alta
         document.getElementById("nombre-usuario-alta-fila").style.display = '';
+        document.getElementById("nombrepila-usuario-alta-fila").style.display = '';
+        document.getElementById("direccion-usuario-alta-fila").style.display = '';
+        document.getElementById("apellido-usuario-alta-fila").style.display = '';
+        document.getElementById("email-usuario-alta-fila").style.display = '';
         document.getElementById("perfil-acceso-alta-usuario").style.display = '';
         document.getElementById("acceso-ventas-alta-fila").style.display = '';
         document.getElementById("acceso-compras-alta-fila").style.display = '';
@@ -51,6 +62,10 @@ function fnHabilitarOpciones(codigoaccion){
 
         // Filas de Modificación
         document.getElementById("nombre-usuario-modificacion-fila").style.display = "none";
+        document.getElementById("nombrepila-usuario-modificacion-fila").style.display = "none";
+        document.getElementById("apellido-usuario-modificacion-fila").style.display = "none";
+        document.getElementById("direccion-usuario-modificacion-fila").style.display = "none";
+        document.getElementById("email-usuario-modificacion-fila").style.display = "none";
         document.getElementById("perfil-acceso-modificacion-usuario").style.display = "none";
         document.getElementById("acceso-ventas-modificacion-fila").style.display = "none";
         document.getElementById("acceso-compras-modificacion-fila").style.display = "none";
@@ -72,6 +87,10 @@ function fnHabilitarOpciones(codigoaccion){
 
         // Filas de Alta
         document.getElementById("nombre-usuario-alta-fila").style.display = "none";
+        document.getElementById("nombrepila-usuario-alta-fila").style.display = "none";
+        document.getElementById("direccion-usuario-alta-fila").style.display = "none";
+        document.getElementById("apellido-usuario-alta-fila").style.display = "none";
+        document.getElementById("email-usuario-alta-fila").style.display = "none";
         document.getElementById("perfil-acceso-alta-usuario").style.display = "none";
         document.getElementById("acceso-ventas-alta-fila").style.display = "none";
         document.getElementById("acceso-compras-alta-fila").style.display = "none";
@@ -86,6 +105,10 @@ function fnHabilitarOpciones(codigoaccion){
 
         // Filas de Modificación
         document.getElementById("nombre-usuario-modificacion-fila").style.display = "none";
+        document.getElementById("nombrepila-usuario-modificacion-fila").style.display = "none";
+        document.getElementById("apellido-usuario-modificacion-fila").style.display = "none";
+        document.getElementById("direccion-usuario-modificacion-fila").style.display = "none";
+        document.getElementById("email-usuario-modificacion-fila").style.display = "none";
         document.getElementById("perfil-acceso-modificacion-usuario").style.display = "none";
         document.getElementById("acceso-ventas-modificacion-fila").style.display = "none";
         document.getElementById("acceso-compras-modificacion-fila").style.display = "none";
@@ -102,6 +125,10 @@ function fnHabilitarOpciones(codigoaccion){
 
         // Filas de Alta
         document.getElementById("nombre-usuario-alta-fila").style.display = "none";
+        document.getElementById("nombrepila-usuario-alta-fila").style.display = "none";
+        document.getElementById("direccion-usuario-alta-fila").style.display = "none";
+        document.getElementById("apellido-usuario-alta-fila").style.display = "none";
+        document.getElementById("email-usuario-alta-fila").style.display = "none";
         document.getElementById("perfil-acceso-alta-usuario").style.display = "none";
         document.getElementById("acceso-ventas-alta-fila").style.display = "none";
         document.getElementById("acceso-compras-alta-fila").style.display = "none";
@@ -116,6 +143,10 @@ function fnHabilitarOpciones(codigoaccion){
 
         // Filas de Modificación
         document.getElementById("nombre-usuario-modificacion-fila").style.display = '';
+        document.getElementById("nombrepila-usuario-modificacion-fila").style.display = '';
+        document.getElementById("apellido-usuario-modificacion-fila").style.display = '';
+        document.getElementById("direccion-usuario-modificacion-fila").style.display = '';
+        document.getElementById("email-usuario-modificacion-fila").style.display = '';
         document.getElementById("perfil-acceso-modificacion-usuario").style.display = '';
         document.getElementById("acceso-ventas-modificacion-fila").style.display = '';
         document.getElementById("acceso-compras-modificacion-fila").style.display = '';
