@@ -1,0 +1,16 @@
+FRONTEND - HTML - CSS - JS
+	- Normalizar botòn de LogOut
+		- Cambiar "SALIR" por "LOGOUT"
+		- Colocar imagen de salida (estilo puerta)
+BACKEND - SQL
+USUARIOS
+	- Usar criterio de Activo
+		- Por una cuestion de consistencia de datos y auditoría
+RESTO DE LOS ABMs
+	- No usar criterio de activo
+		- Grabar solo en el historial las fechas de alta, baja, modificación y usuario
+	- Seguir con ABM de Artículos
+TABLAS
+	- Mover campos de registros de fecha a la posición 2 (luego del id)
+	- Eliminar fecha y usuario de baja en todos los ABMs, salvo usuarios
+
