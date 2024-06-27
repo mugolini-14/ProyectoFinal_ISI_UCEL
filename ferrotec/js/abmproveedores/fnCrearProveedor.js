@@ -43,18 +43,21 @@ function fnCrearProveedor() {
     xhr.open("POST", "../abmproveedores/altaproveedor/insertar_proveedor.php", true);
     xhr.onreadystatechange = function() {
         if (xhr.readyState === 4 && xhr.status === 200) {
-            alert(xhr.responseText); // Muestra la respuesta del servidor
+            var respuesta = xhr.responseText; // Obtener la respuesta del servidor
+            alert(respuesta); // Mostrar la respuesta del servidor
 
-            // Cambiar los valores de los elementos después de recibir la respuesta
-            document.getElementById("nombre-proveedor-alta-input").value = "";
-            document.getElementById("descripcion-proveedor-alta-input").value = "";
-            document.getElementById("direccion-proveedor-alta-input").value = "";
-            document.getElementById("localidad-proveedor-alta-input").value = "";
-            document.getElementById("provincia-proveedor-alta-input").value = "";
-            document.getElementById("telefono1-proveedor-alta-input").value = "";
-            document.getElementById("telefono2-proveedor-alta-input").value = "";
-            document.getElementById("email-proveedor-alta-input").value = "";
-            document.getElementById("cuit-proveedor-alta-input").value = "";
+            // Verificar si la respuesta indica que el artículo se creó correctamente y si es así limpiar los campos
+            if (respuesta.includes("creado correctamente")) {
+                document.getElementById("nombre-proveedor-alta-input").value = "";
+                document.getElementById("descripcion-proveedor-alta-input").value = "";
+                document.getElementById("direccion-proveedor-alta-input").value = "";
+                document.getElementById("localidad-proveedor-alta-input").value = "";
+                document.getElementById("provincia-proveedor-alta-input").value = "";
+                document.getElementById("telefono1-proveedor-alta-input").value = "";
+                document.getElementById("telefono2-proveedor-alta-input").value = "";
+                document.getElementById("email-proveedor-alta-input").value = "";
+                document.getElementById("cuit-proveedor-alta-input").value = "";
+            }
         }
     };
     xhr.send(formData);

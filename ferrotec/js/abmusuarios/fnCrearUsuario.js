@@ -48,20 +48,23 @@ function fnCrearUsuario() {
     xhr.open("POST", "../abmusuarios/altausuario/insertar_usuario.php", true);
     xhr.onreadystatechange = function() {
         if (xhr.readyState === 4 && xhr.status === 200) {
-            alert(xhr.responseText); // Muestra la respuesta del servidor
+            var respuesta = xhr.responseText; // Obtener la respuesta del servidor
+            alert(respuesta); // Mostrar la respuesta del servidor
 
-            // Cambiar los valores de los elementos después de recibir la respuesta
-            document.getElementById("nombre-usuario-alta-input").value = "";
-            document.getElementById("nombrepila-usuario-alta-input").value = "";
-            document.getElementById("apellido-usuario-alta-input").value = "";
-            document.getElementById("direccion-usuario-alta-input").value = "";
-            document.getElementById("email-usuario-alta-input").value = "";
-            document.getElementById("perfil-acceso-alta-usuario-opciones").value = "0";
-            document.getElementById("acceso-ventas-alta-fila").style.display = "none";
-            document.getElementById("acceso-compras-alta-fila").style.display = "none";
-            document.getElementById("acceso-informes-alta-fila").style.display = "none";
-            document.getElementById("acceso-consultas-alta-fila").style.display = "none";
-            document.getElementById("acceso-usuarios-alta-fila").style.display = "none";
+            // Verificar si la respuesta indica que el artículo se creó correctamente y si es así limpiar los campos
+            if (respuesta.includes("creado correctamente")) {
+                document.getElementById("nombre-usuario-alta-input").value = "";
+                document.getElementById("nombrepila-usuario-alta-input").value = "";
+                document.getElementById("apellido-usuario-alta-input").value = "";
+                document.getElementById("direccion-usuario-alta-input").value = "";
+                document.getElementById("email-usuario-alta-input").value = "";
+                document.getElementById("perfil-acceso-alta-usuario-opciones").value = "0";
+                document.getElementById("acceso-ventas-alta-fila").style.display = "none";
+                document.getElementById("acceso-compras-alta-fila").style.display = "none";
+                document.getElementById("acceso-informes-alta-fila").style.display = "none";
+                document.getElementById("acceso-consultas-alta-fila").style.display = "none";
+                document.getElementById("acceso-usuarios-alta-fila").style.display = "none";
+            }
         }
     };
     xhr.send(formData);

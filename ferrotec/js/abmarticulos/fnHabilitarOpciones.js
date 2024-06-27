@@ -9,7 +9,7 @@ function fnHabilitarOpciones(codigoaccion){
         document.getElementById("marca-articulo-alta-fila").style.display = "none";
         document.getElementById("descripcion-articulo-alta-fila").style.display = "none";
         document.getElementById("precio-articulo-alta-fila").style.display = "none";
-        document.getElementById("tipo-articulo-alta-fila").style.display = "none";
+        document.getElementById("cat-articulo-alta-fila").style.display = "none";
         document.getElementById("botones-alta-fila").style.display = "none";
 
         // Filas de Baja
@@ -22,7 +22,7 @@ function fnHabilitarOpciones(codigoaccion){
         document.getElementById("marca-articulo-modificacion-fila").style.display = "none";
         document.getElementById("descripcion-articulo-modificacion-fila").style.display = "none";
         document.getElementById("precio-articulo-modificacion-fila").style.display = "none";
-        document.getElementById("tipo-articulo-modificacion-fila").style.display = "none";
+        document.getElementById("cat-articulo-modificacion-fila").style.display = "none";
         document.getElementById("botones-modificacion-fila").style.display = "none";
         
         // Boton Principal Volver
@@ -36,7 +36,7 @@ function fnHabilitarOpciones(codigoaccion){
         document.getElementById("marca-articulo-alta-fila").style.display = '';
         document.getElementById("descripcion-articulo-alta-fila").style.display = '';
         document.getElementById("precio-articulo-alta-fila").style.display = '';
-        document.getElementById("tipo-articulo-alta-fila").style.display = '';
+        document.getElementById("cat-articulo-alta-fila").style.display = '';
         document.getElementById("botones-alta-fila").style.display = '';
 
         // Filas de Baja
@@ -49,7 +49,7 @@ function fnHabilitarOpciones(codigoaccion){
         document.getElementById("marca-articulo-modificacion-fila").style.display = "none";
         document.getElementById("descripcion-articulo-modificacion-fila").style.display = "none";
         document.getElementById("precio-articulo-modificacion-fila").style.display = "none";
-        document.getElementById("tipo-articulo-modificacion-fila").style.display = "none";
+        document.getElementById("cat-articulo-modificacion-fila").style.display = "none";
         document.getElementById("botones-modificacion-fila").style.display = "none";
 
         // Boton Principal Volver
@@ -68,7 +68,7 @@ function fnHabilitarOpciones(codigoaccion){
         document.getElementById("marca-articulo-alta-fila").style.display = "none";
         document.getElementById("descripcion-articulo-alta-fila").style.display = "none";
         document.getElementById("precio-articulo-alta-fila").style.display = "none";
-        document.getElementById("tipo-articulo-alta-fila").style.display = "none";
+        document.getElementById("cat-articulo-alta-fila").style.display = "none";
         document.getElementById("botones-alta-fila").style.display = "none";
 
         // Filas de Baja
@@ -81,7 +81,7 @@ function fnHabilitarOpciones(codigoaccion){
         document.getElementById("marca-articulo-modificacion-fila").style.display = "none";
         document.getElementById("descripcion-articulo-modificacion-fila").style.display = "none";
         document.getElementById("precio-articulo-modificacion-fila").style.display = "none";
-        document.getElementById("tipo-articulo-modificacion-fila").style.display = "none";
+        document.getElementById("cat-articulo-modificacion-fila").style.display = "none";
         document.getElementById("botones-modificacion-fila").style.display = "none";
 
         // Boton Principal Volver
@@ -95,7 +95,7 @@ function fnHabilitarOpciones(codigoaccion){
         document.getElementById("marca-articulo-alta-fila").style.display = "none";
         document.getElementById("descripcion-articulo-alta-fila").style.display = "none";
         document.getElementById("precio-articulo-alta-fila").style.display = "none";
-        document.getElementById("tipo-articulo-alta-fila").style.display = "none";
+        document.getElementById("cat-articulo-alta-fila").style.display = "none";
         document.getElementById("botones-alta-fila").style.display = "none";
 
         // Filas de Baja
@@ -108,7 +108,7 @@ function fnHabilitarOpciones(codigoaccion){
         document.getElementById("marca-articulo-modificacion-fila").style.display = '';
         document.getElementById("descripcion-articulo-modificacion-fila").style.display = '';
         document.getElementById("precio-articulo-modificacion-fila").style.display = '';
-        document.getElementById("tipo-articulo-modificacion-fila").style.display = '';
+        document.getElementById("cat-articulo-modificacion-fila").style.display = '';
         document.getElementById("botones-modificacion-fila").style.display = '';
 
         // Boton Principal Volver

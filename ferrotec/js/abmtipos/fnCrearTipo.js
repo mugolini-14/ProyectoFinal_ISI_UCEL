@@ -26,11 +26,14 @@ function fnCreartipo() {
     xhr.open("POST", "../abmtipos/altatipo/insertar_tipo.php", true);
     xhr.onreadystatechange = function() {
         if (xhr.readyState === 4 && xhr.status === 200) {
-            alert(xhr.responseText); // Muestra la respuesta del servidor
+            var respuesta = xhr.responseText; // Obtener la respuesta del servidor
+            alert(respuesta); // Mostrar la respuesta del servidor
 
-            // Cambiar los valores de los elementos después de recibir la respuesta
-            document.getElementById("nombre-tipo-alta-input").value = "";
-            document.getElementById("descripcion-tipo-alta-input").value = "";
+            // Verificar si la respuesta indica que el artículo se creó correctamente y si es así limpiar los campos
+            if (respuesta.includes("creado correctamente")) {
+                document.getElementById("nombre-tipo-alta-input").value = "";
+                document.getElementById("descripcion-tipo-alta-input").value = "";
+            }
         }
     };
     xhr.send(formData);

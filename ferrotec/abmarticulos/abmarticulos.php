@@ -118,14 +118,14 @@ if(!$_SESSION['logged']){
                             <input class="col-12 form-control" minlength="8" maxlength="20" onchange="fnHabilitarPerfilArticulo('A',1)" id="precio-articulo-alta-input" placeholder="Ingrese precio individual del articulo" ></input>                            
                         </div>
                     </div>
-                    <div class="row py-2" id="tipo-articulo-alta-fila">
-                        <div class="col-4 justify-content-center align-content-center" id="tipo-articulo-alta-titulo">
+                    <div class="row py-2" id="cat-articulo-alta-fila">
+                        <div class="col-4 justify-content-center align-content-center" id="cat-articulo-alta-titulo">
                             <h6 id="email-articulo-label"> 
-                                Tipo de articulo:
+                                Categoría de artículo:
                             </h6>
                         </div>
                         <div class="col-8 container-fluid justify-content-center align-content-center">
-                            <input class="col-12 form-control" minlength="8" maxlength="30" onchange="fnHabilitarPerfilArticulo('A',1)" id="tipo-articulo-alta-input" placeholder="Ingrese Tipo" ></input>                            
+                            <input class="col-12 form-control" minlength="8" maxlength="30" onchange="fnHabilitarPerfilArticulo('A',1)" id="cat-articulo-alta-input" placeholder="Ingrese Categoría" ></input>                            
                         </div>
                     </div>
                     <div class="row py-2" id="botones-alta-fila">
@@ -135,7 +135,7 @@ if(!$_SESSION['logged']){
                         </button>
                       </div>
                       <div class="col-4 justify-content-end align-content-end" id="botones-alta-crear">
-                        <button onclick="fnCreararticulo()" type="button" class="btn btn-success col-12">
+                        <button onclick="fnCrearArticulo()" type="button" class="btn btn-success col-12">
                           Crear
                         </button>
                       </div>
@@ -211,7 +211,7 @@ if(!$_SESSION['logged']){
                   <div class="row py-2" id="marca-articulo-modificacion-fila">
                     <div class="col-4 justify-content-center align-content-center" id="marca-articulo-titulo-baja">
                       <h6 id="marca-articulo-label-baja"> 
-                      marca:
+                      Marca:
                       </h6>
                     </div>
                     <div class="col-8 container-fluid justify-content-center align-content-center">
@@ -231,21 +231,21 @@ if(!$_SESSION['logged']){
                   <div class="row py-2" id="precio-articulo-modificacion-fila">
                     <div class="col-4 justify-content-center align-content-center" id="precio-articulo-titulo-baja">
                       <h6 id="precio-articulo-label-baja"> 
-                      precio:
+                      Precio:
                       </h6>
                     </div>
                     <div class="col-8 container-fluid justify-content-center align-content-center">
                       <input class="col-12 form-control" minlength="8" maxlength="20" onchange="fnHabilitarPerfilArticulo('M',1)" id="precio-articulo-modificacion-input" placeholder="Ingrese precio del artículo" ></input>                            
                     </div>
                   </div>
-                  <div class="row py-2" id="tipo-articulo-modificacion-fila">
-                    <div class="col-4 justify-content-center align-content-center" id="tipo-articulo-titulo-baja">
-                      <h6 id="tipo-articulo-label-baja"> 
-                      Tipo de articulo::
+                  <div class="row py-2" id="cat-articulo-modificacion-fila">
+                    <div class="col-4 justify-content-center align-content-center" id="cat-articulo-titulo-baja">
+                      <h6 id="cat-articulo-label-baja"> 
+                      Categoría de artículo::
                       </h6>
                     </div>
                     <div class="col-8 container-fluid justify-content-center align-content-center">
-                      <input class="col-12 form-control" minlength="8" maxlength="30" onchange="fnHabilitarPerfilArticulo('M',1)" id="tipo-articulo-modificacion-input" placeholder="Ingrese tipo de artículo" ></input>                            
+                      <input class="col-12 form-control" minlength="8" maxlength="30" onchange="fnHabilitarPerfilArticulo('M',1)" id="cat-articulo-modificacion-input" placeholder="Ingrese categoría de artículo" ></input>                            
                     </div>
                   </div>
                   <div class="row py-2" id="botones-modificacion-fila">

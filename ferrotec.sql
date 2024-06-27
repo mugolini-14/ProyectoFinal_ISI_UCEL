@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 24-05-2024 a las 19:39:00
+-- Tiempo de generación: 27-06-2024 a las 22:49:23
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -47,7 +47,11 @@ CREATE TABLE `articulos` (
 --
 
 INSERT INTO `articulos` (`id`, `art_id_categoria`, `art_nombre`, `art_marca`, `art_descripcion`, `art_precio`, `art_stock`, `art_fechaalta`, `art_usuarioalta`, `art_fechabaja`, `art_usuariobaja`, `art_activo`) VALUES
-(1, 1, 'ARTICULO NO ESPECIFICADO', 'MARCA BLANCA', 'DESCRIPCIÒN PARA ARTICULO', 0, 1, NULL, 1, NULL, NULL, 'S');
+(1, 1, 'ARTICULO NO ESPECIFICADO', 'MARCA BLANCA', 'DESCRIPCIÒN PARA ARTICULO', 0, 1, NULL, 1, NULL, NULL, 'S'),
+(2, 1, 'Clavo_2mm_2cm', 'clavitos SA', 'clavos de 2mm de diametro por 2cm de largo', 2, NULL, '2024-06-27 17:03:22', 3, NULL, NULL, 'S'),
+(3, 1, 'Tornillo_Inox_2mm_2cm', 'Tornillo SA', 'Tornillo comÃºn de acero inoxidable', 4, NULL, '2024-06-27 17:12:57', 3, NULL, NULL, 'S'),
+(4, 0, 'w', 'w', 'w', 2, 0, '2024-06-27 17:20:36', 3, NULL, NULL, 'S'),
+(5, 1, 'a', 's', 'd', 3, 0, '2024-06-27 17:43:09', 3, NULL, NULL, 'S');
 
 -- --------------------------------------------------------
 
@@ -119,7 +123,7 @@ CREATE TABLE `historial_articulos` (
   `id` int(5) NOT NULL,
   `histart_id_art` int(6) DEFAULT NULL,
   `histart_accion` varchar(12) DEFAULT NULL,
-  `histart_usu` int(5) DEFAULT NULL,
+  `histart_id_usu` int(5) DEFAULT NULL,
   `histart_id_categoria` tinyint(4) DEFAULT NULL,
   `histart_nombre` varchar(30) DEFAULT NULL,
   `histart_marca` varchar(30) DEFAULT NULL,
@@ -132,6 +136,16 @@ CREATE TABLE `historial_articulos` (
   `histart_usuariobaja` int(5) DEFAULT NULL,
   `histart_activo` char(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `historial_articulos`
+--
+
+INSERT INTO `historial_articulos` (`id`, `histart_id_art`, `histart_accion`, `histart_id_usu`, `histart_id_categoria`, `histart_nombre`, `histart_marca`, `histart_descripcion`, `histart_precio`, `histart_stock`, `histart_fechaalta`, `histart_usuarioalta`, `histart_fechabaja`, `histart_usuariobaja`, `histart_activo`) VALUES
+(2, 2, 'alta_art', 3, 1, 'Clavo_2mm_2cm', 'clavitos SA', 'clavos de 2mm de diametro por 2cm de largo', 2, 0, '2024-06-27 17:03:22', 3, NULL, NULL, NULL),
+(3, 3, 'alta_art', 3, 1, 'Tornillo_Inox_2mm_2cm', 'Tornillo SA', 'Tornillo comÃºn de acero inoxidable', 4, 0, '2024-06-27 17:12:57', 3, NULL, NULL, NULL),
+(4, 4, 'alta_art', 3, 0, 'w', 'w', 'w', 2, 0, '2024-06-27 17:20:36', 3, NULL, NULL, NULL),
+(5, 5, 'alta_art', 3, 1, 'a', 's', 'd', 3, 0, '2024-06-27 17:43:09', 3, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -307,7 +321,30 @@ INSERT INTO `login_historial` (`id`, `login_usu_id`, `login_in_out`, `login_fech
 (94, 3, 'out', '2024-05-20 11:59:36'),
 (95, 3, 'in', '2024-05-20 12:01:27'),
 (97, 3, 'in', '2024-05-23 10:53:04'),
-(98, 3, 'in', '2024-05-24 09:00:21');
+(98, 3, 'in', '2024-05-24 09:00:21'),
+(99, 3, 'in', '2024-06-27 08:36:51'),
+(100, 3, 'out', '2024-06-27 15:22:18'),
+(101, 3, 'in', '2024-06-27 15:22:32'),
+(102, 3, 'out', '2024-06-27 15:36:28'),
+(103, 3, 'in', '2024-06-27 15:36:42'),
+(104, 3, 'out', '2024-06-27 15:43:50'),
+(105, 3, 'in', '2024-06-27 15:44:00'),
+(106, 3, 'out', '2024-06-27 15:44:11'),
+(108, 3, 'in', '2024-06-27 15:44:42'),
+(109, 3, 'out', '2024-06-27 15:46:36'),
+(110, 3, 'in', '2024-06-27 15:46:48'),
+(111, 3, 'out', '2024-06-27 15:52:47'),
+(112, 3, 'in', '2024-06-27 15:53:04'),
+(113, 3, 'out', '2024-06-27 16:44:41'),
+(114, 3, 'in', '2024-06-27 16:44:51'),
+(115, 3, 'out', '2024-06-27 16:49:58'),
+(116, 3, 'in', '2024-06-27 16:50:09'),
+(117, 3, 'out', '2024-06-27 17:02:11'),
+(118, 3, 'in', '2024-06-27 17:02:20'),
+(119, 3, 'out', '2024-06-27 17:35:13'),
+(120, 3, 'in', '2024-06-27 17:35:23'),
+(121, 3, 'out', '2024-06-27 17:42:38'),
+(122, 3, 'in', '2024-06-27 17:42:48');
 
 -- --------------------------------------------------------
 
@@ -628,7 +665,7 @@ ALTER TABLE `ventas_detalle`
 -- AUTO_INCREMENT de la tabla `articulos`
 --
 ALTER TABLE `articulos`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `categorias`
@@ -652,7 +689,7 @@ ALTER TABLE `compras_detalle`
 -- AUTO_INCREMENT de la tabla `historial_articulos`
 --
 ALTER TABLE `historial_articulos`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `historial_categorias`
@@ -682,7 +719,7 @@ ALTER TABLE `historial_usuarios`
 -- AUTO_INCREMENT de la tabla `login_historial`
 --
 ALTER TABLE `login_historial`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=99;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=123;
 
 --
 -- AUTO_INCREMENT de la tabla `modopago`

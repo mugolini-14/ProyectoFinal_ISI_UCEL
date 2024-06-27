@@ -28,12 +28,15 @@ function fnCrearcategoria() {
     xhr.open("POST", "../abmcategorias/altacategoria/insertar_categoria.php", true);
     xhr.onreadystatechange = function() {
         if (xhr.readyState === 4 && xhr.status === 200) {
-            alert(xhr.responseText); // Muestra la respuesta del servidor
+            var respuesta = xhr.responseText; // Obtener la respuesta del servidor
+            alert(respuesta); // Mostrar la respuesta del servidor
 
-            // Cambiar los valores de los elementos después de recibir la respuesta
-            document.getElementById("padretipo-categoria-alta-input").value = "";
-            document.getElementById("nombre-categoria-alta-input").value = "";
-            document.getElementById("descripcion-categoria-alta-input").value = "";
+            // Verificar si la respuesta indica que el artículo se creó correctamente
+            if (respuesta.includes("creado correctamente")) {
+                document.getElementById("padretipo-categoria-alta-input").value = "";
+                document.getElementById("nombre-categoria-alta-input").value = "";
+                document.getElementById("descripcion-categoria-alta-input").value = "";
+            }
         }
     };
     xhr.send(formData);
