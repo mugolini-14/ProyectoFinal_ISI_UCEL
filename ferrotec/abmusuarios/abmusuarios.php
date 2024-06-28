@@ -37,7 +37,7 @@ if(!$_SESSION['logged']){
     </title>
     <!-- Llamada a funciones de javascript -->
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
     <a href="../logout/logout.php" class="btn btn-primary">Logout</a>
   </head>
   <body style="background-color: #f2f2f2">
@@ -437,7 +437,7 @@ if(!$_SESSION['logged']){
     </div>
 
     <!-- Bootstrap JS -->
-    <script src="../../bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Funciones Propias JS -->
     <script type="text/javascript" src="../js/abmusuarios/fnHabilitarOpciones.js"></script>

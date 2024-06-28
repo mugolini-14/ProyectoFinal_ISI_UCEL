@@ -37,7 +37,7 @@ if(!$_SESSION['logged']){
     </title>
     <!-- Llamada a funciones de javascript -->
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
     <a href="../logout/logout.php" class="btn btn-primary">Logout</a>
   </head>
   <body style="background-color: #f2f2f2">
@@ -170,7 +170,7 @@ if(!$_SESSION['logged']){
                         </button>
                       </div>
                       <div class="col-4 justify-content-end align-content-end" id="botones-baja-dardebaja">
-                        <button onclick="fnBajaarticulo()" type="button" class="btn btn-success col-12">
+                        <button onclick="fnBajaArticulo()" type="button" class="btn btn-success col-12">
                           Dar de Baja
                         </button>
                       </div>
@@ -273,7 +273,7 @@ if(!$_SESSION['logged']){
     </div>
 
     <!-- Bootstrap JS -->
-    <script src="../../bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Funciones Propias JS -->
     <script type="text/javascript" src="../js/abmarticulos/fnHabilitarOpciones.js"></script>
@@ -285,7 +285,7 @@ if(!$_SESSION['logged']){
     <script type="text/javascript" src="../js/abmarticulos/fnHabilitarPerfilArticulo.js"></script>
     <script type="text/javascript" src="../js/abmarticulos/fnPerfilesDearticulo.js"></script>
     <script type="text/javascript" src="../js/abmarticulos/fnCreararticulo.js"></script>
-    <script type="text/javascript" src="../js/abmarticulos/fnBajaarticulo.js"></script>
+    <script type="text/javascript" src="../js/abmarticulos/fnBajaArticulo.js"></script>
     <script type="text/javascript" src="../js/abmarticulos/fnModificararticulo.js"></script>
     <!-- JS Propios -->
     <script src="../../Js Propios/js-fechayhora.js"></script>

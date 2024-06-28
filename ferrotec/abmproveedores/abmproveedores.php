@@ -37,7 +37,7 @@ if(!$_SESSION['logged']){
     </title>
     <!-- Llamada a funciones de javascript -->
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
   </head>
   <body style="background-color: #f2f2f2">
     <div class="container align-items-center justify-content-center">
@@ -333,7 +333,7 @@ if(!$_SESSION['logged']){
     </div>
 
     <!-- Bootstrap JS -->
-    <script src="../../bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Funciones Propias JS -->
     <script type="text/javascript" src=../../ferrotec/js/abmproveedores/fnHabilitarOpciones.js> </script>
