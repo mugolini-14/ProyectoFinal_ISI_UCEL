@@ -27,11 +27,14 @@
       <div class="row justify-content-center">
         <div class="col-md-6 mt-5">
           <div class="card">
-            <div class="card-header" >
-              <h4 style="float: left;">
-                  Ferr O' Tec
-              </h4>
-              <img style="float: right;" width="30px" height="30px" src="images/favicon.png">
+            <div class="card-header">
+                <h4 style="float: left;">
+                    Ferr O'Tec &nbsp;
+                </h4>
+                    <img style="float: left;" width="30px" height="30px" src="images/favicon.png">
+                <h4 style="float: right;">
+                    <label id="texto-fecha-hora"> </label>
+                </h4>
             </div>
             <div class="card-body">
               <form action="login/login.php" method="POST">
@@ -57,6 +60,8 @@
 
     <!-- Bootstrap JS -->
     <script src="bootstrap/js/bootstrap.min.js"></script>
+    <!-- JS Propios -->
+    <script src="Js Propios/js-fechayhora.js"></script>
   </body>
 
 </html>

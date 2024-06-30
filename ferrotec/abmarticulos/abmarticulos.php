@@ -38,21 +38,24 @@ if(!$_SESSION['logged']){
     <!-- Llamada a funciones de javascript -->
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
-    <a href="../logout/logout.php" class="btn btn-primary">Logout</a>
   </head>
   <body style="background-color: #f2f2f2">
     <div class="container align-items-center justify-content-center">
       <div class="row justify-content-center">
         <div class="col-md-6 mt-5">
           <div class="card">
-            <div class="card-header" >
-              <h4 style="float: left;">
-                  ABM Artículos &nbsp;
-              </h4>
-              <h4 style="float: right;">
-                  <label id="texto-fecha-hora"> </label>
-              </h4>
-                  <img style="float: right;" width="30px" height="30px" src="../../images/favicon.png">
+            <div class="card-header">
+                <h4 style="float: left;">
+                  Ferr O'Tec &nbsp;
+                </h4>
+                    <img style="float: left; margin-right: 20px;" width="30px" height="30px" src="../images/favicon.png">
+                <h4 style="float: left;">
+                  ABM Articulos &nbsp;
+                </h4>
+                <h4 style="float: right;">
+                    <label id="texto-fecha-hora"> </label>
+                    <a href="../logout/logout.php" class="btn btn-warning"> LOGOUT </a>
+                </h4>
             </div>
             <div class="card-body">
                 <div class="row py-2">
@@ -200,7 +203,7 @@ if(!$_SESSION['logged']){
                   </div>
                   <div class="row py-2" id="renombre-articulo-modificacion-fila">
                     <div class="col-4 justify-content-center align-content-center" id="renombre-articulo-titulo-baja">
-                        <h6 id="reombre-articulo-label-baja"> 
+                        <h6 id="renombre-articulo-label-baja"> 
                             Nuevo nombre De articulo:
                         </h6>
                     </div>
@@ -241,7 +244,7 @@ if(!$_SESSION['logged']){
                   <div class="row py-2" id="cat-articulo-modificacion-fila">
                     <div class="col-4 justify-content-center align-content-center" id="cat-articulo-titulo-baja">
                       <h6 id="cat-articulo-label-baja"> 
-                      Categoría de artículo::
+                      Categoría de artículo:
                       </h6>
                     </div>
                     <div class="col-8 container-fluid justify-content-center align-content-center">
@@ -255,7 +258,7 @@ if(!$_SESSION['logged']){
                       </button>
                     </div>
                     <div class="col-4 justify-content-end align-content-end" id="botones-modificacion-modificar">
-                      <button onclick="fnModificararticulo()" type="button" class="btn btn-success col-12">
+                      <button onclick="fnModificarArticulo()" type="button" class="btn btn-success col-12">
                         Modificar
                       </button>
                     </div>
@@ -286,8 +289,8 @@ if(!$_SESSION['logged']){
     <script type="text/javascript" src="../js/abmarticulos/fnPerfilesDearticulo.js"></script>
     <script type="text/javascript" src="../js/abmarticulos/fnCreararticulo.js"></script>
     <script type="text/javascript" src="../js/abmarticulos/fnBajaArticulo.js"></script>
-    <script type="text/javascript" src="../js/abmarticulos/fnModificararticulo.js"></script>
+    <script type="text/javascript" src="../js/abmarticulos/fnModificarArticulo.js"></script>
     <!-- JS Propios -->
-    <script src="../../Js Propios/js-fechayhora.js"></script>
+    <script src="../Js Propios/js-fechayhora.js"></script>
   </body>
 </html>

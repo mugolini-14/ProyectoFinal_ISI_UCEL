@@ -28,9 +28,7 @@ if(!$_SESSION['logged']){
 		<style type="text/css" id="operaUserStyle"></style>
 	</head>
 <html lang="en">
-    <a href="../logout/logout.php" class="btn btn-primary">Logout</a>
     <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta name="viewport" content="width=device-width" ,="" initial-scale="1.0">
     <link rel="icon" type="image/x-icon" href="../images/favicon.png">   <!-- Favicon descargado de icons8.com -->
@@ -57,12 +55,12 @@ if(!$_SESSION['logged']){
                     <div class="card">
                         <div class="card-header">
                             <h4 style="float: left;">
-                                Ferr O Tec &nbsp;
+                                Ferr O'Tec &nbsp;
                             </h4>
                                 <img style="float: left;" width="30px" height="30px" src="../images/favicon.png">
                             <h4 style="float: right;">
                                 <label id="texto-fecha-hora"> </label>
-                                <label id="texto-fecha-hora"></label>
+                                <a href="../logout/logout.php" class="btn btn-warning"> LOGOUT </a>
                             </h4>
                         </div>
                         <div class="card-body">
@@ -78,7 +76,7 @@ if(!$_SESSION['logged']){
                                                 </h2>
                                                 <div id="accordion-item-ventas" class="accordion-collapse collapse">
                                                     <div class="accordion-body bg-opacity-25 bg-primary">
-                                                    (Contenido Módulo Ventas)
+                                                    <a href="../ventas/ventas.php"> Ventas de artículos </a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -90,7 +88,10 @@ if(!$_SESSION['logged']){
                                                 </h2>
                                                 <div id="accordion-item-compras" class="accordion-collapse collapse">
                                                     <div class="accordion-body bg-opacity-25 bg-warning">
-                                                        (Contenido Módulo Compras)
+                                                        Compra de mercaderia
+                                                    </div>
+                                                    <div class="accordion-body bg-opacity-25 bg-warning">
+                                                        <a href="../abmproveedores/abmproveedores.php"> Abm de Proveedores </a>
                                                     </div>
                                                 </div>
                                             </div>

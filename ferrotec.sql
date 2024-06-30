@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 27-06-2024 a las 22:49:23
--- Versión del servidor: 10.4.28-MariaDB
--- Versión de PHP: 8.2.4
+-- Tiempo de generación: 30-06-2024 a las 08:46:19
+-- Versión del servidor: 10.4.32-MariaDB
+-- Versión de PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -48,10 +48,10 @@ CREATE TABLE `articulos` (
 
 INSERT INTO `articulos` (`id`, `art_id_categoria`, `art_nombre`, `art_marca`, `art_descripcion`, `art_precio`, `art_stock`, `art_fechaalta`, `art_usuarioalta`, `art_fechabaja`, `art_usuariobaja`, `art_activo`) VALUES
 (1, 1, 'ARTICULO NO ESPECIFICADO', 'MARCA BLANCA', 'DESCRIPCIÒN PARA ARTICULO', 0, 1, NULL, 1, NULL, NULL, 'S'),
-(2, 1, 'Clavo_2mm_2cm', 'clavitos SA', 'clavos de 2mm de diametro por 2cm de largo', 2, NULL, '2024-06-27 17:03:22', 3, NULL, NULL, 'S'),
-(3, 1, 'Tornillo_Inox_2mm_2cm', 'Tornillo SA', 'Tornillo comÃºn de acero inoxidable', 4, NULL, '2024-06-27 17:12:57', 3, NULL, NULL, 'S'),
-(4, 0, 'w', 'w', 'w', 2, 0, '2024-06-27 17:20:36', 3, NULL, NULL, 'S'),
-(5, 1, 'a', 's', 'd', 3, 0, '2024-06-27 17:43:09', 3, NULL, NULL, 'S');
+(2, 1, 'Clavo_2mm_2cm', 'clavitos SA', 'clavos de 2mm de diametro por 2cm de largo', 2, 51, '2024-06-27 17:03:22', 3, NULL, NULL, 'S'),
+(3, 1, 'Tornillo_Inox_2mm_2cm', 'Tornillo SA', 'Tornillo comÃºn de acero inoxidable', 4, 88, '2024-06-27 17:12:57', 3, NULL, NULL, 'S'),
+(5, 1, 'Martillo pesado', 'Philips', 'Martillo pesado de 1kg de piedra', 50, 87, '2024-06-27 17:43:09', 3, NULL, NULL, 'S'),
+(6, 1, 'Precintos 10cm', 'Precintos SA', 'Precintos de 10 cm de largo color negros', 3, 100, '2024-06-29 19:02:26', 3, NULL, NULL, 'S');
 
 -- --------------------------------------------------------
 
@@ -145,7 +145,12 @@ INSERT INTO `historial_articulos` (`id`, `histart_id_art`, `histart_accion`, `hi
 (2, 2, 'alta_art', 3, 1, 'Clavo_2mm_2cm', 'clavitos SA', 'clavos de 2mm de diametro por 2cm de largo', 2, 0, '2024-06-27 17:03:22', 3, NULL, NULL, NULL),
 (3, 3, 'alta_art', 3, 1, 'Tornillo_Inox_2mm_2cm', 'Tornillo SA', 'Tornillo comÃºn de acero inoxidable', 4, 0, '2024-06-27 17:12:57', 3, NULL, NULL, NULL),
 (4, 4, 'alta_art', 3, 0, 'w', 'w', 'w', 2, 0, '2024-06-27 17:20:36', 3, NULL, NULL, NULL),
-(5, 5, 'alta_art', 3, 1, 'a', 's', 'd', 3, 0, '2024-06-27 17:43:09', 3, NULL, NULL, NULL);
+(5, 5, 'alta_art', 3, 1, 'a', 's', 'd', 3, 0, '2024-06-27 17:43:09', 3, NULL, NULL, NULL),
+(6, 4, 'borrar_art', 3, 0, 'w', 'w', 'w', 2, 0, '2024-06-27 17:20:36', 3, '2024-06-29 18:11:44', 3, NULL),
+(7, 5, 'modif_art', 3, 1, 'a', 'a', 'a', 23, 0, NULL, NULL, NULL, NULL, NULL),
+(8, 5, 'modif_art', 3, 1, 'Martillo pesado', 'Philips', 'Martillo pesado de 1kg de piedra', 50, 0, NULL, NULL, NULL, NULL, NULL),
+(9, 6, 'alta_art', 3, 1, 'g', 'g', 'g', 3, 0, '2024-06-29 19:02:26', 3, NULL, NULL, NULL),
+(10, 6, 'modif_art', 3, 1, 'Precintos 10cm', 'Precintos SA', 'Precintos de 10 cm de largo color negros', 3, 0, '2024-06-29 19:02:26', 3, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -344,7 +349,19 @@ INSERT INTO `login_historial` (`id`, `login_usu_id`, `login_in_out`, `login_fech
 (119, 3, 'out', '2024-06-27 17:35:13'),
 (120, 3, 'in', '2024-06-27 17:35:23'),
 (121, 3, 'out', '2024-06-27 17:42:38'),
-(122, 3, 'in', '2024-06-27 17:42:48');
+(122, 3, 'in', '2024-06-27 17:42:48'),
+(123, 3, 'in', '2024-06-29 18:10:18'),
+(124, 3, 'out', '2024-06-29 19:11:30'),
+(125, 3, 'in', '2024-06-29 19:13:50'),
+(126, 3, 'out', '2024-06-29 19:18:13'),
+(127, 3, 'in', '2024-06-29 19:18:25'),
+(128, 3, 'out', '2024-06-29 19:27:20'),
+(129, 3, 'in', '2024-06-29 19:27:30'),
+(130, 3, 'out', '2024-06-29 19:54:04'),
+(131, 3, 'in', '2024-06-29 19:58:02'),
+(132, 3, 'out', '2024-06-29 19:58:52'),
+(133, 3, 'in', '2024-06-29 19:59:19'),
+(134, 3, 'in', '2024-06-30 03:30:05');
 
 -- --------------------------------------------------------
 
@@ -665,7 +682,7 @@ ALTER TABLE `ventas_detalle`
 -- AUTO_INCREMENT de la tabla `articulos`
 --
 ALTER TABLE `articulos`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `categorias`
@@ -689,7 +706,7 @@ ALTER TABLE `compras_detalle`
 -- AUTO_INCREMENT de la tabla `historial_articulos`
 --
 ALTER TABLE `historial_articulos`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `historial_categorias`
@@ -719,7 +736,7 @@ ALTER TABLE `historial_usuarios`
 -- AUTO_INCREMENT de la tabla `login_historial`
 --
 ALTER TABLE `login_historial`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=123;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=135;
 
 --
 -- AUTO_INCREMENT de la tabla `modopago`

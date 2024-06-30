@@ -14,5 +14,5 @@ $id = $_SESSION['id'];
 session_unset();
 session_destroy();
 $_SESSION = null;
-header("Location: ../login.html"); // A la pagina que tenemos que ir
+header("Location: ../login.php"); // A la pagina que tenemos que ir
 ?>

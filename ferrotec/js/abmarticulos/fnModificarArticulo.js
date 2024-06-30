@@ -1,11 +1,12 @@
 function fnModificarArticulo() {
     // Obtener los valores de los campos
+    
     var nombreArticulo = document.getElementById("nombre-articulo-modificacion-input").value;
     var renombreArticulo = document.getElementById("renombre-articulo-modificacion-input").value;
     var marcaArticulo = document.getElementById("marca-articulo-modificacion-input").value;
     var descripcionArticulo = document.getElementById("descripcion-articulo-modificacion-input").value;
     var precioArticulo = document.getElementById("precio-articulo-modificacion-input").value;
-    var catArticulo = document.getElementById("cat-acceso-modificacion-articulo-opciones").value;
+    var catArticulo = document.getElementById("cat-articulo-modificacion-input").value;
 
     // Verificar si algún campo está vacío
     if (nombreArticulo == '' || renombreArticulo == '' || marcaArticulo == '' || descripcionArticulo == '' || precioArticulo == '' || catArticulo == '') {
@@ -32,8 +33,9 @@ function fnModificarArticulo() {
     xhr.open("POST", "../abmarticulos/modificararticulo/modificar_articulo.php", true);
     xhr.onreadystatechange = function() {
         if (xhr.readyState === 4 && xhr.status === 200) {
+            
             alert(xhr.responseText); // Muestra la respuesta del servidor
         }
     };
-    xhr.send(formData);
+    xhr.send(formData); 
 }

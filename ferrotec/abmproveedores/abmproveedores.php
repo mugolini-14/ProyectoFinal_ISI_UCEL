@@ -44,15 +44,18 @@ if(!$_SESSION['logged']){
       <div class="row justify-content-center">
         <div class="col-md-8 mt-5">
           <div class="card">
-            <div class="card-header" >
-              <h4 style="float: left;">
+            <div class="card-header">
+                <h4 style="float: left;">
+                  Ferr O'Tec &nbsp;
+                </h4>
+                    <img style="float: left; margin-right: 20px;" width="30px" height="30px" src="../images/favicon.png">
+                <h4 style="float: left;">
                   ABM Proveedores &nbsp;
-                  <img style="float: right;" width="30px" height="30px" src="../../images/favicon.png">
-              </h4>
-              <h4 style="float: right;">
-                  <label id="texto-fecha-hora"> </label> &nbsp;
-                  <a href="../logout/logout.php" class="btn btn-warning"> SALIR </a> 
-              </h4>
+                </h4>
+                <h4 style="float: right;">
+                    <label id="texto-fecha-hora"> </label>
+                    <a href="../logout/logout.php" class="btn btn-warning"> LOGOUT </a>
+                </h4>
             </div>
             <div class="card-body">
                 <div class="row py-2">
@@ -343,6 +346,6 @@ if(!$_SESSION['logged']){
     <script type="text/javascript" src=../../ferrotec/js/abmproveedores/fnModificarProveedor.js> </script>
 
     <!-- JS Propios -->
-    <script src="../../Js Propios/js-fechayhora.js"></script>
+    <script src="../Js Propios/js-fechayhora.js"></script>
   </body>
 </html>
