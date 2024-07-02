@@ -1,3 +1,15 @@
+<?php
+$usu_email = $_POST['usu_email'];
+function mostrarMailOculto($correo){    // Función que oculta caracteres del correo para dar indicio del mail enviado
+    list($nombre,$dominio) = explode('@',$correo);        // Separa el dominio del nombre del correo
+    $longitudcadenanombre = strlen($nombre);
+    for($i = 0;$i <= ($longitudcadenanombre - 3);$i++){   // Reemplaza hasta los últimos 3 caracteres del mail por "x"
+      $longitudcadenanombre = str_replace($longitudcadenanombre[$i],"x",$longitudcadenanombre);
+    }
+    $correoOculto = $longitudcadenanombre . '@' . $dominio;
+    return $correoOculto;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -37,11 +49,15 @@
             <div class="card-body">
               <form action="restablecercontrasena/grabar_contrasena.php" method="POST">
                 <div class="form-group">
+                  Se le envió un correo con un código de Reestablecimiento de Contraseña al mail: 
+                  <?php mostrarMailOculto($usu_email); ?>
+                </div>
+                <div class="form-group">
                   <input type="text" class="form-control" id="codigo-aleatorio" name="codigo-aleatorio" placeholder="Introduzca el código aleatorio" required>
                 </div>
                 <br>
                 <div class="form-group">
-                  <input type="text" class="form-control" id="contrasena" name="contrasena" placeholder="Nueva Contraseña" required>
+                  <input type="password" class="form-control" id="contrasena" name="contrasena" placeholder="Nueva Contraseña" required>
                 </div>
                 <br>
                 <div class="form-group">
