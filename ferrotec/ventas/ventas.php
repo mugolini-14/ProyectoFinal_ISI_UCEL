@@ -72,15 +72,16 @@
                                 </div>
                             </div>
                         </form>
+                        <hr style="border: 2px solid gray;">
                         <div class="mt-4">
                             <table class="table table-striped" id="tabla-articulos">
                                 <thead>
                                     <tr>
+                                    <th></th>
                                         <th>Artículo</th>
                                         <th>Valor Unitario</th>
                                         <th>Cantidad</th>
                                         <th>Sub-total</th>
-                                        <th>Acciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -88,16 +89,26 @@
 
                                 </tbody>
                             </table>
-                            <div class="row py-2">
-                                <div class="col-md-12 text-md-right">
-                                    <h5>Total: $<span id="total-general">0.00</span></h5>
+                            <div class="row py-2 justify-content-end">
+                                <div class="col-2 align-content-end">
+                                    <h5>Total: $<span id="total-general">0.00</span>
+                                    </h5>
                                 </div>
-                                <div class="col-md-12 text-center">
-                                    <button type="button" class="btn btn-primary" id="generar-venta">Generar Venta</button>
+                            </div>
+                            <div class="row py-2">
+                                <div class="col-4 text-center">
+                                    <button onclick="fnBotonesventas('V')" type="button" class="btn btn-primary col-12">
+                                    Volver
+                                    </button>
                                 </div>
                                 <div class="col-4 justify-content-end align-content-end" id="botones-alta-volver">
-                                    <button type="button" class="btn btn-primary col-12">
-                                    Volver
+                                    <button type="button" class="btn btn-success col-12" id="generar-venta">
+                                    Generar Venta
+                                    </button>
+                                </div>
+                                <div class="col-4 justify-content-end align-content-end" id="botones-modificacion-cancelar">
+                                    <button onclick="fnBotonesventas('C')" type="button" class="btn btn-danger col-12">
+                                        Cancelar
                                     </button>
                                 </div>
                             </div>
@@ -114,5 +125,6 @@
     <script src="../Js Propios/js-fechayhora.js"></script>
     <!-- JS -->
     <script src="../Js/ventas/ventas.js"></script>
+    <script type="text/javascript" src="../Js/ventas/fnBotonesventas.js"></script>
 </body>
 </html>

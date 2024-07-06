@@ -46,11 +46,11 @@
 
                 if (articulo && valorUnitario && cantidad && total) {
                     var fila = '<tr>' +
+                        '<td>' + '<button type="button" class="btn btn-danger eliminar-articulo">Eliminar</button>' + '</td>' + // Boton de eliminar articulo 
                         '<td>' + articulo + '</td>' +
                         '<td>' + valorUnitario + '</td>' +
                         '<td>' + cantidad + '</td>' +
                         '<td>' + total + '</td>' +
-                        '<td>' + '<button type="button" class="btn btn-danger eliminar-articulo">Eliminar</button>' + '</td>' + // Boton de eliminar articulo 
                         '</tr>';
                     $('#tabla-articulos tbody').append(fila);
 
@@ -67,7 +67,7 @@
             function actualizarTotalGeneral() {
                 var totalGeneral = 0;
                 $('#tabla-articulos tbody tr').each(function() {
-                    var total = parseFloat($(this).find('td:eq(3)').text());
+                    var total = parseFloat($(this).find('td:eq(4)').text());
                     totalGeneral += total;
                 });
                 $('#total-general').text(totalGeneral.toFixed(2));
