@@ -497,7 +497,7 @@ CREATE TABLE `usuarios` (
   `usu_direccion` varchar(30) NOT NULL,
   `usu_password` varchar(30) NOT NULL,
   `usu_cod_verif` varchar(8) NOT NULL,
-  `usu_cod_verif_bool` tinyint(1) NOT NULL DEFAULT 0,
+  `usu_cod_verif_bool` tinyint(1) NOT NULL DEFAULT 1,
   `usu_id_suc` tinyint(4) NOT NULL DEFAULT 1,
   `usu_email` varchar(50) NOT NULL,
   `usu_fecha_creacion` date NOT NULL,

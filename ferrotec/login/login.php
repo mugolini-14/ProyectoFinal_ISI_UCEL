@@ -8,7 +8,7 @@
         $expresiones = '1234567890';
         $max = strlen($expresiones)-1;
         for($i=0;$i < $longitud;$i++){
-            $codigo .= $expresiones(mt_rand(0,$max));
+            $codigo .= $expresiones[mt_rand(0,$max)];
         } 
         return $codigo;
     }
@@ -54,9 +54,9 @@
         if(mysqli_num_rows($sql_reestablecercontrasena) == 1){  // El usuario necesita resetear la contraseña
             $numeroaleatorio = generarCodigoAleatorio(8);       // Genera código aleatorio
             $sql_numeroaleatorio =  "UPDATE usuarios 
-                                            SET usu_cod_verif_bool = 1, usu_cod_verif = $numeroaleatorio
+                                            SET usu_cod_verif_bool = 1, usu_cod_verif = '$numeroaleatorio'
                                             WHERE id = $id
-                                            AND usu_username = $usu_username";
+                                            AND usu_username = '$usu_username'";
             if($conexion->query($sql_numeroaleatorio) == TRUE){     // Va a la página de reestablecer contraseña
                 mail($email_usuario, "Ferr O' Tec - Código de Cambio de Contraseña", armarCuerpoEmail($numeroaleatorio));  // Envìa el mail con el código aleatorio al mail del usuario
                 header("Location: ../restablecercontrasena/restablecer_contrasena.php");
