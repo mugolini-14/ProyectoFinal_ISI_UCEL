@@ -35,34 +35,42 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-3">
+                                <div class="col-md-2">
                                     <div class="form-group row">
-                                        <label for="valor-unitario" class="col-sm-4 col-form-label">Valor Unitario:</label>
-                                        <div class="col-sm-8">
+                                        <label for="valor-unitario" class="col-sm-6 col-form-label">Valor Unit.:</label>
+                                        <div class="col-sm-6">
                                             <input type="text" class="form-control" id="valor-unitario" readonly>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-3">
+                                <div class="col-md-2">
                                     <div class="form-group row">
-                                        <label for="cantidad" class="col-sm-4 col-form-label">Cantidad:</label>
-                                        <div class="col-sm-8">
-                                            <input type="text" class="form-control" id="cantidad" placeholder="Ingrese cantidad">
+                                        <label for="stock" class="col-sm-6 col-form-label">Stock disp:</label>
+                                        <div class="col-sm-6">
+                                            <input type="text" class="form-control" id="stock" readonly>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group row">
+                                        <label for="cantidad" class="col-sm-6 col-form-label">Cantidad:</label>
+                                        <div class="col-sm-6">
+                                            <input type="text" class="form-control" id="cantidad" placeholder="Cantidad">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group row">
-                                        <label for="total-articulo" class="col-sm-4 col-form-label">Total artículo:</label>
-                                        <div class="col-sm-8">
+                                        <label for="total-articulo" class="col-sm-6 col-form-label">Total artículo:</label>
+                                        <div class="col-sm-6">
                                             <input type="text" class="form-control" id="total-articulo" readonly>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row py-2">
                                     <div class="form-group row">
-                                        <label for="descripcion" class="col-sm-4 col-form-label">Descripcion:</label>
-                                        <div class="col-sm-8">
+                                        <label for="descripcion" class="col-sm-2 col-form-label">Descripcion:</label>
+                                        <div class="col-sm-10">
                                             <input type="text" class="form-control" id="descripcion" readonly>
                                         </div>
                                     </div>
@@ -89,6 +97,19 @@
 
                                 </tbody>
                             </table>
+                            <div class="row py-3">
+                                <div class="col-4 align-content-end">
+                                    <label for="modo-de-pago" class="col-sm-6 col-form-label">Modo de Pago:</label>
+                                    <div class="col-sm-6">
+                                        <select class="form-control" id="modo-de-pago">
+                                            <option value="">Seleccione un método</option>
+                                            <option value="1">Efectivo</option>
+                                            <option value="2">Tarjeta</option>
+                                            <option value="3">Transferencia</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="row py-2 justify-content-end">
                                 <div class="col-2 align-content-end">
                                     <h5>Total: $<span id="total-general">0.00</span>

@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 30-06-2024 a las 08:46:19
--- Versión del servidor: 10.4.32-MariaDB
--- Versión de PHP: 8.2.12
+-- Tiempo de generación: 12-07-2024 a las 19:36:28
+-- Versión del servidor: 10.4.28-MariaDB
+-- Versión de PHP: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -48,10 +48,10 @@ CREATE TABLE `articulos` (
 
 INSERT INTO `articulos` (`id`, `art_id_categoria`, `art_nombre`, `art_marca`, `art_descripcion`, `art_precio`, `art_stock`, `art_fechaalta`, `art_usuarioalta`, `art_fechabaja`, `art_usuariobaja`, `art_activo`) VALUES
 (1, 1, 'ARTICULO NO ESPECIFICADO', 'MARCA BLANCA', 'DESCRIPCIÒN PARA ARTICULO', 0, 1, NULL, 1, NULL, NULL, 'S'),
-(2, 1, 'Clavo_2mm_2cm', 'clavitos SA', 'clavos de 2mm de diametro por 2cm de largo', 2, 51, '2024-06-27 17:03:22', 3, NULL, NULL, 'S'),
-(3, 1, 'Tornillo_Inox_2mm_2cm', 'Tornillo SA', 'Tornillo comÃºn de acero inoxidable', 4, 88, '2024-06-27 17:12:57', 3, NULL, NULL, 'S'),
-(5, 1, 'Martillo pesado', 'Philips', 'Martillo pesado de 1kg de piedra', 50, 87, '2024-06-27 17:43:09', 3, NULL, NULL, 'S'),
-(6, 1, 'Precintos 10cm', 'Precintos SA', 'Precintos de 10 cm de largo color negros', 3, 100, '2024-06-29 19:02:26', 3, NULL, NULL, 'S');
+(2, 1, 'Clavo_2mm_2cm', 'clavitos SA', 'clavos de 2mm de diametro por 2cm de largo', 2, 31, '2024-06-27 17:03:22', 3, NULL, NULL, 'S'),
+(3, 1, 'Tornillo_Inox_2mm_2cm', 'Tornillo SA', 'Tornillo comÃºn de acero inoxidable', 4, 84, '2024-06-27 17:12:57', 3, NULL, NULL, 'S'),
+(5, 1, 'Martillo pesado', 'Philips', 'Martillo pesado de 1kg de piedra', 50, 69, '2024-06-27 17:43:09', 3, NULL, NULL, 'S'),
+(6, 1, 'Precintos 10cm', 'Precintos SA', 'Precintos de 10 cm de largo color negros', 3, 98, '2024-06-29 19:02:26', 3, NULL, NULL, 'S');
 
 -- --------------------------------------------------------
 
@@ -530,11 +530,40 @@ CREATE TABLE `ventas` (
   `id` int(10) NOT NULL,
   `ventas_id_usuario` int(5) NOT NULL DEFAULT 1,
   `ventas_id_modopago` tinyint(4) NOT NULL DEFAULT 1,
-  `ventas_fecha` date NOT NULL,
-  `ventas_hora` time NOT NULL,
+  `ventas_fecha` date NOT NULL DEFAULT current_timestamp(),
+  `ventas_hora` time NOT NULL DEFAULT current_timestamp(),
   `ventas_monto` float NOT NULL,
   `ventas_suc` tinyint(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `ventas`
+--
+
+INSERT INTO `ventas` (`id`, `ventas_id_usuario`, `ventas_id_modopago`, `ventas_fecha`, `ventas_hora`, `ventas_monto`, `ventas_suc`) VALUES
+(1, 10, 5, '2024-07-12', '12:01:13', 100, 1),
+(2, 10, 5, '2024-07-12', '12:02:39', 16, 1),
+(3, 3, 5, '2024-07-12', '12:05:09', 50, 1),
+(4, 3, 0, '2024-07-12', '12:26:39', 2, 1),
+(5, 3, 0, '2024-07-12', '12:28:27', 100, 1),
+(6, 3, 0, '2024-07-12', '12:29:38', 50, 1),
+(7, 3, 0, '2024-07-12', '12:29:42', 50, 1),
+(8, 3, 3, '2024-07-12', '12:42:49', 2, 1),
+(9, 3, 3, '2024-07-12', '12:42:55', 2, 1),
+(10, 3, 1, '2024-07-12', '12:44:11', 0, 1),
+(11, 3, 2, '2024-07-12', '12:46:10', 6, 1),
+(12, 3, 1, '2024-07-12', '12:53:39', 4, 1),
+(13, 3, 1, '2024-07-12', '12:53:48', 4, 1),
+(14, 3, 2, '2024-07-12', '12:55:40', 4, 1),
+(15, 3, 1, '2024-07-12', '14:20:45', 4, 1),
+(16, 3, 3, '2024-07-12', '14:23:31', 2, 1),
+(17, 3, 3, '2024-07-12', '14:23:36', 2, 1),
+(18, 3, 1, '2024-07-12', '14:25:17', 200, 1),
+(19, 3, 1, '2024-07-12', '14:25:20', 200, 1),
+(20, 3, 1, '2024-07-12', '14:26:52', 54, 1),
+(21, 3, 3, '2024-07-12', '14:31:41', 2, 1),
+(22, 3, 1, '2024-07-12', '14:33:00', 4, 1),
+(23, 3, 3, '2024-07-12', '14:33:26', 4, 1);
 
 -- --------------------------------------------------------
 
@@ -550,6 +579,20 @@ CREATE TABLE `ventas_detalle` (
   `vendet_cantidad` int(10) DEFAULT NULL,
   `vendet_monto` float DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `ventas_detalle`
+--
+
+INSERT INTO `ventas_detalle` (`id`, `vendet_id_venta`, `vendet_id_art`, `vendet_nom_art`, `vendet_cantidad`, `vendet_monto`) VALUES
+(1, 18, 5, 'Martillo pesado', 4, NULL),
+(2, 19, 5, 'Martillo pesado', 4, NULL),
+(3, 20, 5, 'Martillo pesado', 1, NULL),
+(4, 20, 2, 'Clavo_2mm_2cm', 2, NULL),
+(5, 21, 2, 'Clavo_2mm_2cm', 1, NULL),
+(6, 22, 0, 'Clavo_2mm_2cm', 2, NULL),
+(7, 23, 2, 'Clavo_2mm_2cm', 1, NULL),
+(8, 23, 2, 'Clavo_2mm_2cm', 1, NULL);
 
 --
 -- Índices para tablas volcadas
@@ -778,13 +821,13 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `ventas`
 --
 ALTER TABLE `ventas`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT de la tabla `ventas_detalle`
 --
 ALTER TABLE `ventas_detalle`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Restricciones para tablas volcadas
