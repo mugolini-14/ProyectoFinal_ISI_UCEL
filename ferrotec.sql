@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 12-07-2024 a las 19:36:28
+-- Tiempo de generación: 18-07-2024 a las 19:33:44
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -34,24 +34,19 @@ CREATE TABLE `articulos` (
   `art_marca` varchar(30) DEFAULT NULL,
   `art_descripcion` varchar(100) DEFAULT NULL,
   `art_precio` float DEFAULT NULL,
-  `art_stock` int(6) DEFAULT NULL,
-  `art_fechaalta` datetime DEFAULT NULL,
-  `art_usuarioalta` int(5) DEFAULT NULL,
-  `art_fechabaja` datetime DEFAULT NULL,
-  `art_usuariobaja` int(5) DEFAULT NULL,
-  `art_activo` char(1) DEFAULT 'S'
+  `art_stock` int(6) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `articulos`
 --
 
-INSERT INTO `articulos` (`id`, `art_id_categoria`, `art_nombre`, `art_marca`, `art_descripcion`, `art_precio`, `art_stock`, `art_fechaalta`, `art_usuarioalta`, `art_fechabaja`, `art_usuariobaja`, `art_activo`) VALUES
-(1, 1, 'ARTICULO NO ESPECIFICADO', 'MARCA BLANCA', 'DESCRIPCIÒN PARA ARTICULO', 0, 1, NULL, 1, NULL, NULL, 'S'),
-(2, 1, 'Clavo_2mm_2cm', 'clavitos SA', 'clavos de 2mm de diametro por 2cm de largo', 2, 31, '2024-06-27 17:03:22', 3, NULL, NULL, 'S'),
-(3, 1, 'Tornillo_Inox_2mm_2cm', 'Tornillo SA', 'Tornillo comÃºn de acero inoxidable', 4, 84, '2024-06-27 17:12:57', 3, NULL, NULL, 'S'),
-(5, 1, 'Martillo pesado', 'Philips', 'Martillo pesado de 1kg de piedra', 50, 69, '2024-06-27 17:43:09', 3, NULL, NULL, 'S'),
-(6, 1, 'Precintos 10cm', 'Precintos SA', 'Precintos de 10 cm de largo color negros', 3, 98, '2024-06-29 19:02:26', 3, NULL, NULL, 'S');
+INSERT INTO `articulos` (`id`, `art_id_categoria`, `art_nombre`, `art_marca`, `art_descripcion`, `art_precio`, `art_stock`) VALUES
+(1, 1, 'ARTICULO NO ESPECIFICADO', 'MARCA BLANCA', 'DESCRIPCIÒN PARA ARTICULO', 0, 1),
+(2, 1, 'Clavo_2mm_2cm', 'clavitos SA', 'clavos de 2mm de diametro por 2cm de largo', 2, 31),
+(3, 1, 'Tornillo_Inox_3mm_3cm', 'Tornillo SA', 'Tornillo comun de acero inoxidable, de 3mm de diametro por 3 cm de largos. Phillips', 1, 84),
+(5, 1, 'Martillo pesado', 'Philips', 'Martillo pesado de 1kg de piedra', 50, 69),
+(6, 1, 'Precintos 10cm', 'Precintos SA', 'Precintos de 10 cm de largo color negros', 3, 98);
 
 -- --------------------------------------------------------
 
@@ -63,24 +58,20 @@ CREATE TABLE `categorias` (
   `id` tinyint(4) NOT NULL,
   `cat_id_tipo` tinyint(4) NOT NULL DEFAULT 1,
   `cat_nombre` varchar(30) DEFAULT NULL,
-  `cat_descripcion` varchar(100) DEFAULT NULL,
-  `cat_fechaalta` datetime DEFAULT NULL,
-  `cat_usuarioalta` int(5) DEFAULT NULL,
-  `cat_fechabaja` datetime DEFAULT NULL,
-  `cat_usuariobaja` int(5) DEFAULT NULL,
-  `cat_activo` char(1) DEFAULT 'S'
+  `cat_descripcion` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `categorias`
 --
 
-INSERT INTO `categorias` (`id`, `cat_id_tipo`, `cat_nombre`, `cat_descripcion`, `cat_fechaalta`, `cat_usuarioalta`, `cat_fechabaja`, `cat_usuariobaja`, `cat_activo`) VALUES
-(1, 1, 'SIN CATEGORIZAR', 'Elementos que no pertenecen a ninguna categoria', NULL, 1, NULL, NULL, 'S'),
-(3, 5, 'herramientas_jardin', 'herramientas para el jardin', '2024-05-24 10:00:26', 3, NULL, NULL, 'S'),
-(4, 1, 'maquinarias_jardin', 'nuevo nombre descripcion y tipo', '2024-05-24 10:20:14', 3, NULL, NULL, 'S'),
-(6, 5, 'acondicionadores_de_jardin', 'Elementos acondicionadores para el terreno del jardin', '2024-05-24 10:29:28', 3, NULL, NULL, 'S'),
-(8, 5, 'adornos_jardin', 'adornos para el jardin', '2024-05-24 11:22:09', 3, NULL, NULL, 'S');
+INSERT INTO `categorias` (`id`, `cat_id_tipo`, `cat_nombre`, `cat_descripcion`) VALUES
+(1, 1, 'SIN CATEGORIZAR', 'Elementos que no pertenecen a ninguna categoria'),
+(3, 5, 'herramientas_jardin', 'herramientas para el jardin'),
+(4, 1, 'maquinarias_jardin', 'nuevo nombre descripcion y tipo'),
+(6, 5, 'acondicionadores_de_jardin', 'Elementos acondicionadores para el terreno del jardin'),
+(8, 5, 'adornos_jardin', 'adornos para el jardin'),
+(10, 1, 'Pinturas', 'Todo tipo de pinturas para cualquier superficie');
 
 -- --------------------------------------------------------
 
@@ -130,27 +121,26 @@ CREATE TABLE `historial_articulos` (
   `histart_descripcion` varchar(100) DEFAULT NULL,
   `histart_precio` float DEFAULT NULL,
   `histart_stock` int(6) DEFAULT NULL,
-  `histart_fechaalta` datetime DEFAULT NULL,
-  `histart_usuarioalta` int(5) DEFAULT NULL,
-  `histart_fechabaja` datetime DEFAULT NULL,
-  `histart_usuariobaja` int(5) DEFAULT NULL,
-  `histart_activo` char(1) DEFAULT NULL
+  `histart_fechahora` datetime DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `historial_articulos`
 --
 
-INSERT INTO `historial_articulos` (`id`, `histart_id_art`, `histart_accion`, `histart_id_usu`, `histart_id_categoria`, `histart_nombre`, `histart_marca`, `histart_descripcion`, `histart_precio`, `histart_stock`, `histart_fechaalta`, `histart_usuarioalta`, `histart_fechabaja`, `histart_usuariobaja`, `histart_activo`) VALUES
-(2, 2, 'alta_art', 3, 1, 'Clavo_2mm_2cm', 'clavitos SA', 'clavos de 2mm de diametro por 2cm de largo', 2, 0, '2024-06-27 17:03:22', 3, NULL, NULL, NULL),
-(3, 3, 'alta_art', 3, 1, 'Tornillo_Inox_2mm_2cm', 'Tornillo SA', 'Tornillo comÃºn de acero inoxidable', 4, 0, '2024-06-27 17:12:57', 3, NULL, NULL, NULL),
-(4, 4, 'alta_art', 3, 0, 'w', 'w', 'w', 2, 0, '2024-06-27 17:20:36', 3, NULL, NULL, NULL),
-(5, 5, 'alta_art', 3, 1, 'a', 's', 'd', 3, 0, '2024-06-27 17:43:09', 3, NULL, NULL, NULL),
-(6, 4, 'borrar_art', 3, 0, 'w', 'w', 'w', 2, 0, '2024-06-27 17:20:36', 3, '2024-06-29 18:11:44', 3, NULL),
-(7, 5, 'modif_art', 3, 1, 'a', 'a', 'a', 23, 0, NULL, NULL, NULL, NULL, NULL),
-(8, 5, 'modif_art', 3, 1, 'Martillo pesado', 'Philips', 'Martillo pesado de 1kg de piedra', 50, 0, NULL, NULL, NULL, NULL, NULL),
-(9, 6, 'alta_art', 3, 1, 'g', 'g', 'g', 3, 0, '2024-06-29 19:02:26', 3, NULL, NULL, NULL),
-(10, 6, 'modif_art', 3, 1, 'Precintos 10cm', 'Precintos SA', 'Precintos de 10 cm de largo color negros', 3, 0, '2024-06-29 19:02:26', 3, NULL, NULL, NULL);
+INSERT INTO `historial_articulos` (`id`, `histart_id_art`, `histart_accion`, `histart_id_usu`, `histart_id_categoria`, `histart_nombre`, `histart_marca`, `histart_descripcion`, `histart_precio`, `histart_stock`, `histart_fechahora`) VALUES
+(2, 2, 'alta_art', 3, 1, 'Clavo_2mm_2cm', 'clavitos SA', 'clavos de 2mm de diametro por 2cm de largo', 2, 0, '2024-06-27 17:03:22'),
+(3, 3, 'alta_art', 3, 1, 'Tornillo_Inox_2mm_2cm', 'Tornillo SA', 'Tornillo comÃºn de acero inoxidable', 4, 0, '2024-06-27 17:12:57'),
+(4, 4, 'alta_art', 3, 0, 'w', 'w', 'w', 2, 0, '2024-06-27 17:20:36'),
+(5, 5, 'alta_art', 3, 1, 'a', 's', 'd', 3, 0, '2024-06-27 17:43:09'),
+(6, 4, 'borrar_art', 3, 0, 'w', 'w', 'w', 2, 0, '2024-06-27 17:20:36'),
+(7, 5, 'modif_art', 3, 1, 'a', 'a', 'a', 23, 0, NULL),
+(8, 5, 'modif_art', 3, 1, 'Martillo pesado', 'Philips', 'Martillo pesado de 1kg de piedra', 50, 0, NULL),
+(9, 6, 'alta_art', 3, 1, 'g', 'g', 'g', 3, 0, '2024-06-29 19:02:26'),
+(10, 6, 'modif_art', 3, 1, 'Precintos 10cm', 'Precintos SA', 'Precintos de 10 cm de largo color negros', 3, 0, '2024-06-29 19:02:26'),
+(11, 7, 'alta_art', 3, 3, 'cortasetosverde', 'GardenMaster', 'Cortasetos elÃ©ctrico con cuchillas de acero endurecido, mango telescÃ³pico ajustable', 75, 0, '2024-07-18 12:19:23'),
+(12, 7, 'borrar_art', 3, 3, 'cortasetosverde', 'GardenMaster', 'Cortasetos elÃ©ctrico con cuchillas de acero endurecido, mango telescÃ³pico ajustable', 75, 0, '2024-07-18 12:23:33'),
+(13, 3, 'modif_art', 3, 1, 'Tornillo_Inox_3mm_3cm', 'Tornillo SA', 'Tornillo comun de acero inoxidable, de 2mm de diametro por 3 cm de largos. Phillips', 1, 84, '2024-07-18 12:28:44');
 
 -- --------------------------------------------------------
 
@@ -166,159 +156,44 @@ CREATE TABLE `historial_categorias` (
   `histcat_id_tipos` tinyint(4) DEFAULT NULL,
   `histcat_nombre` varchar(30) DEFAULT NULL,
   `histcat_descripcion` varchar(100) DEFAULT NULL,
-  `histcat_fechaalta` datetime DEFAULT NULL,
-  `histcat_usuarioalta` int(5) DEFAULT NULL,
-  `histcat_fechabaja` datetime DEFAULT NULL,
-  `histcat_usuariobaja` int(5) DEFAULT NULL,
-  `histcat_activo` char(1) DEFAULT NULL
+  `histcat_fechahora` datetime DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `historial_categorias`
 --
 
-INSERT INTO `historial_categorias` (`id`, `histcat_id_cat`, `histcat_accion`, `histcat_id_usu`, `histcat_id_tipos`, `histcat_nombre`, `histcat_descripcion`, `histcat_fechaalta`, `histcat_usuarioalta`, `histcat_fechabaja`, `histcat_usuariobaja`, `histcat_activo`) VALUES
-(1, 3, 'alta_categor', 3, NULL, 'herramientas_jardin', 'herramientas para el jardin', '2024-05-24 10:00:26', NULL, NULL, NULL, 'S'),
-(2, 7, 'alta_categor', 3, 5, 'adornos_jardin', 'Adornos para el jardÃ­n', '2024-05-24 10:34:50', NULL, NULL, NULL, 'S'),
-(3, 8, 'alta_categor', 3, 5, 'adornos_jardin', 'Adornos de jardin', '2024-05-24 11:22:09', NULL, NULL, NULL, 'S'),
-(4, 4, 'modif_catego', 3, NULL, 'maquinarias_jardin', 'nuevo nombre descripcion y tipo', '2024-05-24 10:20:14', 3, NULL, NULL, 'S'),
-(5, 8, 'modif_catego', 3, 0, 'adornos_de_jardin', 'prueba', '2024-05-24 11:22:09', 3, NULL, NULL, 'S'),
-(6, 8, 'modif_catego', 3, 0, 'adornos_jardin', 'prueba2', '2024-05-24 11:22:09', 3, NULL, NULL, 'S'),
-(7, 8, 'modif_catego', 3, 5, 'adornos_jardin', 'adornos para el jardin', '2024-05-24 11:22:09', 3, NULL, NULL, 'S');
+INSERT INTO `historial_categorias` (`id`, `histcat_id_cat`, `histcat_accion`, `histcat_id_usu`, `histcat_id_tipos`, `histcat_nombre`, `histcat_descripcion`, `histcat_fechahora`) VALUES
+(1, 3, 'alta_categor', 3, NULL, 'herramientas_jardin', 'herramientas para el jardin', '2024-05-24 10:00:26'),
+(2, 7, 'alta_categor', 3, 5, 'adornos_jardin', 'Adornos para el jardÃ­n', '2024-05-24 10:34:50'),
+(3, 8, 'alta_categor', 3, 5, 'adornos_jardin', 'Adornos de jardin', '2024-05-24 11:22:09'),
+(4, 4, 'modif_catego', 3, NULL, 'maquinarias_jardin', 'nuevo nombre descripcion y tipo', '2024-05-24 10:20:14'),
+(5, 8, 'modif_catego', 3, 0, 'adornos_de_jardin', 'prueba', '2024-05-24 11:22:09'),
+(6, 8, 'modif_catego', 3, 0, 'adornos_jardin', 'prueba2', '2024-05-24 11:22:09'),
+(7, 8, 'modif_catego', 3, 5, 'adornos_jardin', 'adornos para el jardin', '2024-05-24 11:22:09'),
+(8, 9, 'alta_categor', 3, 5, 'limpieza_jardin', 'Elementos de orden y limpieza para el jardin', '2024-07-18 13:53:50'),
+(9, 9, 'borrar_categ', 3, NULL, 'limpieza_jardin', 'Elementos de orden y limpieza para el jardin', '2024-07-18 13:57:55'),
+(10, 10, 'alta_cat', 3, 12, 'asdsa', 'adsfasdf', '2024-07-18 14:08:26'),
+(11, 10, 'modif_cat', 3, 1, 'Pinturas', 'Todo tipo de pinturas para cualquier superficie', '2024-07-18 14:14:45');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `historial_proveedores`
+-- Estructura de tabla para la tabla `historial_login`
 --
 
-CREATE TABLE `historial_proveedores` (
-  `id` int(5) NOT NULL,
-  `histprov_accion` varchar(12) DEFAULT NULL,
-  `histprov_id_usu` int(5) DEFAULT NULL,
-  `histprov_id_prov` int(5) DEFAULT NULL,
-  `histprov_nombre` varchar(30) DEFAULT NULL,
-  `histprov_descripcion` varchar(100) DEFAULT NULL,
-  `histprov_direccion` varchar(30) DEFAULT NULL,
-  `histprov_localidad` varchar(30) DEFAULT NULL,
-  `histprov_provincia` varchar(30) DEFAULT NULL,
-  `histprov_tel1` int(20) DEFAULT NULL,
-  `histprov_tel2` int(20) DEFAULT NULL,
-  `histprov_email` varchar(50) DEFAULT NULL,
-  `histprov_cuit` int(11) DEFAULT NULL,
-  `histprov_fechaalta` datetime DEFAULT NULL,
-  `histprov_usuarioalta` int(5) DEFAULT NULL,
-  `histprov_fechabaja` datetime DEFAULT NULL,
-  `histprov_usuariobaja` int(5) DEFAULT NULL,
-  `histprov_activo` char(1) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `historial_proveedores`
---
-
-INSERT INTO `historial_proveedores` (`id`, `histprov_accion`, `histprov_id_usu`, `histprov_id_prov`, `histprov_nombre`, `histprov_descripcion`, `histprov_direccion`, `histprov_localidad`, `histprov_provincia`, `histprov_tel1`, `histprov_tel2`, `histprov_email`, `histprov_cuit`, `histprov_fechaalta`, `histprov_usuarioalta`, `histprov_fechabaja`, `histprov_usuariobaja`, `histprov_activo`) VALUES
-(1, 'alta_prov', 3, 1, 'Tornillete', 'Tornillete SA - Proveedor de tornillos varios', 'Lamas  1242', 'Santa Fe', 'Santa Fe', 342, 342, 'tornillete@tornillete.com', 35, '2024-05-20 11:42:03', 3, NULL, NULL, 'S');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `historial_tipos`
---
-
-CREATE TABLE `historial_tipos` (
-  `id` tinyint(4) NOT NULL,
-  `histtipos_accion` varchar(12) DEFAULT NULL,
-  `histtipos_id_usu` int(5) DEFAULT NULL,
-  `histtipos_id_tipos` int(5) DEFAULT NULL,
-  `histtipos_nombre` varchar(20) DEFAULT NULL,
-  `histtipos_descripcion` varchar(100) DEFAULT NULL,
-  `histtipos_fechaalta` datetime DEFAULT NULL,
-  `histtipos_usuarioalta` int(5) DEFAULT NULL,
-  `histtipos_fechabaja` datetime DEFAULT NULL,
-  `histtipos_usuariobaja` int(5) DEFAULT NULL,
-  `histtipos_activo` char(1) DEFAULT NULL,
-  `histtipos_fechahora` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `historial_tipos`
---
-
-INSERT INTO `historial_tipos` (`id`, `histtipos_accion`, `histtipos_id_usu`, `histtipos_id_tipos`, `histtipos_nombre`, `histtipos_descripcion`, `histtipos_fechaalta`, `histtipos_usuarioalta`, `histtipos_fechabaja`, `histtipos_usuariobaja`, `histtipos_activo`, `histtipos_fechahora`) VALUES
-(3, 'alta_tipo', 3, 5, 'Jar', 'Articulos para el jardin y de jardineria', '2024-05-17 14:05:06', 0, NULL, 0, 'S', '2024-05-23 10:46:55'),
-(4, 'alta_tipo', 3, 6, 'prueba', 'prueb', '2024-05-20 13:01:08', 0, NULL, 0, 'S', '2024-05-23 10:46:55'),
-(5, 'alta_tipo', 3, 7, '2', '222', '2024-05-23 10:55:29', 0, NULL, 0, 'S', '2024-05-23 10:55:29'),
-(6, 'alta_tipo', 3, 8, '3', '333', '2024-05-23 11:21:56', 0, NULL, 0, 'S', '2024-05-23 11:21:56'),
-(7, 'borrar_tipo', 3, 8, NULL, NULL, NULL, 0, NULL, 0, NULL, '2024-05-23 11:22:40'),
-(8, 'alta_tipo', 3, 9, '4', '4444', '2024-05-23 11:25:26', 0, NULL, 0, 'S', '2024-05-23 11:25:26'),
-(9, 'alta_tipo', 3, 10, '5', '555', '2024-05-23 11:26:35', 0, NULL, 0, 'S', '2024-05-23 11:26:35'),
-(10, 'borrar_tipo', 3, 10, '5', '555', '2024-05-23 11:26:35', 3, '0000-00-00 00:00:00', 0, NULL, '2024-05-23 11:26:41'),
-(11, 'alta_tipo', 3, 11, '7', '7777', '2024-05-23 11:28:37', 0, NULL, 0, 'S', '2024-05-23 11:28:37'),
-(12, 'alta_tipo', 3, 12, '9', '999', '2024-05-23 11:55:11', NULL, NULL, NULL, 'S', '2024-05-23 11:55:11'),
-(13, 'modif_tipo', 3, 0, '', '', '2024-05-23 11:55:11', 3, NULL, NULL, NULL, '2024-05-23 12:00:06'),
-(14, 'modif_tipo', 3, 12, 'Tipo_renombrado', 'Es el tipo renombrado para probar la funcion de renombre', '2024-05-23 11:55:11', 3, NULL, NULL, NULL, '2024-05-23 12:17:18');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `historial_usuarios`
---
-
-CREATE TABLE `historial_usuarios` (
-  `id` tinyint(4) NOT NULL,
-  `histusu_accion` varchar(12) DEFAULT NULL,
-  `histusu_id_usu` int(5) DEFAULT NULL,
-  `histusu_id_usumodif` int(5) DEFAULT NULL,
-  `histusu_id_permisos` tinyint(2) NOT NULL DEFAULT 1,
-  `histusu_nombre` varchar(30) NOT NULL,
-  `histusu_apellido` varchar(20) DEFAULT NULL,
-  `histusu_direccion` varchar(30) NOT NULL,
-  `histusu_password` varchar(30) NOT NULL,
-  `histusu_cod_verif` int(6) NOT NULL,
-  `histusu_cod_verif_bool` tinyint(1) NOT NULL DEFAULT 0,
-  `histusu_id_suc` tinyint(4) NOT NULL DEFAULT 1,
-  `histusu_email` varchar(50) NOT NULL,
-  `histusu_fechahora` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `historial_usuarios`
---
-
-INSERT INTO `historial_usuarios` (`id`, `histusu_accion`, `histusu_id_usu`, `histusu_id_usumodif`, `histusu_id_permisos`, `histusu_nombre`, `histusu_apellido`, `histusu_direccion`, `histusu_password`, `histusu_cod_verif`, `histusu_cod_verif_bool`, `histusu_id_suc`, `histusu_email`, `histusu_fechahora`) VALUES
-(3, 'modif_usu', NULL, NULL, 1, '', NULL, '', '', 0, 0, 1, '', '2024-05-16 11:54:15'),
-(4, 'modif_usu', 3, NULL, 1, '', NULL, '', '', 0, 0, 1, '', '2024-05-16 11:54:15'),
-(5, 'modif_usu', 3, 65, 1, '', NULL, '', '', 0, 0, 1, '', '2024-05-16 11:54:15'),
-(6, 'modif_usu', 3, 65, 1, 'monica', 'monday', 'flac', '', 0, 0, 1, 'gdol', '2024-05-16 11:56:04'),
-(7, 'alta_usu', 3, 70, 2, 'Miguel', 'Mandini', 'Lacalle Pou 5656', '', 0, 0, 1, 'mguelman@fibercorp.com', '2024-05-16 12:19:54'),
-(8, 'borrar_usu', 3, 63, 3, 'nn', 'aa', 'dd', '', 0, 0, 1, 'sd', '2024-05-16 12:42:23'),
-(9, 'alta_usu', 3, 71, 1, 'gabriel', 'andres', 'pap', '', 0, 0, 1, 'dsod', '2024-05-16 12:53:06'),
-(10, 'borrar_usu', 3, 58, 4, '', '', '', '', 0, 0, 1, '', '2024-05-16 13:04:31'),
-(11, 'borrar_usu', 3, 56, 1, '', '', '', '', 0, 0, 1, '', '2024-05-16 13:06:22'),
-(12, 'alta_usu', 3, 72, 4, 'a', 'a', 'a', '', 0, 0, 1, 'a', '2024-05-16 13:08:12'),
-(13, 'borrar_usu', 3, 72, 4, 'a', 'a', 'a', '', 0, 0, 1, 'a', '2024-05-16 13:08:24'),
-(14, 'alta_usu', 3, 73, 4, 'b', 'b', 'b', '', 0, 0, 1, 'b', '2024-05-16 13:24:57'),
-(15, 'borrar_usu', 3, 73, 4, 'b', 'b', 'b', '', 0, 0, 1, 'b', '2024-05-16 13:25:16');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `login_historial`
---
-
-CREATE TABLE `login_historial` (
+CREATE TABLE `historial_login` (
   `id` int(10) NOT NULL,
-  `login_usu_id` int(5) NOT NULL DEFAULT 1,
-  `login_in_out` varchar(3) NOT NULL,
-  `login_fecha` datetime NOT NULL DEFAULT current_timestamp()
+  `histlogin_usu_id` int(5) NOT NULL DEFAULT 1,
+  `histlogin_in_out` varchar(3) NOT NULL,
+  `histlogin_fecha` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 --
--- Volcado de datos para la tabla `login_historial`
+-- Volcado de datos para la tabla `historial_login`
 --
 
-INSERT INTO `login_historial` (`id`, `login_usu_id`, `login_in_out`, `login_fecha`) VALUES
+INSERT INTO `historial_login` (`id`, `histlogin_usu_id`, `histlogin_in_out`, `histlogin_fecha`) VALUES
 (90, 3, 'in', '2024-05-16 09:45:53'),
 (91, 3, 'in', '2024-05-17 09:24:40'),
 (92, 3, 'in', '2024-05-17 13:58:09'),
@@ -361,7 +236,125 @@ INSERT INTO `login_historial` (`id`, `login_usu_id`, `login_in_out`, `login_fech
 (131, 3, 'in', '2024-06-29 19:58:02'),
 (132, 3, 'out', '2024-06-29 19:58:52'),
 (133, 3, 'in', '2024-06-29 19:59:19'),
-(134, 3, 'in', '2024-06-30 03:30:05');
+(134, 3, 'in', '2024-06-30 03:30:05'),
+(135, 3, 'in', '2024-07-17 10:26:47'),
+(136, 3, 'out', '2024-07-17 10:26:52'),
+(137, 3, 'in', '2024-07-17 13:19:11'),
+(138, 2, 'in', '2024-07-18 11:11:25'),
+(139, 2, 'out', '2024-07-18 11:11:27'),
+(140, 3, 'in', '2024-07-18 11:11:38'),
+(141, 3, 'out', '2024-07-18 11:12:01'),
+(142, 3, 'in', '2024-07-18 11:44:35');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `historial_proveedores`
+--
+
+CREATE TABLE `historial_proveedores` (
+  `id` int(5) NOT NULL,
+  `histprov_accion` varchar(12) DEFAULT NULL,
+  `histprov_id_usu` int(5) DEFAULT NULL,
+  `histprov_id_prov` int(5) DEFAULT NULL,
+  `histprov_nombre` varchar(30) DEFAULT NULL,
+  `histprov_descripcion` varchar(100) DEFAULT NULL,
+  `histprov_direccion` varchar(30) DEFAULT NULL,
+  `histprov_localidad` varchar(30) DEFAULT NULL,
+  `histprov_provincia` varchar(30) DEFAULT NULL,
+  `histprov_tel1` int(20) DEFAULT NULL,
+  `histprov_tel2` int(20) DEFAULT NULL,
+  `histprov_email` varchar(50) DEFAULT NULL,
+  `histprov_cuit` int(11) DEFAULT NULL,
+  `histprov_fechahora` datetime DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `historial_proveedores`
+--
+
+INSERT INTO `historial_proveedores` (`id`, `histprov_accion`, `histprov_id_usu`, `histprov_id_prov`, `histprov_nombre`, `histprov_descripcion`, `histprov_direccion`, `histprov_localidad`, `histprov_provincia`, `histprov_tel1`, `histprov_tel2`, `histprov_email`, `histprov_cuit`, `histprov_fechahora`) VALUES
+(1, 'alta_prov', 3, 1, 'Tornillete', 'Tornillete SA - Proveedor de tornillos varios', 'Lamas  1242', 'Santa Fe', 'Santa Fe', 342, 342, 'tornillete@tornillete.com', 35, '2024-05-20 11:42:03');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `historial_tipos`
+--
+
+CREATE TABLE `historial_tipos` (
+  `id` tinyint(4) NOT NULL,
+  `histtipos_accion` varchar(12) DEFAULT NULL,
+  `histtipos_id_usu` int(5) DEFAULT NULL,
+  `histtipos_id_tipos` int(5) DEFAULT NULL,
+  `histtipos_nombre` varchar(20) DEFAULT NULL,
+  `histtipos_descripcion` varchar(100) DEFAULT NULL,
+  `histtipos_fechahora` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `historial_tipos`
+--
+
+INSERT INTO `historial_tipos` (`id`, `histtipos_accion`, `histtipos_id_usu`, `histtipos_id_tipos`, `histtipos_nombre`, `histtipos_descripcion`, `histtipos_fechahora`) VALUES
+(3, 'alta_tipo', 3, 5, 'Jar', 'Articulos para el jardin y de jardineria', '2024-05-23 10:46:55'),
+(4, 'alta_tipo', 3, 6, 'prueba', 'prueb', '2024-05-23 10:46:55'),
+(5, 'alta_tipo', 3, 7, '2', '222', '2024-05-23 10:55:29'),
+(6, 'alta_tipo', 3, 8, '3', '333', '2024-05-23 11:21:56'),
+(7, 'borrar_tipo', 3, 8, NULL, NULL, '2024-05-23 11:22:40'),
+(8, 'alta_tipo', 3, 9, '4', '4444', '2024-05-23 11:25:26'),
+(9, 'alta_tipo', 3, 10, '5', '555', '2024-05-23 11:26:35'),
+(10, 'borrar_tipo', 3, 10, '5', '555', '2024-05-23 11:26:41'),
+(11, 'alta_tipo', 3, 11, '7', '7777', '2024-05-23 11:28:37'),
+(12, 'alta_tipo', 3, 12, '9', '999', '2024-05-23 11:55:11'),
+(13, 'modif_tipo', 3, 0, '', '', '2024-05-23 12:00:06'),
+(14, 'modif_tipo', 3, 12, 'Tipo_renombrado', 'Es el tipo renombrado para probar la funcion de renombre', '2024-05-23 12:17:18');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `historial_usuarios`
+--
+
+CREATE TABLE `historial_usuarios` (
+  `id` tinyint(4) NOT NULL,
+  `histusu_accion` varchar(12) DEFAULT NULL,
+  `histusu_id_usu` int(5) DEFAULT NULL,
+  `histusu_id_usumodif` int(5) DEFAULT NULL,
+  `histusu_id_permisos` tinyint(2) NOT NULL DEFAULT 1,
+  `histusu_nombre` varchar(30) NOT NULL,
+  `histusu_apellido` varchar(20) DEFAULT NULL,
+  `histusu_direccion` varchar(30) NOT NULL,
+  `histusu_password` varchar(30) NOT NULL,
+  `histusu_cod_verif` int(6) NOT NULL,
+  `histusu_cod_verif_bool` tinyint(1) NOT NULL DEFAULT 0,
+  `histusu_id_suc` tinyint(4) NOT NULL DEFAULT 1,
+  `histusu_email` varchar(50) NOT NULL,
+  `histusu_fechahora` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `historial_usuarios`
+--
+
+INSERT INTO `historial_usuarios` (`id`, `histusu_accion`, `histusu_id_usu`, `histusu_id_usumodif`, `histusu_id_permisos`, `histusu_nombre`, `histusu_apellido`, `histusu_direccion`, `histusu_password`, `histusu_cod_verif`, `histusu_cod_verif_bool`, `histusu_id_suc`, `histusu_email`, `histusu_fechahora`) VALUES
+(3, 'modif_usu', NULL, NULL, 1, '', NULL, '', '', 0, 0, 1, '', '2024-05-16 11:54:15'),
+(4, 'modif_usu', 3, NULL, 1, '', NULL, '', '', 0, 0, 1, '', '2024-05-16 11:54:15'),
+(5, 'modif_usu', 3, 65, 1, '', NULL, '', '', 0, 0, 1, '', '2024-05-16 11:54:15'),
+(6, 'modif_usu', 3, 65, 1, 'monica', 'monday', 'flac', '', 0, 0, 1, 'gdol', '2024-05-16 11:56:04'),
+(7, 'alta_usu', 3, 70, 2, 'Miguel', 'Mandini', 'Lacalle Pou 5656', '', 0, 0, 1, 'mguelman@fibercorp.com', '2024-05-16 12:19:54'),
+(8, 'borrar_usu', 3, 63, 3, 'nn', 'aa', 'dd', '', 0, 0, 1, 'sd', '2024-05-16 12:42:23'),
+(9, 'alta_usu', 3, 71, 1, 'gabriel', 'andres', 'pap', '', 0, 0, 1, 'dsod', '2024-05-16 12:53:06'),
+(10, 'borrar_usu', 3, 58, 4, '', '', '', '', 0, 0, 1, '', '2024-05-16 13:04:31'),
+(11, 'borrar_usu', 3, 56, 1, '', '', '', '', 0, 0, 1, '', '2024-05-16 13:06:22'),
+(12, 'alta_usu', 3, 72, 4, 'a', 'a', 'a', '', 0, 0, 1, 'a', '2024-05-16 13:08:12'),
+(13, 'borrar_usu', 3, 72, 4, 'a', 'a', 'a', '', 0, 0, 1, 'a', '2024-05-16 13:08:24'),
+(14, 'alta_usu', 3, 73, 4, 'b', 'b', 'b', '', 0, 0, 1, 'b', '2024-05-16 13:24:57'),
+(15, 'borrar_usu', 3, 73, 4, 'b', 'b', 'b', '', 0, 0, 1, 'b', '2024-05-16 13:25:16'),
+(16, 'baja_usu', 3, 66, 2, 'Prueba', 'Aprueba', 'Dprueba', '', 0, 0, 1, 'eprueba@live.com.ar', '2024-07-17 13:19:47'),
+(17, 'baja_usu', 3, 66, 1, 'Prueba', 'Aprueba', 'Dprueba', '', 0, 0, 1, 'eprueba@live.com.ar', '2024-07-17 13:24:33'),
+(18, 'baja_usu', 3, 66, 1, 'Prueba', 'Aprueba', 'Dprueba', '', 0, 0, 1, 'eprueba@live.com.ar', '2024-07-17 13:24:46'),
+(19, 'baja_usu', 3, 2, 3, '2', '', '2]', '', 0, 0, 1, '2', '2024-07-18 11:11:51');
 
 -- --------------------------------------------------------
 
@@ -387,25 +380,6 @@ INSERT INTO `modopago` (`id`, `modpa_nombre`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `permisos`
---
-
-CREATE TABLE `permisos` (
-  `id` tinyint(2) NOT NULL,
-  `permisos_nombre` varchar(30) DEFAULT NULL,
-  `permisos_descripcion` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
-
---
--- Volcado de datos para la tabla `permisos`
---
-
-INSERT INTO `permisos` (`id`, `permisos_nombre`, `permisos_descripcion`) VALUES
-(1, 'SIN PERMISOS', 'Entrada reservada para usuarios sin ningún tipo de permisos');
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `proveedores`
 --
 
@@ -419,20 +393,15 @@ CREATE TABLE `proveedores` (
   `prov_tel1` int(20) DEFAULT NULL,
   `prov_tel2` int(20) DEFAULT NULL,
   `prov_email` varchar(50) NOT NULL,
-  `prov_cuit` int(11) NOT NULL,
-  `prov_fechaalta` datetime DEFAULT NULL,
-  `prov_usuarioalta` int(5) DEFAULT NULL,
-  `prov_fechabaja` datetime DEFAULT NULL,
-  `prov_usuariobaja` int(5) DEFAULT NULL,
-  `prov_activo` char(1) DEFAULT 'S'
+  `prov_cuit` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `proveedores`
 --
 
-INSERT INTO `proveedores` (`id`, `prov_nombre`, `prov_descripcion`, `prov_direccion`, `prov_localidad`, `prov_provincia`, `prov_tel1`, `prov_tel2`, `prov_email`, `prov_cuit`, `prov_fechaalta`, `prov_usuarioalta`, `prov_fechabaja`, `prov_usuariobaja`, `prov_activo`) VALUES
-(1, 'Tornillete', 'Tornillete SA - Proveedor de tornillos varios', 'Lamas  1242', 'Santa Fe', 'Santa Fe', 342, 342, 'tornillete@tornillete.com', 35, '2024-05-20 11:42:03', 3, NULL, NULL, 'S');
+INSERT INTO `proveedores` (`id`, `prov_nombre`, `prov_descripcion`, `prov_direccion`, `prov_localidad`, `prov_provincia`, `prov_tel1`, `prov_tel2`, `prov_email`, `prov_cuit`) VALUES
+(1, 'Tornillete', 'Tornillete SA - Proveedor de tornillos varios', 'Lamas  1242', 'Santa Fe', 'Santa Fe', 342, 342, 'tornillete@tornillete.com', 35);
 
 -- --------------------------------------------------------
 
@@ -465,22 +434,17 @@ INSERT INTO `sucursales` (`id`, `sucs_nombre`, `sucs_direccion`, `sucs_tel1`, `s
 CREATE TABLE `tipos` (
   `id` tinyint(4) NOT NULL,
   `tipos_nombre` varchar(20) NOT NULL,
-  `tipos_descripcion` varchar(100) NOT NULL,
-  `tipos_fechaalta` datetime DEFAULT NULL,
-  `tipos_usuarioalta` int(5) DEFAULT NULL,
-  `tipos_fechabaja` datetime DEFAULT NULL,
-  `tipos_usuariobaja` int(5) DEFAULT NULL,
-  `tipos_activo` char(1) DEFAULT 'S'
+  `tipos_descripcion` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `tipos`
 --
 
-INSERT INTO `tipos` (`id`, `tipos_nombre`, `tipos_descripcion`, `tipos_fechaalta`, `tipos_usuarioalta`, `tipos_fechabaja`, `tipos_usuariobaja`, `tipos_activo`) VALUES
-(1, 'SIN', 'tipos no especificado', NULL, NULL, NULL, NULL, 'S'),
-(5, 'Jardin', 'Articulos para el jardin y de jardineria', '2024-05-17 14:05:06', 3, NULL, NULL, 'S'),
-(12, 'Tipo_renombrado', 'Es el tipo renombrado para probar la funcion de renombre', '2024-05-23 11:55:11', 3, NULL, NULL, 'S');
+INSERT INTO `tipos` (`id`, `tipos_nombre`, `tipos_descripcion`) VALUES
+(1, 'SIN', 'tipos no especificado'),
+(5, 'Jardin', 'Articulos para el jardin y de jardineria'),
+(12, 'Tipo_renombrado', 'Es el tipo renombrado para probar la funcion de renombre');
 
 -- --------------------------------------------------------
 
@@ -510,10 +474,10 @@ CREATE TABLE `usuarios` (
 
 INSERT INTO `usuarios` (`id`, `usu_id_permisos`, `usu_username`, `usu_nombre`, `usu_apellido`, `usu_direccion`, `usu_password`, `usu_cod_verif`, `usu_cod_verif_bool`, `usu_id_suc`, `usu_email`, `usu_fecha_creacion`, `usu_fecha_modif`) VALUES
 (1, 1, 'USER-SIN-PER', 'USER-SIN-PERMISOS', '', 'San Martin 101', 'ferrotec', '0', 0, 1, 'ferrotec@ferrotec.com.ar', '2024-05-16', '2024-05-16'),
-(2, 1, '2', '2', '', '2]', '2', '2', 0, 1, '2', '2024-05-16', '2024-05-16'),
+(2, 0, '2', '2', '', '2]', '2', '2', 0, 1, '2', '2024-05-16', '2024-05-16'),
 (3, 3, 'fabrign', 'Fabricio', 'Gallina', 'Castellanos 2360', 'fabrign', '0', 0, 1, 'fabrign@live.com', '2024-05-16', '2024-05-16'),
 (65, 1, 'f', 'monica', 'monday', 'flac', '', 'OLu9g,.F', 0, 1, 'gdol', '2024-05-16', '2024-05-16'),
-(66, 2, 'Prueba1', 'Prueba', 'Aprueba', 'Dprueba', '', '(63?Rq<I', 0, 1, 'eprueba@live.com.ar', '2024-05-16', '2024-05-16'),
+(66, 1, 'Prueba1', 'Prueba', 'Aprueba', 'Dprueba', '', '(63?Rq<I', 0, 1, 'eprueba@live.com.ar', '2024-05-16', '2024-05-16'),
 (67, 1, 'NOMBUSU', 'pepe', 'gomez', 'casa', '', 'nU{usiu{', 0, 1, 'emailemail', '2024-05-16', '2024-05-16'),
 (68, 2, 'mariopg', 'Mario', 'Pergolini', 'Calafate 1122', '', 'd>8Lu]fu', 0, 1, 'mario_pg@gmail.com', '2024-05-16', NULL),
 (69, 2, 'jerodlp', 'Jeronimo', 'De La Puente', 'Azul 4522', '', 'x!$zizG6', 0, 1, 'jero_delp@live.com', '2024-05-16', NULL),
@@ -640,6 +604,13 @@ ALTER TABLE `historial_categorias`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `historial_login`
+--
+ALTER TABLE `historial_login`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `login_usu_id` (`histlogin_usu_id`);
+
+--
 -- Indices de la tabla `historial_proveedores`
 --
 ALTER TABLE `historial_proveedores`
@@ -658,22 +629,9 @@ ALTER TABLE `historial_usuarios`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `login_historial`
---
-ALTER TABLE `login_historial`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `login_usu_id` (`login_usu_id`);
-
---
 -- Indices de la tabla `modopago`
 --
 ALTER TABLE `modopago`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `permisos`
---
-ALTER TABLE `permisos`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -725,13 +683,13 @@ ALTER TABLE `ventas_detalle`
 -- AUTO_INCREMENT de la tabla `articulos`
 --
 ALTER TABLE `articulos`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `categorias`
 --
 ALTER TABLE `categorias`
-  MODIFY `id` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `compras`
@@ -749,13 +707,19 @@ ALTER TABLE `compras_detalle`
 -- AUTO_INCREMENT de la tabla `historial_articulos`
 --
 ALTER TABLE `historial_articulos`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de la tabla `historial_categorias`
 --
 ALTER TABLE `historial_categorias`
-  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT de la tabla `historial_login`
+--
+ALTER TABLE `historial_login`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=143;
 
 --
 -- AUTO_INCREMENT de la tabla `historial_proveedores`
@@ -773,25 +737,13 @@ ALTER TABLE `historial_tipos`
 -- AUTO_INCREMENT de la tabla `historial_usuarios`
 --
 ALTER TABLE `historial_usuarios`
-  MODIFY `id` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
-
---
--- AUTO_INCREMENT de la tabla `login_historial`
---
-ALTER TABLE `login_historial`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=135;
+  MODIFY `id` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT de la tabla `modopago`
 --
 ALTER TABLE `modopago`
   MODIFY `id` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT de la tabla `permisos`
---
-ALTER TABLE `permisos`
-  MODIFY `id` tinyint(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `proveedores`
@@ -849,10 +801,10 @@ ALTER TABLE `compras_detalle`
   ADD CONSTRAINT `compras_detalle_ibfk_2` FOREIGN KEY (`comdet_id_art`) REFERENCES `articulos` (`id`);
 
 --
--- Filtros para la tabla `login_historial`
+-- Filtros para la tabla `historial_login`
 --
-ALTER TABLE `login_historial`
-  ADD CONSTRAINT `login_historial_ibfk_1` FOREIGN KEY (`login_usu_id`) REFERENCES `usuarios` (`id`);
+ALTER TABLE `historial_login`
+  ADD CONSTRAINT `historial_login_ibfk_1` FOREIGN KEY (`histlogin_usu_id`) REFERENCES `usuarios` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

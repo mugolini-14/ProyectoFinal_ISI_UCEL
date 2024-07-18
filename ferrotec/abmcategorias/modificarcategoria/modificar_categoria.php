@@ -32,10 +32,6 @@
             $fila_tipo = $resultadotipo->fetch_assoc();
             $idtipo_modif = $fila_tipo['id'];
 
-
-
-
-
             // Si el nombre de categoria y del tipo ya existen, proceder con la actualización, 
             $actualizarcategoria = "UPDATE categorias SET cat_nombre = '$renombreCategoria',
                                 cat_descripcion = '$descripcionCategoria',
@@ -49,15 +45,10 @@
                 if ($resultado_actualizado->num_rows > 0) {
                     $fila = $resultado_actualizado->fetch_assoc();
                     $idcategoria_modif = $fila['id'];
-                    $fechaAlta = $fila['cat_fechaalta'];
-                    $usuarioAlta = $fila['cat_usuarioalta'];
-                    $fechaBaja = $fila['cat_fechabaja'];
-                    $usuarioBaja = $fila['cat_usuariobaja'];
-                    $activo = $fila['cat_activo'];
 
                     //Se inserta el historial del cambio en la tabla de historial de modificaciones de categorias
-                    $insertarHistorial = "INSERT INTO historial_categorias (histcat_accion, histcat_id_usu, histcat_id_tipos, histcat_id_cat, histcat_nombre, histcat_descripcion, histcat_fechaalta, histcat_usuarioalta, histcat_fechabaja, histcat_usuariobaja, histcat_activo) 
-                    VALUES ('modif_categoria', '$usuarioLogueado', '$idtipo_modif', '$idcategoria_modif', '$renombreCategoria','$descripcionCategoria', '$fechaAlta','$usuarioAlta', NULL, NULL, '$activo' )";  
+                    $insertarHistorial = "INSERT INTO historial_categorias (histcat_accion, histcat_id_usu, histcat_id_tipos, histcat_id_cat, histcat_nombre, histcat_descripcion) 
+                    VALUES ('modif_cat', '$usuarioLogueado', '$idtipo_modif', '$idcategoria_modif', '$renombreCategoria','$descripcionCategoria')";  
 
 
                     if ($conexion->query($insertarHistorial) === TRUE) {

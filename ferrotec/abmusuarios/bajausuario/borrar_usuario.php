@@ -16,31 +16,36 @@
      // Verificar si se encontró alguna fila (es decir, si el nombre de usuario existe)
      if ($resultado->num_rows > 0) {
          // Si el nombre de usuario existe, se capturan los datos para el historial.
-            // Obtener el ID del usuario que se está actualizando
-            $fila = $resultado->fetch_assoc();
-            $idUsuario_borrar = $fila['id'];
-            $perfilAcceso = $fila['usu_id_permisos'];
-            $nombrepilaUsuario = $fila['usu_nombre'];
-            $apellidoUsuario = $fila['usu_apellido'];
-            $direccionUsuario = $fila['usu_direccion'];
-            $emailUsuario = $fila['usu_email'];
+        // Obtener el ID del usuario que se está actualizando
+        $fila = $resultado->fetch_assoc();
+        $idUsuario_borrar = $fila['id'];
+        $perfilAcceso = $fila['usu_id_permisos'];
+        $nombrepilaUsuario = $fila['usu_nombre'];
+        $apellidoUsuario = $fila['usu_apellido'];
+        $direccionUsuario = $fila['usu_direccion'];
+        $emailUsuario = $fila['usu_email'];
+        
+        if ($perfilAcceso > 1) {
+            // Se procede a eliminar el usuario
+            $eliminarUsuario = "UPDATE usuarios SET usu_id_permisos = 0
+                                WHERE usu_username = '$nombreUsuario'"; 
 
-        // Se procede a eliminar el usuario
-         $eliminarUsuario = "DELETE FROM usuarios WHERE usu_username = '$nombreUsuario'";
-
-         if ($conexion->query($eliminarUsuario) === TRUE) {
-            //Se inserta el historial del cambio en la tabla de historial de modificaciones de usuarios
-            $insertarHistorial = "INSERT INTO historial_usuarios (histusu_accion, histusu_id_usu, histusu_id_usumodif, histusu_id_permisos, histusu_nombre, histusu_apellido, histusu_direccion, histusu_email, histusu_fechahora) 
-                                VALUES ('borrar_usu', '$usuarioLogueado', '$idUsuario_borrar', '$perfilAcceso','$nombrepilaUsuario', '$apellidoUsuario','$direccionUsuario', '$emailUsuario',NOW())";
-            
-            if ($conexion->query($insertarHistorial) === TRUE) {
-                echo "Usuario $nombreUsuario eliminado correctamente";
+            if ($conexion->query($eliminarUsuario) === TRUE) {
+                //Se inserta el historial del cambio en la tabla de historial de modificaciones de usuarios
+                $insertarHistorial = "INSERT INTO historial_usuarios (histusu_accion, histusu_id_usu, histusu_id_usumodif, histusu_id_permisos, histusu_nombre, histusu_apellido, histusu_direccion, histusu_email, histusu_fechahora) 
+                                    VALUES ('baja_usu', '$usuarioLogueado', '$idUsuario_borrar', '$perfilAcceso','$nombrepilaUsuario', '$apellidoUsuario','$direccionUsuario', '$emailUsuario',NOW())";
+                
+                if ($conexion->query($insertarHistorial) === TRUE) {
+                    echo "Usuario $nombreUsuario dado de baja correctamente";
+                } else {
+                    echo "Error al insertar el historial del usuario en la tabla: " . $conexion->error;
+                }
             } else {
-                echo "Error al insertar el historial del usuario en la tabla: " . $conexion->error;
+                echo "Error al borrar el usuario en la tabla: " . $conexion->error;
             }
-        } else {
-             echo "Error al borrar el usuario en la tabla: " . $conexion->error;
-         }
+        } else{
+            echo "Usuario $nombreUsuario ya se encuentra dado de baja";
+        }
      } else {
          // Si el nombre de usuario no existe, muestra un mensaje
          echo "El usuario $nombreUsuario no existe en la base de datos";

@@ -43,11 +43,10 @@
                 $fila = $resultado->fetch_assoc();
                 $idArticulo_a_modif = $fila['id'];
                 $stockArticulo = $fila['art_stock'];
-                $fechaaltaArticulo = $fila['art_fechaalta'];
-                $usuarioaltaArticulo = $fila['art_usuarioalta'];
+
                 //Se inserta el historial del cambio en la tabla de historial de modificaciones de articulos
-                $insertarHistorial = "INSERT INTO historial_articulos (histart_id_art, histart_accion, histart_id_usu, histart_id_categoria, histart_nombre, histart_marca, histart_descripcion, histart_precio, histart_stock, histart_fechaalta, histart_usuarioalta) 
-                                                            VALUES ('$idArticulo_a_modif','modif_art', '$usuarioLogueado', '$id_cat', '$renombreArticulo','$marcaArticulo', '$descripcionArticulo','$precioArticulo', '$stockArticulo', '$fechaaltaArticulo', '$usuarioaltaArticulo')";
+                $insertarHistorial = "INSERT INTO historial_articulos (histart_id_art, histart_accion, histart_id_usu, histart_id_categoria, histart_nombre, histart_marca, histart_descripcion, histart_precio, histart_stock) 
+                                                            VALUES ('$idArticulo_a_modif','modif_art', '$usuarioLogueado', '$id_cat', '$renombreArticulo','$marcaArticulo', '$descripcionArticulo','$precioArticulo', '$stockArticulo')";
                 
                 if ($conexion->query($insertarHistorial) === TRUE) {
                     echo "Articulo $nombreArticulo modificado correctamente";

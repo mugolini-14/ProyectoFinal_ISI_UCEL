@@ -43,42 +43,64 @@
         $_SESSION['logged'] = TRUE;
         $id = $_SESSION['id'];
 
-        // Verificación de Reestablecer Contraseña
-        $sql_reestablecercontrasena = mysqli_query ($conexion,  "SELECT * FROM usuarios
-                                                                WHERE id = $id 
-                                                                AND usu_username='$usu_username' 
-                                                                AND usu_cod_verif_bool = 1
-                                                                LIMIT 1"
-                                                        );
-        $email_usuario = $_SESSION['usu_email'];                                                
-        if(mysqli_num_rows($sql_reestablecercontrasena) == 1){  // El usuario necesita resetear la contraseña
-            $numeroaleatorio = generarCodigoAleatorio(8);       // Genera código aleatorio
-            $sql_numeroaleatorio =  "UPDATE usuarios 
-                                            SET usu_cod_verif_bool = 1, usu_cod_verif = '$numeroaleatorio'
-                                            WHERE id = $id
-                                            AND usu_username = '$usu_username'";
-            if($conexion->query($sql_numeroaleatorio) == TRUE){     // Va a la página de reestablecer contraseña
-                mail($email_usuario, "Ferr O' Tec - Código de Cambio de Contraseña", armarCuerpoEmail($numeroaleatorio));  // Envìa el mail con el código aleatorio al mail del usuario
-                header("Location: ../restablecercontrasena/restablecer_contrasena.php");
-                exit;
+        //Verificación si el usuario está deshabilitado (dado de baja)
+        if($_SESSION['usu_id_permisos'] >= 1){
+            // Verificación de Reestablecer Contraseña
+            $sql_reestablecercontrasena = mysqli_query ($conexion,  "SELECT * FROM usuarios
+                                                                    WHERE id = $id 
+                                                                    AND usu_username='$usu_username' 
+                                                                    AND usu_cod_verif_bool = 1
+                                                                    LIMIT 1"
+                                                            );
+            $email_usuario = $_SESSION['usu_email'];                                                
+            if(mysqli_num_rows($sql_reestablecercontrasena) == 1){  // El usuario necesita resetear la contraseña
+                $numeroaleatorio = generarCodigoAleatorio(8);       // Genera código aleatorio
+                $sql_numeroaleatorio =  "UPDATE usuarios 
+                                                SET usu_cod_verif_bool = 1, usu_cod_verif = '$numeroaleatorio'
+                                                WHERE id = $id
+                                                AND usu_username = '$usu_username'";
+                if($conexion->query($sql_numeroaleatorio) == TRUE){     // Va a la página de reestablecer contraseña
+                    mail($email_usuario, "Ferr O' Tec - Código de Cambio de Contraseña", armarCuerpoEmail($numeroaleatorio));  // Envìa el mail con el código aleatorio al mail del usuario
+                    header("Location: ../restablecercontrasena/restablecer_contrasena.php");
+                    exit;
+                }
+                else {
+                    echo "Error: " . $sqli . "<br>" . $conexion->error;
+                    header("Location: ../login.php"); // Si hay error en la conexion con la BD, ira al login
+                } 
             }
-            else {
-                echo "Error: " . $sqli . "<br>" . $conexion->error;
-                header("Location: ../login.html"); // Si hay error en la conexion con la BD, ira al login
-            } 
-        }
-        else {  // El usuario no necesita resetear la contraseña
-            $sqli = "INSERT INTO login_historial (login_usu_id,login_in_out) VALUES ('$id','in')";
-            // Ejecutar la consulta
-            if ($conexion->query($sqli) === TRUE) {     // Va al index
-                header("Location: ../index/index.php"); 
-                exit;     
+            else {  // El usuario no necesita resetear la contraseña
+                $sqli = "INSERT INTO historial_login (histlogin_usu_id,histlogin_in_out) VALUES ('$id','in')";
+                // Ejecutar la consulta
+                if ($conexion->query($sqli) === TRUE) {     // Va al index
+                    header("Location: ../index/index.php"); 
+                    exit;     
+                }
+                else {
+                    echo "Error: " . $sqli . "<br>" . $conexion->error;
+                    header("Location: ../login.php"); // Si hay error en la conexion con la BD, ira al login
+                } 
             }
-            else {
-                echo "Error: " . $sqli . "<br>" . $conexion->error;
-                header("Location: ../login.html"); // Si hay error en la conexion con la BD, ira al login
-            } 
         }
+        else{
+            echo'<script type="text/javascript">
+            alert("Usuario dado de baja");
+            window.location.href="../login.php";
+            </script>';
+        exit;
+        }
+        while ($fila = mysqli_fetch_assoc($resultado)){
+            echo "Nombres: ",$fila['usu_nombre'],"<br>";
+            echo "Apellidos: ",$fila['usu_apellido'],"<br>";
+            echo "Numero de usuario: ",$fila['id'],"<br>";
+            echo "Nivel: ",$fila['usu_id_permisos'];
+        }
+    
+        // Liberar los recursos asociados con el conjunto de resultados
+        // Esto se ejecuta automaticamente al finalizar el script.
+        mysqli_free_result($resultado);
+    
+        mysqli_close($conexion);
     } 
     else{
         echo'<script type="text/javascript">
@@ -88,16 +110,5 @@
         exit;
     }
 
-    while ($fila = mysqli_fetch_assoc($resultado)){
-        echo "Nombres: ",$fila['usu_nombre'],"<br>";
-        echo "Apellidos: ",$fila['usu_apellido'],"<br>";
-        echo "Numero de usuario: ",$fila['id'],"<br>";
-        echo "Nivel: ",$fila['usu_id_permisos'];
-    }
-
-    // Liberar los recursos asociados con el conjunto de resultados
-    // Esto se ejecuta automaticamente al finalizar el script.
-    mysqli_free_result($resultado);
-
-    mysqli_close($conexion);
+    
 ?>

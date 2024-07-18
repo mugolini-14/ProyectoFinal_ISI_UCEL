@@ -22,21 +22,14 @@
             $idpadretipo = $fila['cat_id_tipo'];
             $descripcionCategoria = $fila['cat_descripcion'];
             $nombreCategoria = $fila['cat_nombre'];
-            
-
-            $fechaAlta = $fila['cat_fechaalta'];
-            $usuarioAlta = $fila['cat_usuarioalta'];
-            $fechaBaja = $fila['cat_fechabaja'];
-            $usuarioBaja = $fila['cat_usuariobaja'];
-            $activo = $fila['cat_activo'];
 
         // Se procede a eliminar el categoria
          $eliminarcategoria = "DELETE FROM categorias WHERE cat_nombre = '$nombrecategoria'";
 
          if ($conexion->query($eliminarcategoria) === TRUE) {
             //Se inserta el historial del cambio en la tabla de historial de modificaciones de categorias
-            $insertarHistorial = "INSERT INTO historial_categorias (histcat_accion, histcat_id_usu, histcat_id_cat, histcat_nombre, histcat_descripcion, histcat_fechaalta, histcat_usuarioalta, histcat_fechabaja, histcat_usuariobaja, histcat_activo) 
-                                                            VALUES ('borrar_categoria', '$usuarioLogueado', '$idcategoria_borrar', '$nombreCategoria','$descripcionCategoria', '$fechaAlta','$usuarioAlta', NULL, NULL, '$activo')";
+            $insertarHistorial = "INSERT INTO historial_categorias (histcat_accion, histcat_id_usu, histcat_id_cat, histcat_id_tipo, histcat_nombre, histcat_descripcion) 
+                                                            VALUES ('borrar_cat', '$usuarioLogueado', '$idcategoria_borrar', '$idpadretipo', '$nombreCategoria','$descripcionCategoria')";
 
             
             if ($conexion->query($insertarHistorial) === TRUE) {

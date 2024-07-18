@@ -31,7 +31,7 @@
             // Si el nombre de articulo ya existe, mostrar un alert con un mensaje de error
             echo "El nombre de articulo $nombreArticulo ya está en uso. Por favor, elige otro nombre de articulo.";
         } else {// Consulta para insertar el articulo en la tabla de MySQL
-            $sqli = "INSERT INTO articulos (art_nombre,art_marca,art_descripcion,art_precio,art_stock,art_id_categoria,art_fechaalta,art_usuarioalta) VALUES ('$nombreArticulo', '$marcaArticulo', '$descripcionArticulo', '$precioArticulo',0, '$id_cat', NOW(), '$usuarioLogueado')";
+            $sqli = "INSERT INTO articulos (art_nombre,art_marca,art_descripcion,art_precio,art_stock,art_id_categoria) VALUES ('$nombreArticulo', '$marcaArticulo', '$descripcionArticulo', '$precioArticulo',0, '$id_cat')";
             
             if ($conexion->query($sqli) === TRUE) {
                 // Obtener el ID del articulo que se insertó
@@ -41,8 +41,8 @@
                     $id_nuevo_art = $id_nuevo_art_row['id'];
             
                     //Se inserta el historial del cambio en la tabla de historial de modificaciones de articulos
-                    $insertarHistorial = "INSERT INTO historial_articulos (histart_id_art,histart_accion, histart_id_usu, histart_id_categoria, histart_nombre, histart_marca, histart_descripcion, histart_precio, histart_stock, histart_fechaalta, histart_usuarioalta) 
-                                                                    VALUES ('$id_nuevo_art','alta_art', '$usuarioLogueado', '$id_cat', '$nombreArticulo','$marcaArticulo', '$descripcionArticulo', '$precioArticulo',0,NOW(),'$usuarioLogueado')";
+                    $insertarHistorial = "INSERT INTO historial_articulos (histart_id_art,histart_accion, histart_id_usu, histart_id_categoria, histart_nombre, histart_marca, histart_descripcion, histart_precio, histart_stock) 
+                                                                    VALUES ('$id_nuevo_art','alta_art', '$usuarioLogueado', '$id_cat', '$nombreArticulo','$marcaArticulo', '$descripcionArticulo', '$precioArticulo',0)";
                     
                     if ($conexion->query($insertarHistorial) === TRUE) {
                         echo "Articulo $nombreArticulo creado correctamente";

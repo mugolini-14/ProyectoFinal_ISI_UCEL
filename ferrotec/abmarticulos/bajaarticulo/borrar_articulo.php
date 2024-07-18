@@ -24,16 +24,14 @@
             $descripcionArticulo = $fila['art_descripcion'];
             $precioArticulo = $fila['art_precio'];
             $stockArticulo = $fila['art_stock'];
-            $fechaaltaArticulo = $fila['art_fechaalta'];
-            $usuarioaltaArticulo = $fila['art_usuarioalta'];
 
         // Se procede a eliminar el articulo
          $eliminarArticulo = "DELETE FROM articulos WHERE art_nombre = '$nombreArticulo'";
 
          if ($conexion->query($eliminarArticulo) === TRUE) {
             //Se inserta el historial del cambio en la tabla de historial de modificaciones de articulos
-            $insertarHistorial = "INSERT INTO historial_articulos (histart_id_art, histart_accion, histart_id_usu, histart_id_categoria, histart_nombre, histart_marca, histart_descripcion, histart_precio, histart_stock, histart_fechaalta, histart_usuarioalta, histart_fechabaja, histart_usuariobaja) 
-                                                    VALUES ('$idArticulo_borrar','borrar_art', '$usuarioLogueado', '$catArticulo', '$nombreArticulo','$marcaArticulo', '$descripcionArticulo','$precioArticulo', '$stockArticulo','$fechaaltaArticulo','$usuarioaltaArticulo',NOW(),'$usuarioLogueado')";
+            $insertarHistorial = "INSERT INTO historial_articulos (histart_id_art, histart_accion, histart_id_usu, histart_id_categoria, histart_nombre, histart_marca, histart_descripcion, histart_precio, histart_stock) 
+                                                    VALUES ('$idArticulo_borrar','borrar_art', '$usuarioLogueado', '$catArticulo', '$nombreArticulo','$marcaArticulo', '$descripcionArticulo','$precioArticulo', '$stockArticulo')";
             
             if ($conexion->query($insertarHistorial) === TRUE) {
                 echo "Articulo $nombreArticulo eliminado correctamente";

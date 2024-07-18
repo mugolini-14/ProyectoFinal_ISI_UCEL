@@ -33,8 +33,8 @@
             $idtipo = $fila['id'];
             
             // Consulta para insertar la categoria en la tabla de MySQL
-            $sqli = "INSERT INTO categorias (cat_id_tipo, cat_nombre, cat_descripcion, cat_fechaalta, cat_usuarioalta) 
-                    VALUES ('$idtipo', '$nombrecategoria', '$descripcioncategoria', NOW(), '$usuarioLogueado')";
+            $sqli = "INSERT INTO categorias (cat_id_tipo, cat_nombre, cat_descripcion) 
+                    VALUES ('$idtipo', '$nombrecategoria', '$descripcioncategoria')";
 
             if ($conexion->query($sqli) === TRUE) {
                 // Obtener el ID del categoria que se insertó
@@ -44,8 +44,8 @@
                     $id_nueva_categoria = $id_nueva_categoria_row['id'];
             
                     //Se inserta el historial del cambio en la tabla de historial de modificaciones de categorias
-                    $insertarHistorial = "INSERT INTO historial_categorias (histcat_accion, histcat_id_usu, histcat_id_tipos, histcat_id_cat, histcat_nombre, histcat_descripcion, histcat_usuarioalta, histcat_fechaalta, histcat_activo) 
-                                        VALUES ('alta_categoria', '$usuarioLogueado', '$idtipo', '$id_nueva_categoria', '$nombrecategoria','$descripcioncategoria','$usuarioLogueado', NOW(),'S')";
+                    $insertarHistorial = "INSERT INTO historial_categorias (histcat_accion, histcat_id_usu, histcat_id_tipos, histcat_id_cat, histcat_nombre, histcat_descripcion) 
+                                        VALUES ('alta_cat', '$usuarioLogueado', '$idtipo', '$id_nueva_categoria', '$nombrecategoria','$descripcioncategoria')";
                     
                     if ($conexion->query($insertarHistorial) === TRUE) {
                         echo "categoria $nombrecategoria creado correctamente";
