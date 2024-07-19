@@ -47,25 +47,29 @@
                 var total = $('#total-articulo').val();
                 var id_article = $('#busqueda-articulo').data('id'); // Obtiene el id_article
 
-                if (articulo && valorUnitario && cantidad && total) {
-                    var fila = '<tr>' +
-                        '<td>' + '<button type="button" class="btn btn-danger eliminar-articulo">Eliminar</button>' + '</td>' + // Boton de eliminar articulo 
-                        '<td>' + articulo + '</td>' +
-                        '<td>' + valorUnitario + '</td>' +
-                        '<td>' + cantidad + '</td>' +
-                        '<td>' + total + '</td>' +
-                        '<td class="d-none">' + id_article + '</td>' + // Ocultar el id_article
-                        '</tr>';
-                    $('#tabla-articulos tbody').append(fila);
+                if (cantidad > 0) {
+                    if (articulo && valorUnitario && cantidad && total) {
+                        var fila = '<tr>' +
+                            '<td>' + '<button type="button" class="btn btn-danger eliminar-articulo">Eliminar</button>' + '</td>' + // Boton de eliminar articulo 
+                            '<td>' + articulo + '</td>' +
+                            '<td>' + valorUnitario + '</td>' +
+                            '<td>' + cantidad + '</td>' +
+                            '<td>' + total + '</td>' +
+                            '<td class="d-none">' + id_article + '</td>' + // Ocultar el id_article
+                            '</tr>';
+                        $('#tabla-articulos tbody').append(fila);
 
-                    actualizarTotalGeneral();
+                        actualizarTotalGeneral();
 
-                    $('#busqueda-articulo').val('');
-                    $('#valor-unitario').val('');
-                    $('#stock').val('');
-                    $('#cantidad').val('');
-                    $('#descripcion').val('');
-                    $('#total-articulo').val('');
+                        $('#busqueda-articulo').val('');
+                        $('#valor-unitario').val('');
+                        $('#stock').val('');
+                        $('#cantidad').val('');
+                        $('#descripcion').val('');
+                        $('#total-articulo').val('');
+                    }
+                } else{
+                    alert('La cantidad del artículo seleccionado debe ser mayor a 0.');
                 }
             });
 
@@ -85,6 +89,13 @@
             });
 
             $('#generar-venta').on('click', function() {
+                // Obtener el total general
+                var totalGeneral = $('#total-general').text();
+
+                // Obtener el modo de pago
+                var modoDePago = $('#modo-de-pago').val();
+
+                
                 var articulos = [];
                 $('#tabla-articulos tbody tr').each(function() {
                     var articulo = $(this).find('td:eq(1)').text();
@@ -94,34 +105,42 @@
                     var id_article = $(this).find('td:eq(5)').text(); // Obtener el id_article
                     articulos.push({ id_article: id_article, articulo: articulo, valorUnitario: valorUnitario, cantidad: cantidad, total: total });
                 });
+                if(articulos.length > 0){ // Consulta si hay algún artículo en el carrito de ventas
+                    
+                    if(totalGeneral > 0){ 
 
-                // Obtener el total general
-                var totalGeneral = $('#total-general').text();
+                        if(modoDePago > 0){ 
 
-                 // Obtener el modo de pago
-                var modoDePago = $('#modo-de-pago').val();
+                            console.log('Datos de artículos:', articulos);
+                            console.log('Modo de Pago:', modoDePago);
+                            console.log('Total General:', totalGeneral);
 
-                console.log('Datos de artículos:', articulos);
-                console.log('Modo de Pago:', modoDePago);
-                console.log('Total General:', totalGeneral);
+                            var queryString = $.param({ 
+                                articulos: JSON.stringify(articulos), 
+                                totalGeneral: totalGeneral, 
+                                modoDePago: modoDePago 
+                            });
 
-                var queryString = $.param({ 
-                    articulos: JSON.stringify(articulos), 
-                    totalGeneral: totalGeneral, 
-                    modoDePago: modoDePago 
-                });
-
-                $.ajax({
-                    url: 'registrar_venta.php?' + queryString,
-                    method: 'GET',
-                    contentType: 'application/json', // Especificar el tipo de contenido como JSON
-                    data: { articulos: JSON.stringify(articulos) },
-                    success: function(response) {
-                        alert('Venta generada con éxito!');
-                        $('#tabla-articulos tbody').empty();
-                        $('#total-general').text('0.00');
-                        $('#modo-de-pago').val('');
+                            $.ajax({
+                                url: 'registrar_venta.php?' + queryString,
+                                method: 'GET',
+                                contentType: 'application/json', // Especificar el tipo de contenido como JSON
+                                data: { articulos: JSON.stringify(articulos) },
+                                success: function(response) {
+                                    alert('Venta generada con éxito!');
+                                    $('#tabla-articulos tbody').empty();
+                                    $('#total-general').text('0.00');
+                                    $('#modo-de-pago').val('');
+                                }
+                            });
+                        }else {
+                            alert('Inserte algún método de pago.');
+                        }
+                    }else {
+                        alert('La venta a realizar no puede tener monto igual a 0.');
                     }
-                });
+                } else {
+                    alert('Tiene que agregar un artículo al menos para realizar una venta.');
+                }
             });
         });

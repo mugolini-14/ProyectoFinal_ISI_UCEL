@@ -231,6 +231,26 @@ if(!$_SESSION['logged']){
                      EMPIEZA SECCIÒN MODIFICACIÓN            
                 -->
                 <form id="formulario-modificacion">
+                <div class="row py-2" id="nombre-proveedor-modificacion-fila">
+                    <div class="col-4 justify-content-center align-content-center" id="nombre-proveedor-modificacion-titulo">
+                        <h6 id="nombre-proveedor-label"> 
+                            Nombre Del Proveedor a modificar:
+                        </h6>
+                    </div>
+                    <div class="col-8 container-fluid justify-content-center align-content-center">
+                          <input class="col-12 form-control" minlength="8" maxlength="30" id="nombre-proveedor-modificacion-input" placeholder="Ingrese Nombre" required></input>                            
+                    </div>
+                  </div>
+                  <div class="row py-2" id="renombre-proveedor-modificacion-fila">
+                    <div class="col-4 justify-content-center align-content-center" id="renombre-proveedor-modificacion-titulo">
+                        <h6 id="renombre-proveedor-label"> 
+                            Renombre Del Proveedor:
+                        </h6>
+                    </div>
+                    <div class="col-8 container-fluid justify-content-center align-content-center">
+                          <input class="col-12 form-control" minlength="8" maxlength="30" id="renombre-proveedor-modificacion-input" placeholder="Ingrese Nombre" required></input>                            
+                    </div>
+                  </div>
                   <div class="row py-2" id="descripcion-proveedor-modificacion-fila">
                     <div class="col-4 justify-content-center align-content-center" id="descripcion-proveedor-modificacion-titulo">
                         <h6 id="descripcion-proveedor-label"> 
@@ -339,11 +359,11 @@ if(!$_SESSION['logged']){
     <script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Funciones Propias JS -->
-    <script type="text/javascript" src=../../ferrotec/js/abmproveedores/fnHabilitarOpciones.js> </script>
-    <script type="text/javascript" src=../../ferrotec/js/abmproveedores/fnSinCambios.js> </script>
-    <script type="text/javascript" src=../../ferrotec/js/abmproveedores/fnCrearProveedor.js> </script>
-    <script type="text/javascript" src=../../ferrotec/js/abmproveedores/fnBajaProveedor.js> </script>
-    <script type="text/javascript" src=../../ferrotec/js/abmproveedores/fnModificarProveedor.js> </script>
+    <script type="text/javascript" src=../js/abmproveedores/fnHabilitarOpciones.js> </script>
+    <script type="text/javascript" src=../js/abmproveedores/fnSinCambios.js> </script>
+    <script type="text/javascript" src=../js/abmproveedores/fnCrearProveedor.js> </script>
+    <script type="text/javascript" src=../js/abmproveedores/fnBajaProveedor.js> </script>
+    <script type="text/javascript" src=../js/abmproveedores/fnModificarProveedor.js> </script>
 
     <!-- JS Propios -->
     <script src="../Js Propios/js-fechayhora.js"></script>

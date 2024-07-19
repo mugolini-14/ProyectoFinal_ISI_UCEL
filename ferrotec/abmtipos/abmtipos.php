@@ -144,7 +144,7 @@ if(!$_SESSION['logged']){
                       </div>
                       <div class="col-4 justify-content-end align-content-end" id="botones-baja-dardebaja">
                         <button onclick="fnBajatipo()" type="button" class="btn btn-success col-12">
-                          Dar de Baja
+                          Eliminar
                         </button>
                       </div>
                       <div class="col-4 justify-content-end align-content-end" id="botones-baja-cancelar">

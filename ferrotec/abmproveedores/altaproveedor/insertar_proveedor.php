@@ -36,12 +36,7 @@
                         prov_tel1,
                         prov_tel2,
                         prov_email,
-                        prov_cuit,
-                        prov_fechaalta,
-                        prov_usuarioalta,
-                        prov_fechabaja,
-                        prov_usuariobaja,
-                        prov_activo
+                        prov_cuit
                     ) 
                 VALUES 
                     (
@@ -53,12 +48,7 @@
                         '$telefono1Proveedor',
                         '$telefono2Proveedor', 
                         '$emailProveedor',
-                        '$cuitProveedor',
-                        NOW(),
-                        '$usuarioLogueado', 
-                        NULL,
-                        NULL,
-                        'S'
+                        '$cuitProveedor'
                     )";
         
         if ($conexion->query($sqli) === TRUE) {
@@ -81,12 +71,7 @@
                                         histprov_tel1,
                                         histprov_tel2,
                                         histprov_email,
-                                        histprov_cuit,
-                                        histprov_fechaalta,
-                                        histprov_usuarioalta,
-                                        histprov_fechabaja,
-                                        histprov_usuariobaja,
-                                        histprov_activo
+                                        histprov_cuit
                                     ) 
                                     VALUES 
                                     (
@@ -101,12 +86,7 @@
                                         '$telefono1Proveedor',
                                         '$telefono2Proveedor', 
                                         '$emailProveedor',
-                                        '$cuitProveedor',
-                                        NOW(),
-                                        '$usuarioLogueado', 
-                                        NULL,
-                                        NULL,
-                                        'S'
+                                        '$cuitProveedor'
                                     )";
                 
                 if ($conexion->query($insertarHistorial) === TRUE) {

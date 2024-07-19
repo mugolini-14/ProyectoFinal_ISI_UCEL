@@ -29,19 +29,14 @@
             if ($resultado_actualizado->num_rows > 0) {
                 $fila = $resultado_actualizado->fetch_assoc();
                 $idtipo_modif = $fila['id'];
-                $fechaAlta = $fila['tipos_fechaalta'];
-                $usuarioAlta = $fila['tipos_usuarioalta'];
-                $fechaBaja = $fila['tipos_fechabaja'];
-                $usuarioBaja = $fila['tipos_usuariobaja'];
-                $activo = $fila['tipos_activo'];
 
                 //Se inserta el historial del cambio en la tabla de historial de modificaciones de tipos
-                $insertarHistorial = "INSERT INTO historial_tipos (histtipos_accion, histtipos_id_usu, histtipos_id_tipos, histtipos_nombre, histtipos_descripcion, histtipos_fechaalta, histtipos_altausu, histtipos_fechabaja, histtipos_usuariobaja) 
-                VALUES ('modif_tipo', '$usuarioLogueado', '$idtipo_modif', '$renombreTipo','$descripcionTipo', '$fechaAlta','$usuarioAlta', NULL, NULL)";  
+                $insertarHistorial = "INSERT INTO historial_tipos (histtipos_accion, histtipos_id_usu, histtipos_id_tipos, histtipos_nombre, histtipos_descripcion) 
+                VALUES ('modif_tipo', '$usuarioLogueado', '$idtipo_modif', '$renombreTipo','$descripcionTipo')";  
 
 
                 if ($conexion->query($insertarHistorial) === TRUE) {
-                    echo "tipo $nombreTipo modificado correctamente";
+                    echo "tipo $nombreTipo ( $renombreTipo ) modificado correctamente";
                 } else {
                     echo "Error al insertar el historial del tipo en la tabla: " . $conexion->error;
                 }

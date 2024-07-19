@@ -7,6 +7,7 @@
 
     // Obtener los datos enviados desde JavaScript
     $nombreProveedor = $_POST['nombreProveedor'];
+    $renombreProveedor = $_POST['renombreProveedor'];
     $descripcionProveedor = $_POST['descripcionProveedor'];
     $direccionProveedor = $_POST['direccionProveedor'];
     $localidadProveedor = $_POST['localidadProveedor'];
@@ -25,35 +26,31 @@
     $fila = $resultado->fetch_assoc();
     $idProveedor_Modificar = $fila['id'];
 
-    // Verificar si se encontró alguna fila (es decir, si el nombre de usuario ya existe)
+    // Verificar si se encontró alguna fila (es decir, si el nombre de proveedor ya existe)
     if ($resultado->num_rows > 0) {
-        // Se busca la Fecha de Alta y el Usuario de Alta del último registro del historial para guardarla posteriormente
-        $consulta_alta_historial = "SELECT TOP 1 histprov_fechaalta, histprov_usuarioalta  
-                                    FROM historial_proveedores 
-                                    WHERE histprov_id_prov = $idProveedor_Modificar
-                                    AND histprov_accion = 'alta_prov'
-                                    OR histprov_accion = 'modif_prov'
-                                    ORDER BY id desc";
+        $consulta_alta_historial = "SELECT *  
+                                    FROM proveedores 
+                                    WHERE id = $idProveedor_Modificar
+                                   ";
         $resultado_historial = $conexion->query($consulta_alta_historial);
         if ($resultado_historial->num_rows > 0) {
             $fila_historial = $resultado_historial->fetch_assoc();
-            $fechaAltaHistorial = $fila_historial['histprov_fechaalta'];
-            $usuarioAltaHistorial = $fila_historial['histprov_usuarioalta'];
         }
         
-        // Si el nombre de usuario ya existe, proceder con la actualización
+        // Si el nombre de proveedor ya existe, proceder con la actualización
         $actualizarProveedor = "UPDATE proveedores 
-                                SET prov_descripcion = $descripcionProveedor,
-                                    prov_direccion = $direccionProveedor,
-                                    prov_localidad = $localidadProveedor,
-                                    prov_provincia = $provinciaProveedor,
-                                    prov_tel1 = $telefono1Proveedor,
-                                    prov_tel2 = $telefono2Proveedor,
-                                    prov_email = $emailProveedor,
-                                    prov_cuit = $cuitProveedor
-                                WHERE id = $idProveedor_Modificar"; // Función NOW() para que inserte la fecha actual ya que como también está el campo usu_fecha_creacion no se puede utilizar el current_timestamp de MySQL
+                                SET prov_nombre = '$renombreProveedor',
+                                    prov_descripcion = '$descripcionProveedor',
+                                    prov_direccion = '$direccionProveedor',
+                                    prov_localidad = '$localidadProveedor',
+                                    prov_provincia = '$provinciaProveedor',
+                                    prov_tel1 = '$telefono1Proveedor',
+                                    prov_tel2 = '$telefono2Proveedor',
+                                    prov_email = '$emailProveedor',
+                                    prov_cuit = '$cuitProveedor'
+                                WHERE id = '$idProveedor_Modificar'"; 
         
-        //Se inserta el historial del cambio en la tabla de historial de modificaciones de usuarios
+        //Se inserta el historial del cambio en la tabla de historial de modificaciones de proveedores
         if ($conexion->query($actualizarProveedor) === TRUE) {
             $insertarHistorial = "INSERT INTO historial_proveedores 
                                 (
@@ -68,19 +65,14 @@
                                     histprov_tel1,
                                     histprov_tel2,
                                     histprov_email,
-                                    histprov_cuit,
-                                    histprov_fechaalta,
-                                    histprov_usuarioalta,
-                                    histprov_fechabaja,
-                                    histprov_usuariobaja,
-                                    histprov_activo
+                                    histprov_cuit
                                 ) 
                                 VALUES 
                                 (
                                     'modif_prov', 
                                     '$usuarioLogueado', 
                                     '$idProveedor_Modificar', 
-                                    '$nombreProveedor', 
+                                    '$renombreProveedor', 
                                     '$descripcionProveedor', 
                                     '$direccionProveedor', 
                                     '$localidadProveedor', 
@@ -88,15 +80,10 @@
                                     '$telefono1Proveedor',
                                     '$telefono2Proveedor', 
                                     '$emailProveedor',
-                                    '$cuitProveedor',
-                                    '$fechaAltaHistorial',
-                                    '$usuarioAltaHistorial', 
-                                    NULL,
-                                    NULL,
-                                    'S'
+                                    '$cuitProveedor'
                                 )";
             if ($conexion->query($insertarHistorial) === TRUE) {
-                echo "Proveedor $nombreProveedor modificado correctamente";
+                echo "Proveedor $nombreProveedor ($renombreProveedor) modificado correctamente";
             } else {
                 echo "Error al insertar el historial del Proveedor en la tabla: " . $conexion->error;
             }
@@ -104,7 +91,7 @@
             echo "Error al actualizar el Proveedor en la tabla: " . $conexion->error;
         }
     } else {
-        // Si el nombre de usuario no existe, mostrar un alert con un mensaje de error
+        // Si el nombre de proveedor no existe, mostrar un alert con un mensaje de error
         echo "El nombre de Proveedor $nombreProveedor no existe en la base de datos.";
     }
     

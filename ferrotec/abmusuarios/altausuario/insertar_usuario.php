@@ -29,7 +29,7 @@
         // Si el nombre de usuario ya existe, mostrar un alert con un mensaje de error
         echo "El nombre de usuario $nombreUsuario ya está en uso. Por favor, elige otro nombre de usuario.";
     } else {// Consulta para insertar el usuario en la tabla de MySQL
-        $sqli = "INSERT INTO usuarios (usu_id_permisos, usu_username,usu_nombre,usu_apellido,usu_direccion,usu_email,usu_cod_verif,usu_fecha_creacion,usu_fecha_modif) VALUES ('$perfilAcceso', '$nombreUsuario', '$nombrepilaUsuario', '$apellidoUsuario', '$direccionUsuario', '$emailUsuario','$numeroAleatorio', NOW(), NULL)";
+        $sqli = "INSERT INTO usuarios (usu_id_permisos, usu_username,usu_nombre,usu_apellido,usu_direccion,usu_email,usu_cod_verif) VALUES ('$perfilAcceso', '$nombreUsuario', '$nombrepilaUsuario', '$apellidoUsuario', '$direccionUsuario', '$emailUsuario','$numeroAleatorio')";
         
         if ($conexion->query($sqli) === TRUE) {
             // Obtener el ID del usuario que se insertó
@@ -39,8 +39,8 @@
                 $id_nuevo_user = $id_nuevo_user_row['id'];
         
                 //Se inserta el historial del cambio en la tabla de historial de modificaciones de usuarios
-                $insertarHistorial = "INSERT INTO historial_usuarios (histusu_accion, histusu_id_usu, histusu_id_usumodif, histusu_id_permisos, histusu_nombre, histusu_apellido, histusu_direccion, histusu_email, histusu_fechahora) 
-                                    VALUES ('alta_usu', '$usuarioLogueado', '$id_nuevo_user', '$perfilAcceso','$nombrepilaUsuario', '$apellidoUsuario','$direccionUsuario', '$emailUsuario',NOW())";
+                $insertarHistorial = "INSERT INTO historial_usuarios (histusu_accion, histusu_id_usu, histusu_id_usumodif, histusu_id_permisos, histusu_nombre, histusu_apellido, histusu_direccion, histusu_email) 
+                                    VALUES ('alta_usu', '$usuarioLogueado', '$id_nuevo_user', '$perfilAcceso','$nombrepilaUsuario', '$apellidoUsuario','$direccionUsuario', '$emailUsuario')";
                 
                 if ($conexion->query($insertarHistorial) === TRUE) {
                     echo "Usuario $nombreUsuario creado correctamente";

@@ -22,19 +22,13 @@
             $descripcionTipo = $fila['tipos_descripcion'];
             $nombreTipo = $fila['tipos_nombre'];
 
-            $fechaAlta = $fila['tipos_fechaalta'];
-            $usuarioAlta = $fila['tipos_usuarioalta'];
-            $fechaBaja = $fila['tipos_fechabaja'];
-            $usuarioBaja = $fila['tipos_usuariobaja'];
-            $activo = $fila['tipos_activo'];
-
         // Se procede a eliminar el tipo
          $eliminartipo = "DELETE FROM tipos WHERE tipos_nombre = '$nombretipo'";
 
          if ($conexion->query($eliminartipo) === TRUE) {
             //Se inserta el historial del cambio en la tabla de historial de modificaciones de tipos
-            $insertarHistorial = "INSERT INTO historial_tipos (histtipos_accion, histtipos_id_usu, histtipos_id_tipos, histtipos_nombre, histtipos_descripcion, histtipos_fechaalta, histtipos_usuarioalta, histtipos_fechabaja, histtipos_usuariobaja) 
-                                VALUES ('borrar_tipo', '$usuarioLogueado', '$idtipo_borrar', '$nombreTipo','$descripcionTipo', '$fechaAlta','$usuarioAlta', NULL, NULL)";
+            $insertarHistorial = "INSERT INTO historial_tipos (histtipos_accion, histtipos_id_usu, histtipos_id_tipos, histtipos_nombre, histtipos_descripcion) 
+                                VALUES ('borrar_tipo', '$usuarioLogueado', '$idtipo_borrar', '$nombreTipo','$descripcionTipo')";
 
             
             if ($conexion->query($insertarHistorial) === TRUE) {

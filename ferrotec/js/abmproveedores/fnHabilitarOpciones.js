@@ -21,6 +21,8 @@ function fnHabilitarOpciones(codigoaccion){
         document.getElementById("botones-baja-fila").style.display = "none";
         
         // Filas de Modificaciòn
+        document.getElementById("nombre-proveedor-modificacion-fila").style.display = "none";
+        document.getElementById("renombre-proveedor-modificacion-fila").style.display = "none";
         document.getElementById("descripcion-proveedor-modificacion-fila").style.display = "none";
         document.getElementById("direccion-proveedor-modificacion-fila").style.display = "none";
         document.getElementById("localidad-proveedor-modificacion-fila").style.display = "none";
@@ -54,6 +56,8 @@ function fnHabilitarOpciones(codigoaccion){
         document.getElementById("botones-baja-fila").style.display = "none";
         
         // Filas de Modificaciòn
+        document.getElementById("nombre-proveedor-modificacion-fila").style.display = "none";
+        document.getElementById("renombre-proveedor-modificacion-fila").style.display = "none";
         document.getElementById("descripcion-proveedor-modificacion-fila").style.display = "none";
         document.getElementById("direccion-proveedor-modificacion-fila").style.display = "none";
         document.getElementById("localidad-proveedor-modificacion-fila").style.display = "none";
@@ -87,6 +91,8 @@ function fnHabilitarOpciones(codigoaccion){
         document.getElementById("botones-baja-fila").style.display = '';
         
         // Filas de Modificaciòn
+        document.getElementById("nombre-proveedor-modificacion-fila").style.display = "none";
+        document.getElementById("renombre-proveedor-modificacion-fila").style.display = "none";
         document.getElementById("descripcion-proveedor-modificacion-fila").style.display = "none";
         document.getElementById("direccion-proveedor-modificacion-fila").style.display = "none";
         document.getElementById("localidad-proveedor-modificacion-fila").style.display = "none";
@@ -120,6 +126,8 @@ function fnHabilitarOpciones(codigoaccion){
         document.getElementById("botones-baja-fila").style.display = "none";
         
         // Filas de Modificaciòn
+        document.getElementById("nombre-proveedor-modificacion-fila").style.display = '';
+        document.getElementById("renombre-proveedor-modificacion-fila").style.display = '';
         document.getElementById("descripcion-proveedor-modificacion-fila").style.display = '';
         document.getElementById("direccion-proveedor-modificacion-fila").style.display = '';
         document.getElementById("localidad-proveedor-modificacion-fila").style.display = '';

@@ -1,6 +1,7 @@
 function fnModificarProveedor() {
     // Obtener los valores de los campos
     var nombreProveedor = document.getElementById("nombre-proveedor-modificacion-input").value;
+    var renombreProveedor = document.getElementById("renombre-proveedor-modificacion-input").value;
     var descripcionProveedor = document.getElementById("descripcion-proveedor-modificacion-input").value;
     var direccionProveedor = document.getElementById("direccion-proveedor-modificacion-input").value;
     var localidadProveedor = document.getElementById("localidad-proveedor-modificacion-input").value;
@@ -11,7 +12,7 @@ function fnModificarProveedor() {
     var cuitProveedor = document.getElementById("cuit-proveedor-modificacion-input").value;
 
     // Verificar si algún campo está vacío
-    if (descripcionProveedor == '' || direccionProveedor == '' || localidadProveedor == '' 
+    if (nombreProveedor == '' || renombreProveedor == '' || direccionProveedor == '' || localidadProveedor == '' 
         || provinciaProveedor == '' || telefono1Proveedor == '' || emailProveedor == ''
         || cuitProveedor == '') {
         alert("No se han completado algunos campos. Por favor, complételos para poder continuar.");
@@ -26,7 +27,9 @@ function fnModificarProveedor() {
     // Crear objeto FormData para enviar los datos al archivo PHP
     var formData = new FormData();
     formData.append('nombreProveedor', nombreProveedor);
+    formData.append('renombreProveedor', renombreProveedor);
     formData.append('descripcionProveedor', descripcionProveedor);
+    formData.append('direccionProveedor', direccionProveedor);
     formData.append('localidadProveedor', localidadProveedor);
     formData.append('provinciaProveedor', provinciaProveedor);
     formData.append('telefono1Proveedor', telefono1Proveedor);
@@ -43,6 +46,7 @@ function fnModificarProveedor() {
 
             // Cambiar los valores de los elementos después de recibir la respuesta
             document.getElementById("nombre-proveedor-modificacion-input").value = "";
+            document.getElementById("renombre-proveedor-modificacion-input").value = "";
             document.getElementById("descripcion-proveedor-modificacion-input").value = "";
             document.getElementById("direccion-proveedor-modificacion-input").value = "";
             document.getElementById("localidad-proveedor-modificacion-input").value = "";

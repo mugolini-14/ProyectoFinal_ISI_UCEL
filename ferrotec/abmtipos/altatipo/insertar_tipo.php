@@ -19,7 +19,7 @@
         // Si el nombre de tipo ya existe, mostrar un alert con un mensaje de error
         echo "El nombre de tipo $nombretipo ya está en uso. Por favor, elige otro nombre de tipo.";
     } else {// Consulta para insertar el tipo en la tabla de MySQL
-        $sqli = "INSERT INTO tipos (tipos_nombre, tipos_descripcion,tipos_fechaalta,tipos_usuarioalta) VALUES ('$nombretipo', '$descripciontipo', NOW(), '$usuarioLogueado')";
+        $sqli = "INSERT INTO tipos (tipos_nombre, tipos_descripcion) VALUES ('$nombretipo', '$descripciontipo')";
         
         if ($conexion->query($sqli) === TRUE) {
             // Obtener el ID del tipo que se insertó
@@ -29,8 +29,8 @@
                 $id_nuevo_tipo = $id_nuevo_tipo_row['id'];
         
                 //Se inserta el historial del cambio en la tabla de historial de modificaciones de tipos
-                $insertarHistorial = "INSERT INTO historial_tipos (histtipos_accion, histtipos_id_usu, histtipos_id_tipos, histtipos_nombre, histtipos_descripcion, histtipos_fechaalta, histtipos_activo) 
-                                    VALUES ('alta_tipo', '$usuarioLogueado', '$id_nuevo_tipo', '$nombretipo','$descripciontipo', NOW(),'S')";
+                $insertarHistorial = "INSERT INTO historial_tipos (histtipos_accion, histtipos_id_usu, histtipos_id_tipos, histtipos_nombre, histtipos_descripcion) 
+                                    VALUES ('alta_tipo', '$usuarioLogueado', '$id_nuevo_tipo', '$nombretipo','$descripciontipo')";
                 
                 if ($conexion->query($insertarHistorial) === TRUE) {
                     echo "tipo $nombretipo creado correctamente";
