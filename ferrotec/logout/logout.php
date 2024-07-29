@@ -3,7 +3,7 @@ require('../conectar/conectar.php');
 session_start(); // Para session_unset() y session_destroy() es necesario comenzar la session
 $id = $_SESSION['id'];
 // Consulta SQL para insertar datos
-    $sqli = "INSERT INTO login_historial (login_usu_id,login_in_out) VALUES ('$id','out')";
+    $sqli = "INSERT INTO historial_login (histlogin_usu_id,histlogin_in_out) VALUES ('$id','out')";
 
 // Ejecutar la consulta
     if ($conexion->query($sqli) === TRUE) {

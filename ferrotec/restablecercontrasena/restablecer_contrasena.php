@@ -63,7 +63,7 @@ function mostrarMailOculto($correo){    // Función que oculta caracteres del co
                 </h4>
             </div>
             <div class="card-body">
-              <form action="restablecercontrasena/grabar_contrasena.php" method="POST">
+              <form action="grabar_contrasena.php" method="POST">
                 <div class="form-group">
                   Se le envió un correo con un código de Reestablecimiento de Contraseña al mail: 
                   <?php $mail_oculto = mostrarMailOculto($usu_email); 

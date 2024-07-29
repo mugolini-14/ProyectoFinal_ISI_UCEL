@@ -72,7 +72,7 @@
             } 
         }
         else {  // El usuario no necesita resetear la contraseña
-            $sqli = "INSERT INTO historial_login (login_usu_id,login_in_out) VALUES ('$id','in')";
+            $sqli = "INSERT INTO historial_login (histlogin_usu_id,histlogin_in_out) VALUES ('$id','in')";
             // Ejecutar la consulta
             if ($conexion->query($sqli) === TRUE) {     // Va al index
                 header("Location: ../index/index.php"); 
