@@ -68,11 +68,11 @@
             }
             else {
                 echo "Error: " . $sqli . "<br>" . $conexion->error;
-                header("Location: ../login.html"); // Si hay error en la conexion con la BD, ira al login
+                header("Location: ../login.php"); // Si hay error en la conexion con la BD, ira al login
             } 
         }
         else {  // El usuario no necesita resetear la contraseña
-            $sqli = "INSERT INTO login_historial (login_usu_id,login_in_out) VALUES ('$id','in')";
+            $sqli = "INSERT INTO historial_login (login_usu_id,login_in_out) VALUES ('$id','in')";
             // Ejecutar la consulta
             if ($conexion->query($sqli) === TRUE) {     // Va al index
                 header("Location: ../index/index.php"); 
@@ -80,14 +80,14 @@
             }
             else {
                 echo "Error: " . $sqli . "<br>" . $conexion->error;
-                header("Location: ../login.html"); // Si hay error en la conexion con la BD, ira al login
+                header("Location: ../login.php"); // Si hay error en la conexion con la BD, ira al login
             } 
         }
     } 
     else{
         echo'<script type="text/javascript">
             alert("Usuario no registrado");
-            window.location.href="../login.html";
+            window.location.href="../login.php";
             </script>';
         exit;
     }
