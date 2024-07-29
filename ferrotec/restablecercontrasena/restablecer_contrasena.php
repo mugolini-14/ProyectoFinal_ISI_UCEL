@@ -1,33 +1,30 @@
 <?php
-  require('../conectar/conectar.php');
-  session_start();
-  $usu_email = $_SESSION['usu_email'];
-  $usu_email_oculto = '';
-  /*function mostrarMailOculto($correo){    // Función que oculta caracteres del correo para dar indicio del mail enviado
-      list($nombre,$dominio) = explode('@',$correo);        // Separa el dominio del nombre del correo
-      $longitudcadenanombre = strlen($nombre);
-      for($i = 0;$i <= ($longitudcadenanombre - 3);$i++){   // Reemplaza hasta los últimos 3 caracteres del mail por "x"
-        $nombre = str_replace($nombre[$i],"x",$nombre);
+
+// Conexión a la base de datos MySQL
+require('../conectar/conectar.php');
+
+// Iniciar sesión si no está iniciada
+session_start();
+
+$usu_email = $_SESSION['usu_email'];
+function mostrarMailOculto($correo){    // Función que oculta caracteres del correo para dar indicio del mail enviado
+    list($nombre,$dominio) = explode('@',$correo);        // Separa el dominio del nombre del correo
+    $longitudcadenanombre = strlen($nombre);
+    $nombreoculto = '';
+    /*for($i = 0;$i <= ($longitudcadenanombre - 3);$i++){   // Reemplaza hasta los últimos 3 caracteres del mail por "x"
+      $nombreoculto .= str_replace($nombre[$i],"x",$nombreoculto);
+    }*/
+    for ($i = 0; $i < $longitudcadenanombre; $i++) {
+      if ($i < $longitudcadenanombre - 3) {
+          $nombreoculto .= 'x';
+      } 
+      else {
+          $nombreoculto .= $nombre[$i];
       }
-      $visibleParteNombre = substr($nombre, -3);
-      $ocultoParteNombre = str_repeat('x', $longitudCadenaNombre - 3);
-      
-      $nombreOculto = $ocultoParteNombre . $visibleParteNombre;
-      $correoOculto = $nombreOculto . '@' . $dominio;
-      return $correoOculto;
-  }*/
-  function mostrarMailOculto($correo) {
-    list($nombre, $dominio) = explode('@', $correo);
-    $longitudCadenaNombre = strlen($nombre);
-    
-    // Mantenemos los últimos 3 caracteres sin ocultar
-    $visibleParteNombre = substr($nombre, -3);
-    $ocultoParteNombre = str_repeat('x', $longitudCadenaNombre - 3);
-    
-    $nombreOculto = $ocultoParteNombre . $visibleParteNombre;
-    $correoOculto = $nombreOculto . '@' . $dominio;
+    } 
+    $correoOculto = $nombreoculto . '@' . $dominio;
     return $correoOculto;
-  }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -66,30 +63,27 @@
                 </h4>
             </div>
             <div class="card-body">
-              <form action="grabar_contrasena.php" method="POST">
+              <form action="restablecercontrasena/grabar_contrasena.php" method="POST">
                 <div class="form-group">
                   Se le envió un correo con un código de Reestablecimiento de Contraseña al mail: 
-                  <b> 
-                      <?php $usu_email_oculto = mostrarMailOculto($usu_email); 
-                      echo $usu_email_oculto; 
-                      ?> 
-                  </b>
+                  <?php $mail_oculto = mostrarMailOculto($usu_email); 
+                  echo "<b>" . $mail_oculto . "</b>";?>
                 </div>
                 <br>
                 <div class="form-group">
-                  <input type="text" class="form-control" id="codigo-aleatorio" name="codigo-aleatorio" placeholder="Introduzca el código aleatorio">
+                  <input type="text" class="form-control" id="codigo-aleatorio" name="codigo-aleatorio" placeholder="Introduzca el código aleatorio" required>
                 </div>
                 <br>
                 <div class="form-group">
-                  <input type="password" class="form-control" id="contrasena" name="contrasena" placeholder="Nueva Contraseña">
+                  <input type="password" class="form-control" id="contrasena" name="contrasena" placeholder="Nueva Contraseña" required>
                 </div>
                 <br>
                 <div class="form-group">
-                  <input type="password" class="form-control" id="repetir-contrasena" name="repetir-contrasena" placeholder="Repetir Contraseña">
+                  <input type="password" class="form-control" id="repetir-contrasena" name="repetir-contrasena" placeholder="Repetir Contraseña" required>
                 </div>
                 <br>
                 <div class="form-group">
-                  <button onclick=fnValidarDatos() type="submit" class="btn btn-primary">
+                  <button onclick="fnValidarDatos(codigoaleatorio,contrasena,repetircontrasena)" type="submit" class="btn btn-primary">
                       Enviar
                   </button>
                 </div>
@@ -103,8 +97,7 @@
     <!-- Bootstrap JS -->
     <script src="bootstrap/js/bootstrap.min.js"></script>
     <!-- JS Propios -->
-    <script src="../Js Propios/js-fechayhora.js"></script>
-    <script type="text/javascript" src="../js/restablecercontrasena/fnValidarDatos.js"></script>
+    <script src="Js Propios/js-fechayhora.js"></script>
   </body>
 
 </html>
