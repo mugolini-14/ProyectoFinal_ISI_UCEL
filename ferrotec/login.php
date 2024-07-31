@@ -37,18 +37,28 @@
                 </h4>
             </div>
             <div class="card-body">
-              <form action="login/login.php" method="POST">
+              <form action="login/login_ingreso.php" method="POST">
                 <div class="form-group">
-                  <input type="text" class="form-control" id="usuario" name="usuario" placeholder="Usuario" required>
+                  <input onchange=fnCopiarUsuarioParaRecuperar() type="text" class="form-control" id="usuario" name="usuario" placeholder="Usuario" required>
                 </div>
                 <br>
                 <div class="form-group">
-                  <input type="password" class="form-control" id="contrasena" name="contrasena" placeholder="Contraseña" required>
+                  <input type="password" class="form-control" id="contrasena" name="contrasena" placeholder="Contraseña">
                 </div>
                 <br>
                 <div class="form-group">
-                  <button type="submit" class="btn btn-primary">
+                  <button style="float: left;" type="submit" class="btn btn-primary">
                       Ingresar
+                  </button>
+                </div>
+              </form>
+              <form action="login/login_restablecer.php" method="POST">
+                <div class="form-group"> 
+                  <input type="text" class="form-control" id="usuario-restablecer" name="usuario-restablecer" placeholder="usuario-restablecer" hidden>
+                </div>
+                <div class="form-group">
+                  <button style="float: right;" type="submit" class="btn btn-primary">
+                      Restablecer Contraseña
                   </button>
                 </div>
               </form>
@@ -62,6 +72,15 @@
     <script src="bootstrap/js/bootstrap.min.js"></script>
     <!-- JS Propios -->
     <script src="Js Propios/js-fechayhora.js"></script>
+    <script>
+         document.getElementById('usuario').addEventListener('click', function(){
+         document.getElementById('usuario-restablecer').value = this.value;
+          });
+
+        document.getElementById('usuario').addEventListener('input', function(){
+        document.getElementById('usuario-restablecer').value = this.value;
+        });
+    </script>
   </body>
 
 </html>
