@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-07-2024 a las 19:48:54
--- Versión del servidor: 10.4.28-MariaDB
--- Versión de PHP: 8.2.4
+-- Tiempo de generación: 02-08-2024 a las 17:49:17
+-- Versión del servidor: 10.4.32-MariaDB
+-- Versión de PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -43,9 +43,9 @@ CREATE TABLE `articulos` (
 
 INSERT INTO `articulos` (`id`, `art_id_categoria`, `art_nombre`, `art_marca`, `art_descripcion`, `art_precio`, `art_stock`) VALUES
 (1, 1, 'ARTICULO NO ESPECIFICADO', 'MARCA BLANCA', 'DESCRIPCIÒN PARA ARTICULO', 0, 1),
-(2, 1, 'Clavo_2mm_2cm', 'clavitos SA', 'clavos de 2mm de diametro por 2cm de largo', 2, 31),
-(3, 1, 'Tornillo_Inox_3mm_3cm', 'Tornillo SA', 'Tornillo comun de acero inoxidable, de 3mm de diametro por 3 cm de largos. Phillips', 1, 84),
-(5, 1, 'Martillo pesado', 'Philips', 'Martillo pesado de 1kg de piedra', 50, 63),
+(2, 1, 'Clavo_2mm_2cm', 'clavitos SA', 'clavos de 2mm de diametro por 2cm de largo', 2, 100),
+(3, 1, 'Tornillo_Inox_3mm_3cm', 'Tornillo SA', 'Tornillo comun de acero inoxidable, de 3mm de diametro por 3 cm de largos. Phillips', 1, 100),
+(5, 1, 'Martillo pesado', 'Philips', 'Martillo pesado de 1kg de piedra', 50, 100),
 (6, 1, 'Precintos 10cm', 'Precintos SA', 'Precintos de 10 cm de largo color negros', 3, 98);
 
 -- --------------------------------------------------------
@@ -86,8 +86,17 @@ CREATE TABLE `compras` (
   `compras_suc` tinyint(4) DEFAULT 1,
   `compras_id_prov` int(5) DEFAULT 1,
   `compras_monto` float NOT NULL,
-  `compras_fecha` datetime DEFAULT NULL
+  `compras_fechahora` datetime DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `compras`
+--
+
+INSERT INTO `compras` (`id`, `compras_id_usuario`, `compras_id_modopago`, `compras_suc`, `compras_id_prov`, `compras_monto`, `compras_fechahora`) VALUES
+(1, 2, 1, 1, 1, 1034, NULL),
+(2, 2, 2, 1, 1, 54, '2024-08-02 12:28:15'),
+(3, 2, 2, 1, 1, 38, '2024-08-02 12:28:55');
 
 -- --------------------------------------------------------
 
@@ -245,7 +254,17 @@ INSERT INTO `historial_login` (`id`, `histlogin_fecha`, `histlogin_usu_id`, `his
 (140, '2024-07-18 11:11:38', 3, 'in'),
 (141, '2024-07-18 11:12:01', 3, 'out'),
 (142, '2024-07-18 11:44:35', 3, 'in'),
-(143, '2024-07-19 08:05:46', 3, 'in');
+(143, '2024-07-19 08:05:46', 3, 'in'),
+(144, '2024-08-02 12:20:39', 2, 'in'),
+(145, '2024-08-02 12:21:12', 2, 'out'),
+(146, '2024-08-02 12:21:23', 2, 'in'),
+(147, '2024-08-02 12:22:45', 2, 'out'),
+(148, '2024-08-02 12:22:49', 2, 'in'),
+(149, '2024-08-02 12:40:40', 2, 'out'),
+(150, '2024-08-02 12:40:51', 3, 'in'),
+(151, '2024-08-02 12:46:20', 3, 'out'),
+(152, '2024-08-02 12:46:51', 74, 'ree'),
+(153, '2024-08-02 12:48:11', 74, 'in');
 
 -- --------------------------------------------------------
 
@@ -347,24 +366,26 @@ CREATE TABLE `historial_usuarios` (
 -- Volcado de datos para la tabla `historial_usuarios`
 --
 
-INSERT INTO `historial_usuarios` (`id`, `histusu_fechahora`, `histusu_accion`, `histusu_id_usu`, `histusu_id_usumodif`, `histusu_id_permisos`, `histusu_nombre`, `histusu_apellido`, `histusu_direccion`, `histusu_password`, `histusu_cod_verif`, `histusu_cod_verif_bool`, `histusu_id_suc`, `histusu_email`) VALUES
-(3, '2024-05-16 11:54:15', 'modif_usu', NULL, NULL, 1, '', NULL, '', '', 0, 0, 1, ''),
-(4, '2024-05-16 11:54:15', 'modif_usu', 3, NULL, 1, '', NULL, '', '', 0, 0, 1, ''),
-(5, '2024-05-16 11:54:15', 'modif_usu', 3, 65, 1, '', NULL, '', '', 0, 0, 1, ''),
-(6, '2024-05-16 11:56:04', 'modif_usu', 3, 65, 1, 'monica', 'monday', 'flac', '', 0, 0, 1, 'gdol'),
-(7, '2024-05-16 12:19:54', 'alta_usu', 3, 70, 2, 'Miguel', 'Mandini', 'Lacalle Pou 5656', '', 0, 0, 1, 'mguelman@fibercorp.com'),
-(8, '2024-05-16 12:42:23', 'borrar_usu', 3, 63, 3, 'nn', 'aa', 'dd', '', 0, 0, 1, 'sd'),
-(9, '2024-05-16 12:53:06', 'alta_usu', 3, 71, 1, 'gabriel', 'andres', 'pap', '', 0, 0, 1, 'dsod'),
-(10, '2024-05-16 13:04:31', 'borrar_usu', 3, 58, 4, '', '', '', '', 0, 0, 1, ''),
-(11, '2024-05-16 13:06:22', 'borrar_usu', 3, 56, 1, '', '', '', '', 0, 0, 1, ''),
-(12, '2024-05-16 13:08:12', 'alta_usu', 3, 72, 4, 'a', 'a', 'a', '', 0, 0, 1, 'a'),
-(13, '2024-05-16 13:08:24', 'borrar_usu', 3, 72, 4, 'a', 'a', 'a', '', 0, 0, 1, 'a'),
-(14, '2024-05-16 13:24:57', 'alta_usu', 3, 73, 4, 'b', 'b', 'b', '', 0, 0, 1, 'b'),
-(15, '2024-05-16 13:25:16', 'borrar_usu', 3, 73, 4, 'b', 'b', 'b', '', 0, 0, 1, 'b'),
-(16, '2024-07-17 13:19:47', 'baja_usu', 3, 66, 2, 'Prueba', 'Aprueba', 'Dprueba', '', 0, 0, 1, 'eprueba@live.com.ar'),
-(17, '2024-07-17 13:24:33', 'baja_usu', 3, 66, 1, 'Prueba', 'Aprueba', 'Dprueba', '', 0, 0, 1, 'eprueba@live.com.ar'),
-(18, '2024-07-17 13:24:46', 'baja_usu', 3, 66, 1, 'Prueba', 'Aprueba', 'Dprueba', '', 0, 0, 1, 'eprueba@live.com.ar'),
-(19, '2024-07-18 11:11:51', 'baja_usu', 3, 2, 3, '2', '', '2]', '', 0, 0, 1, '2');
+INSERT INTO `historial_usuarios` (`id`, `histusu_fechahora`, `histusu_accion`, `histusu_id_usu`, `histusu_id_usumodif`, `histusu_id_permisos`, `histusu_nombre`, `histusu_apellido`, `histusu_direccion`, `histusu_password`, `histusu_cod_verif`, `histusu_id_suc`, `histusu_email`) VALUES
+(3, '2024-05-16 11:54:15', 'modif_usu', NULL, NULL, 1, '', NULL, '', '', 0, 1, ''),
+(4, '2024-05-16 11:54:15', 'modif_usu', 3, NULL, 1, '', NULL, '', '', 0, 1, ''),
+(5, '2024-05-16 11:54:15', 'modif_usu', 3, 65, 1, '', NULL, '', '', 0, 1, ''),
+(6, '2024-05-16 11:56:04', 'modif_usu', 3, 65, 1, 'monica', 'monday', 'flac', '', 0, 1, 'gdol'),
+(7, '2024-05-16 12:19:54', 'alta_usu', 3, 70, 2, 'Miguel', 'Mandini', 'Lacalle Pou 5656', '', 0, 1, 'mguelman@fibercorp.com'),
+(8, '2024-05-16 12:42:23', 'borrar_usu', 3, 63, 3, 'nn', 'aa', 'dd', '', 0, 1, 'sd'),
+(9, '2024-05-16 12:53:06', 'alta_usu', 3, 71, 1, 'gabriel', 'andres', 'pap', '', 0, 1, 'dsod'),
+(10, '2024-05-16 13:04:31', 'borrar_usu', 3, 58, 4, '', '', '', '', 0, 1, ''),
+(11, '2024-05-16 13:06:22', 'borrar_usu', 3, 56, 1, '', '', '', '', 0, 1, ''),
+(12, '2024-05-16 13:08:12', 'alta_usu', 3, 72, 4, 'a', 'a', 'a', '', 0, 1, 'a'),
+(13, '2024-05-16 13:08:24', 'borrar_usu', 3, 72, 4, 'a', 'a', 'a', '', 0, 1, 'a'),
+(14, '2024-05-16 13:24:57', 'alta_usu', 3, 73, 4, 'b', 'b', 'b', '', 0, 1, 'b'),
+(15, '2024-05-16 13:25:16', 'borrar_usu', 3, 73, 4, 'b', 'b', 'b', '', 0, 1, 'b'),
+(16, '2024-07-17 13:19:47', 'baja_usu', 3, 66, 2, 'Prueba', 'Aprueba', 'Dprueba', '', 0, 1, 'eprueba@live.com.ar'),
+(17, '2024-07-17 13:24:33', 'baja_usu', 3, 66, 1, 'Prueba', 'Aprueba', 'Dprueba', '', 0, 1, 'eprueba@live.com.ar'),
+(18, '2024-07-17 13:24:46', 'baja_usu', 3, 66, 1, 'Prueba', 'Aprueba', 'Dprueba', '', 0, 1, 'eprueba@live.com.ar'),
+(19, '2024-07-18 11:11:51', 'baja_usu', 3, 2, 3, '2', '', '2]', '', 0, 1, '2'),
+(20, '2024-08-02 12:40:38', 'alta_usu', 2, 74, 4, '3', '3', '3', '', 0, 1, '3'),
+(21, '2024-08-02 12:41:07', 'baja_usu', 3, 74, 4, '3', '3', '3', '', 0, 1, '3');
 
 -- --------------------------------------------------------
 
@@ -473,7 +494,6 @@ CREATE TABLE `usuarios` (
   `usu_direccion` varchar(30) NOT NULL,
   `usu_password` varchar(30) NOT NULL,
   `usu_cod_verif` varchar(8) NOT NULL,
-  `usu_cod_verif_bool` tinyint(1) NOT NULL DEFAULT 1,
   `usu_id_suc` tinyint(4) NOT NULL DEFAULT 1,
   `usu_email` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -482,17 +502,18 @@ CREATE TABLE `usuarios` (
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`id`, `usu_id_permisos`, `usu_username`, `usu_nombre`, `usu_apellido`, `usu_direccion`, `usu_password`, `usu_cod_verif`, `usu_cod_verif_bool`, `usu_id_suc`, `usu_email`) VALUES
-(1, 1, 'USER-SIN-PER', 'USER-SIN-PERMISOS', '', 'San Martin 101', 'ferrotec', '0', 0, 1, 'ferrotec@ferrotec.com.ar'),
-(2, 0, '2', '2', '', '2]', '2', '2', 0, 1, '2'),
-(3, 3, 'fabrign', 'Fabricio', 'Gallina', 'Castellanos 2360', 'fabrign', '0', 0, 1, 'fabrign@live.com'),
-(65, 1, 'f', 'monica', 'monday', 'flac', '', 'OLu9g,.F', 0, 1, 'gdol'),
-(66, 1, 'Prueba1', 'Prueba', 'Aprueba', 'Dprueba', '', '(63?Rq<I', 0, 1, 'eprueba@live.com.ar'),
-(67, 1, 'NOMBUSU', 'pepe', 'gomez', 'casa', '', 'nU{usiu{', 0, 1, 'emailemail'),
-(68, 2, 'mariopg', 'Mario', 'Pergolini', 'Calafate 1122', '', 'd>8Lu]fu', 0, 1, 'mario_pg@gmail.com'),
-(69, 2, 'jerodlp', 'Jeronimo', 'De La Puente', 'Azul 4522', '', 'x!$zizG6', 0, 1, 'jero_delp@live.com'),
-(70, 2, 'miguelman', 'Miguel', 'Mandini', 'Lacalle Pou 5656', '', 'U5Aeuv@]', 0, 1, 'mguelman@fibercorp.com'),
-(71, 1, 'gabi', 'gabriel', 'andres', 'pap', '', '0D1Oj$^0', 0, 1, 'dsod');
+INSERT INTO `usuarios` (`id`, `usu_id_permisos`, `usu_username`, `usu_nombre`, `usu_apellido`, `usu_direccion`, `usu_password`, `usu_cod_verif`, `usu_id_suc`, `usu_email`) VALUES
+(1, 1, 'USER-SIN-PER', 'USER-SIN-PERMISOS', '', 'San Martin 101', 'ferrotec', '0', 1, 'ferrotec@ferrotec.com.ar'),
+(2, 0, '2', '2', '', '2]', '2', '2', 1, '2'),
+(3, 3, 'fabrign', 'Fabricio', 'Gallina', 'Castellanos 2360', 'fabrign', '0', 1, 'fabrign@live.com'),
+(65, 1, 'f', 'monica', 'monday', 'flac', '', 'OLu9g,.F', 1, 'gdol'),
+(66, 1, 'Prueba1', 'Prueba', 'Aprueba', 'Dprueba', '', '(63?Rq<I', 1, 'eprueba@live.com.ar'),
+(67, 1, 'NOMBUSU', 'pepe', 'gomez', 'casa', '', 'nU{usiu{', 1, 'emailemail'),
+(68, 2, 'mariopg', 'Mario', 'Pergolini', 'Calafate 1122', '', 'd>8Lu]fu', 1, 'mario_pg@gmail.com'),
+(69, 2, 'jerodlp', 'Jeronimo', 'De La Puente', 'Azul 4522', '', 'x!$zizG6', 1, 'jero_delp@live.com'),
+(70, 2, 'miguelman', 'Miguel', 'Mandini', 'Lacalle Pou 5656', '', 'U5Aeuv@]', 1, 'mguelman@fibercorp.com'),
+(71, 1, 'gabi', 'gabriel', 'andres', 'pap', '', '0D1Oj$^0', 1, 'dsod'),
+(74, 0, '3', '3', '3', '3', 'Fabrign89-', '', 1, 'fabrign@live.com');
 
 -- --------------------------------------------------------
 
@@ -547,7 +568,8 @@ INSERT INTO `ventas` (`id`, `ventas_id_usuario`, `ventas_id_modopago`, `ventas_f
 (30, 3, 0, '2024-07-19', '12:22:50', 0, 1),
 (31, 3, 1, '2024-07-19', '12:27:08', 0, 1),
 (32, 3, 0, '2024-07-19', '12:56:11', 50, 1),
-(33, 3, 1, '2024-07-19', '13:52:23', 50, 1);
+(33, 3, 1, '2024-07-19', '13:52:23', 50, 1),
+(34, 2, 1, '2024-08-02', '12:21:56', 80, 1);
 
 -- --------------------------------------------------------
 
@@ -580,7 +602,9 @@ INSERT INTO `ventas_detalle` (`id`, `vendet_id_venta`, `vendet_id_art`, `vendet_
 (9, 24, 5, 'Martillo pesado', 4, 200),
 (10, 26, 5, 'Martillo pesado', 0, 0),
 (11, 32, 5, 'Martillo pesado', 1, 50),
-(12, 33, 5, 'Martillo pesado', 1, 50);
+(12, 33, 5, 'Martillo pesado', 1, 50),
+(13, 34, 5, 'Martillo pesado', 1, 50),
+(14, 34, 2, 'Clavo_2mm_2cm', 15, 30);
 
 --
 -- Índices para tablas volcadas
@@ -719,7 +743,7 @@ ALTER TABLE `categorias`
 -- AUTO_INCREMENT de la tabla `compras`
 --
 ALTER TABLE `compras`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `compras_detalle`
@@ -743,7 +767,7 @@ ALTER TABLE `historial_categorias`
 -- AUTO_INCREMENT de la tabla `historial_login`
 --
 ALTER TABLE `historial_login`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=144;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=154;
 
 --
 -- AUTO_INCREMENT de la tabla `historial_proveedores`
@@ -761,7 +785,7 @@ ALTER TABLE `historial_tipos`
 -- AUTO_INCREMENT de la tabla `historial_usuarios`
 --
 ALTER TABLE `historial_usuarios`
-  MODIFY `id` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT de la tabla `modopago`
@@ -791,19 +815,19 @@ ALTER TABLE `tipos`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
 
 --
 -- AUTO_INCREMENT de la tabla `ventas`
 --
 ALTER TABLE `ventas`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT de la tabla `ventas_detalle`
 --
 ALTER TABLE `ventas_detalle`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- Restricciones para tablas volcadas

@@ -87,8 +87,8 @@ if(!$_SESSION['logged']){
                                                     </button>
                                                 </h2>
                                                 <div id="accordion-item-compras" class="accordion-collapse collapse">
-                                                    <div class="accordion-body bg-opacity-25 bg-warning">
-                                                        Compra de mercaderia
+                                                <div class="accordion-body bg-opacity-25 bg-primary">
+                                                <a href="../compras/compras.php"> Compras de artículos </a>
                                                     </div>
                                                     <div class="accordion-body bg-opacity-25 bg-warning">
                                                         <a href="../abmproveedores/abmproveedores.php"> Abm de Proveedores </a>
@@ -121,7 +121,7 @@ if(!$_SESSION['logged']){
                                                 </h2>
                                                 <div id="accordion-item-informes" class="accordion-collapse collapse">
                                                     <div class="accordion-body bg-opacity-25 bg-success">
-                                                        (Contenido Módulo Informes)
+                                                        <a href="../reporteventas/reporteventas.php"> Reporte de ventas </a>
                                                     </div>
                                                 </div>
                                             </div>
