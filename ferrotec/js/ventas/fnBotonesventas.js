@@ -2,7 +2,8 @@
 //  Descripción:  Función de los Botones Cancelar y Volver de ventas
 //                Verifica si hay valores ingresados / seleccionados y pregunta según la cadena recibida 
 //  Parámetros:
-//  tipoAccion:     V --> Volver / C --> Cancelar
+//  - tipoAccion:     V --> Volver / C --> Cancelar
+//
 
 function fnBotonesventas(tipoAccion){
     if(tipoAccion == 'V'){

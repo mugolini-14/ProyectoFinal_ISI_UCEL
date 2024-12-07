@@ -1,13 +1,15 @@
-//  fnBajaUsuario
+//  fnBajaUsuario()
 //  Descripción: Función que envía el formulario a la base de datos para Dar de Baja un Usuario
 //  A partir de validaciones iniciales
 //  (Baja Lógica)
 //  Valida si hay un usuario seleccionado en el Formulario
 //  Si está seleccionado envía el formulario con los datos sumnistrados
+//
+
 function fnBajaUsuario(){
     var nombreUsuario = document.getElementById("nombre-usuario-baja-input").value;
     if(nombreUsuario == ''){
-        alert("Por favor seleccione un usuario para dar de baja.");
+        alert("Por favor complete todos los campos.");
     }
     else{
         if(confirm("¿Desea Dar de Baja al Usuario " + nombreUsuario + "?")) {

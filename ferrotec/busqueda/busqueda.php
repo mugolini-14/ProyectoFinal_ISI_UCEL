@@ -1,5 +1,9 @@
 <?php
-// busqueda.php
+/*
+    PHP:            busqueda.php
+    Descripción:    Hace una consulta a la base de datos para traer los diferentes artículos
+                    En ventas.php y compras.php
+*/
 
 header('Content-Type: application/json');
 
@@ -7,7 +11,14 @@ require('../conectar/conectar.php');
 
 $searchTerm = $_GET['term'];
 
-$sql = "SELECT id, art_nombre, art_precio, art_descripcion, art_stock FROM articulos WHERE art_nombre LIKE '%$searchTerm%' LIMIT 10";
+$sql = "SELECT id, 
+        art_nombre,
+        art_precio,
+        art_descripcion,
+        art_stock 
+        FROM articulos 
+        WHERE art_nombre LIKE '%$searchTerm%' LIMIT 10";
+
 $result = $conexion->query($sql);
 
 $data = array();

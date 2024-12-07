@@ -1,4 +1,8 @@
 <?php
+/*
+    PHP:            insertar_proveedor.php
+    Descripción:    Inserta en la base de datos un nuevo registro de proveedor
+*/
     // Conexión a la base de datos MySQL
     require('../../conectar/conectar.php');
 
@@ -18,14 +22,17 @@
     $usuarioLogueado = $_SESSION['id'];
 
     // Consulta para verificar si el nombre de usuario ya existe en la tabla
-    $consulta = "SELECT * FROM proveedores WHERE prov_nombre = '$nombreProveedor'";
+    $consulta = "SELECT * 
+                FROM proveedores 
+                WHERE prov_nombre = '$nombreProveedor'";
     $resultado = $conexion->query($consulta);
 
     // Verificar si se encontró alguna fila (es decir, si el nombre de usuario ya existe)
     if ($resultado->num_rows > 0) {
         // Si el nombre de usuario ya existe, mostrar un alert con un mensaje de error
-        echo "El nombre del proveedor $nombreProveedor ya está en uso. Por favor, elige otro nombre de usuario.";
-    } else {// Consulta para insertar el usuario en la tabla de MySQL
+        echo "El nombre del proveedor ya existe.";
+    } 
+    else {// Consulta para insertar el usuario en la tabla de MySQL
         $sqli = "INSERT INTO proveedores 
                     (
                         prov_nombre, 
@@ -36,7 +43,8 @@
                         prov_tel1,
                         prov_tel2,
                         prov_email,
-                        prov_cuit
+                        prov_cuit,
+                        prov_activo
                     ) 
                 VALUES 
                     (
@@ -48,12 +56,15 @@
                         '$telefono1Proveedor',
                         '$telefono2Proveedor', 
                         '$emailProveedor',
-                        '$cuitProveedor'
+                        '$cuitProveedor',
+                        1
                     )";
         
         if ($conexion->query($sqli) === TRUE) {
             // Obtener el ID del usuario que se insertó
-            $id_nuevo_prov_query = $conexion->query("SELECT id FROM proveedores WHERE prov_nombre = '$nombreProveedor'");
+            $id_nuevo_prov_query = $conexion->query("SELECT id 
+                                                            FROM proveedores 
+                                                            WHERE prov_nombre = '$nombreProveedor'");
             if ($id_nuevo_prov_query) {
                 $id_nuevo_prov_row = $id_nuevo_prov_query->fetch_assoc();
                 $id_nuevo_prov = $id_nuevo_prov_row['id'];
@@ -71,7 +82,8 @@
                                         histprov_tel1,
                                         histprov_tel2,
                                         histprov_email,
-                                        histprov_cuit
+                                        histprov_cuit,
+                                        histprov_activo
                                     ) 
                                     VALUES 
                                     (
@@ -86,7 +98,8 @@
                                         '$telefono1Proveedor',
                                         '$telefono2Proveedor', 
                                         '$emailProveedor',
-                                        '$cuitProveedor'
+                                        '$cuitProveedor',
+                                        1
                                     )";
                 
                 if ($conexion->query($insertarHistorial) === TRUE) {

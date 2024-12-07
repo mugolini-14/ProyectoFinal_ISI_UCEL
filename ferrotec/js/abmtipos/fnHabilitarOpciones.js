@@ -1,5 +1,8 @@
-// fnHabilitarOpciones
-// Descripción: Función que habilita los diferentes formularios según la acción a realizar
+//  Función: fnHabilitarOpciones(codigoaccion)
+//  Descripción: Función que habilita los diferentes formularios según la acción a realizar
+//  Parámetros:
+//  - codigoaccion: número entero que determina los elementos a mostrar según la acción seleccionada
+//
 
 function fnHabilitarOpciones(codigoaccion){ 
     if(codigoaccion==0){ // Inicialización / Seleccione
@@ -18,6 +21,7 @@ function fnHabilitarOpciones(codigoaccion){
         document.getElementById("renombre-tipo-modificacion-fila").style.display = "none";
         document.getElementById("descripcion-tipo-modificacion-fila").style.display = "none"
         document.getElementById("botones-modificacion-fila").style.display = "none";
+        document.getElementById("estado-tipo-modificacion-fila").style.display = "none";
         
         // Boton Principal Volver
         document.getElementById("botones-principal-volver-fila").style.display = '';
@@ -39,14 +43,11 @@ function fnHabilitarOpciones(codigoaccion){
         document.getElementById("renombre-tipo-modificacion-fila").style.display = "none";
         document.getElementById("descripcion-tipo-modificacion-fila").style.display = "none";
         document.getElementById("botones-modificacion-fila").style.display = "none";
+        document.getElementById("estado-tipo-modificacion-fila").style.display = "none";
 
         // Boton Principal Volver
         document.getElementById("botones-principal-volver-fila").style.display = "none";
 
-        // Funciones a habilitar por defecto
-
-        fnHabilitarPerfiltipo('A',0);
-        fnPerfilesDetipo('A',0);
     }
 
     if(codigoaccion==2){  // Baja
@@ -65,6 +66,7 @@ function fnHabilitarOpciones(codigoaccion){
         document.getElementById("renombre-tipo-modificacion-fila").style.display = "none";
         document.getElementById("descripcion-tipo-modificacion-fila").style.display = "none";
         document.getElementById("botones-modificacion-fila").style.display = "none";
+        document.getElementById("estado-tipo-modificacion-fila").style.display = "none";
 
         // Boton Principal Volver
         document.getElementById("botones-principal-volver-fila").style.display = "none";
@@ -86,13 +88,9 @@ function fnHabilitarOpciones(codigoaccion){
         document.getElementById("renombre-tipo-modificacion-fila").style.display = '';
         document.getElementById("descripcion-tipo-modificacion-fila").style.display = '';
         document.getElementById("botones-modificacion-fila").style.display = '';
+        document.getElementById("estado-tipo-modificacion-fila").style.display = '';
 
         // Boton Principal Volver
         document.getElementById("botones-principal-volver-fila").style.display = "none";
-
-        // Funciones a habilitar por defecto
-
-        fnHabilitarPerfiltipo('M',0);
-        fnPerfilesDetipo('M',0);
     }
   }

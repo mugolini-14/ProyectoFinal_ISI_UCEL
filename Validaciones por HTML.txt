@@ -1,0 +1,36 @@
+algunos de los más comunes:
+
+1. Atributo required
+Este atributo se utiliza para indicar que un campo es obligatorio y no puede estar vacío.
+
+<input type="text" name="nombre" required>
+2. Atributo pattern
+Permite definir una expresión regular que el valor del campo debe cumplir.
+
+<input type="text" name="codigo" pattern="[A-Za-z]{3}[0-9]{4}">
+3. Atributo type
+Dependiendo del tipo de campo (email, url, number, date, etc.), se aplican validaciones automáticas.
+
+<input type="email" name="correo">
+4. Atributos min, max, step
+Se utilizan con tipos numéricos o fechas para definir un rango permitido.
+
+
+<input type="number" name="edad" min="18" max="99">
+5. Atributo maxlength y minlength
+Define la cantidad mínima y máxima de caracteres que se pueden ingresar en un campo de texto.
+
+<input type="text" name="usuario" minlength="5" maxlength="15">
+6. Atributo placeholder
+Aunque no es una validación en sí, placeholder proporciona un texto guía para el usuario sobre qué esperar en el campo.
+
+
+<input type="text" name="usuario" placeholder="Ingrese su usuario">
+7. Atributo title
+El atributo title puede proporcionar una sugerencia o advertencia que aparece cuando el campo no cumple con las reglas de validación.
+
+<input type="text" name="codigo" pattern="[A-Za-z]{3}[0-9]{4}" title="Debe tener 3 letras seguidas de 4 números.">
+8. Atributo novalidate en el formulario
+Si no deseas que el formulario valide automáticamente en el navegador, puedes utilizar este atributo.
+
+<form novalidate>

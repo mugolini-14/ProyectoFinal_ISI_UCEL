@@ -1,3 +1,10 @@
+<?php
+  session_start();
+  if(!$_SESSION['logged']){
+    header("Location: ../login.php");
+  }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,12 +27,13 @@
                         <h4 style="float: left;">Ventas &nbsp;</h4>
                         <h4 style="float: right;">
                             <label id="texto-fecha-hora"></label>
+                            &nbsp;
                             <a href="../logout/logout.php" class="btn btn-warning"> LOGOUT </a>
                         </h4>
                     </div>
                     <div class="card-body">
                         <form id="formulario-alta">
-                            <div class="row py-2" id="nombre-tipo-alta-fila">
+                            <div class="row md-12" id="nombre-tipo-alta-fila">
                                 <div class="col-md-3">
                                     <div class="form-group row">
                                         <label for="busqueda-articulo" class="col-sm-4 col-form-label">Articulo:</label>
@@ -61,22 +69,25 @@
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group row">
-                                        <label for="total-articulo" class="col-sm-6 col-form-label">Total artículo:</label>
-                                        <div class="col-sm-6">
+                                        <label for="total-articulo" class="col-sm-4 col-form-label">Total artículo:</label>
+                                        <div class="col-sm-8">
                                             <input type="text" class="form-control" id="total-articulo" readonly>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row py-2">
+                            </div>
+                            <br>
+                            <div class="row md-12">
+                                <div class="row-md-12">
                                     <div class="form-group row">
-                                        <label for="descripcion" class="col-sm-2 col-form-label">Descripcion:</label>
-                                        <div class="col-sm-10">
+                                        <label for="descripcion" class="col-sm-1 col-form-label">Descripcion:</label>
+                                        <div class="col-sm-9">
                                             <input type="text" class="form-control" id="descripcion" readonly>
                                         </div>
+                                        <div class="col-md-2 text-center">
+                                            <button type="button" class="btn btn-success col-12" id="agregar-articulo">Agregar</button>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-md-12 text-center">
-                                    <button type="button" class="btn btn-success" id="agregar-articulo">Agregar</button>
                                 </div>
                             </div>
                         </form>
@@ -84,12 +95,12 @@
                         <div class="mt-4">
                             <table class="table table-striped" id="tabla-articulos">
                                 <thead>
-                                    <tr>
-                                    <th></th>
+                                    <tr> 
                                         <th>Artículo</th>
                                         <th>Valor Unitario</th>
                                         <th>Cantidad</th>
-                                        <th>Sub-total</th>
+                                        <th  style="text-align: right;">Sub-total</th>
+                                        <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -97,28 +108,34 @@
 
                                 </tbody>
                             </table>
-                            <div class="row py-3">
-                                <div class="col-4 align-content-end">
-                                    <label for="modo-de-pago" class="col-sm-6 col-form-label">Modo de Pago:</label>
-                                    <div class="col-sm-6">
-                                        <select class="form-control" id="modo-de-pago">
-                                            <option value="">Seleccione un método</option>
-                                            <option value="1">Efectivo</option>
-                                            <option value="2">Tarjeta</option>
-                                            <option value="3">Transferencia</option>
+                            <div class="row md-12">
+                                <div class="form-group row">
+                                    <div class="col-sm-2">
+                                        <label for="modo-de-pago" class="col-sm-12 col-form-label">Modo de Pago:</label>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <select class="form-select col-sm-12" id="modo-de-pago">
+                                            <option value="">Seleccione...</option>
+                                            <option value="2">Efectivo</option>
+                                            <option value="3">Débito</option>
+                                            <option value="4">Crédito</option>
+                                            <option value="1">Pago No Especificado</option>
                                         </select>
+                                    </div>
+                                    <div class="col-sm-5">
+
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <div class="col-sm-12 text-end">
+                                            <h4>Total: $<span id="total-general">0.00</span></h4>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="row py-2 justify-content-end">
-                                <div class="col-2 align-content-end">
-                                    <h5>Total: $<span id="total-general">0.00</span>
-                                    </h5>
-                                </div>
-                            </div>
+                            <br>
                             <div class="row py-2">
                                 <div class="col-4 text-center">
-                                    <button onclick="fnBotonesventas('V')" type="button" class="btn btn-primary col-12">
+                                    <button onclick="fnBotonesGeneral('V')" type="button" class="btn btn-primary col-12">
                                     Volver
                                     </button>
                                 </div>
@@ -128,7 +145,7 @@
                                     </button>
                                 </div>
                                 <div class="col-4 justify-content-end align-content-end" id="botones-modificacion-cancelar">
-                                    <button onclick="fnBotonesventas('C')" type="button" class="btn btn-danger col-12">
+                                    <button onclick="fnBotonesGeneral('C')" type="button" class="btn btn-danger col-12">
                                         Cancelar
                                     </button>
                                 </div>
@@ -143,9 +160,8 @@
     <!-- Bootstrap JS -->
     <script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- JS Propios -->
-    <script src="../Js Propios/js-fechayhora.js"></script>
-    <!-- JS -->
     <script src="../Js/ventas/ventas.js"></script>
-    <script type="text/javascript" src="../Js/ventas/fnBotonesventas.js"></script>
+    <script type="text/javascript" src="../Js/fnBotonesGeneral.js"></script>
+    <script src="../js/fnFechayHora.js"></script>
 </body>
 </html>

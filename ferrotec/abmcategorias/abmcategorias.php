@@ -1,30 +1,17 @@
 <?php
-/*
-session_start();
-if(!$_SESSION['logged']){
-   header("Location: ../login.html");
-   exit;
-}elseif($_SESSION['usu_id_permisos'] <= 2){
-  header("Location: ../index/index.php");
-  exit;
-}
-*/
+  session_start();
+  if(!$_SESSION['logged']){
+    header("Location: ../login.php");
+  }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
-
   <head>
-  <script>
-    window.addEventListener('load', function() {
-        // Código que deseas ejecutar después de que la página se haya cargado completamente
-        fnHabilitarOpciones(0);
-    });
-  </script>
-
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta name="viewport" content="width=device-width", initial-scale="1.0">
-    <link rel="icon" type="image/x-icon" href="images/favicon.png">   <!-- Favicon descargado de icons8.com -->
+    <link rel="icon" type="image/x-icon" href="../images/favicon.png">   <!-- Favicon descargado de icons8.com -->
 
     <!-- Open Graph -->
     <meta property="og:title" content="Ferr O'Tec - Login" />
@@ -42,7 +29,7 @@ if(!$_SESSION['logged']){
   <body style="background-color: #f2f2f2">
     <div class="container align-items-center justify-content-center">
       <div class="row justify-content-center">
-        <div class="col-md-6 mt-5">
+        <div class="col-md-8 mt-5">
           <div class="card">
             <div class="card-header">
                 <h4 style="float: left;">
@@ -88,27 +75,27 @@ if(!$_SESSION['logged']){
                             </h6>
                         </div>
                         <div class="col-8 container-fluid justify-content-center align-content-center">
-                            <input class="col-12 form-control" minlength="8" maxlength="30" onchange="fnHabilitarPerfilcategoria('A',1)" id="padretipo-categoria-alta-input" placeholder="Ingrese el Tipo de la categoria" ></input>                            
+                            <input class="col-12 form-control" minlength="8" maxlength="30"  id="padretipo-categoria-alta-input" placeholder="Ingrese el Tipo" ></input>                            
                         </div>
                     </div>
                     <div class="row py-2" id="nombre-categoria-alta-fila">
                         <div class="col-4 justify-content-center align-content-center" id="nombre-categoria-alta-titulo">
                             <h6 id="nombre-categoria-label"> 
-                                Nombre De categoria:
+                                Nombre De Categoría:
                             </h6>
                         </div>
                         <div class="col-8 container-fluid justify-content-center align-content-center">
-                            <input class="col-12 form-control" minlength="8" maxlength="30" onchange="fnHabilitarPerfilcategoria('A',1)" id="nombre-categoria-alta-input" placeholder="Ingrese Nombre de categoria" ></input>                            
+                            <input class="col-12 form-control" minlength="8" maxlength="30"  id="nombre-categoria-alta-input" placeholder="Ingrese Nombre" ></input>                            
                         </div>
                     </div>
                     <div class="row py-2" id="descripcion-categoria-alta-fila">
                         <div class="col-4 justify-content-center align-content-center" id="descripcion-categoria-alta-titulo">
                             <h6 id="descripcion-categoria-label"> 
-                                Descripcion:
+                                Descripción:
                             </h6>
                         </div>
                         <div class="col-8 container-fluid justify-content-center align-content-center">
-                            <input class="col-12 form-control" minlength="8" maxlength="100" onchange="fnHabilitarPerfilcategoria('A',1)" id="descripcion-categoria-alta-input" placeholder="Ingrese descripción" ></input>                            
+                            <input class="col-12 form-control" minlength="8" maxlength="100"  id="descripcion-categoria-alta-input" placeholder="Ingrese Descripción" ></input>                            
                         </div>
                     </div>
                     <div class="row py-2" id="botones-alta-fila">
@@ -139,11 +126,11 @@ if(!$_SESSION['logged']){
                   <div class="row py-2" id="nombre-categoria-baja-fila">
                     <div class="col-4 justify-content-center align-content-center" id="nombre-categoria-titulo-baja">
                         <h6 id="nombre-categoria-label-baja"> 
-                            Nombre De categoria:
+                            Nombre De Categoría:
                         </h6>
                     </div>
                     <div class="col-8 container-fluid justify-content-center align-content-center">
-                            <input class="col-12 form-control" minlength="8" maxlength="30" onchange="fnHabilitarPerfilcategoria('B',1)" id="nombre-categoria-baja-input" placeholder="Ingrese Nombre" ></input>                            
+                            <input class="col-12 form-control" minlength="8" maxlength="30"  id="nombre-categoria-baja-input" placeholder="Ingrese Nombre" ></input>                            
                     </div>
                   </div>
                   <div class="row py-2" id="botones-baja-fila">
@@ -174,31 +161,31 @@ if(!$_SESSION['logged']){
                   <div class="row py-2" id="nombre-categoria-modificacion-fila">
                     <div class="col-4 justify-content-center align-content-center" id="nombre-categoria-titulo-baja">
                         <h6 id="nombre-categoria-label-baja"> 
-                            Categoria a modificar:
+                            Categoria a Modificar:
                         </h6>
                     </div>
                     <div class="col-8 container-fluid justify-content-center align-content-center">
-                            <input class="col-12 form-control" minlength="8" maxlength="30" onchange="fnHabilitarPerfilcategoria('M',1)" id="nombre-categoria-modificacion-input" placeholder="Ingrese Nombre de categoria" ></input>                            
+                            <input class="col-12 form-control" minlength="8" maxlength="30"  id="nombre-categoria-modificacion-input" placeholder="Ingrese Nombre" ></input>                            
                         </div>
                   </div>
                   <div class="row py-2" id="renombre-categoria-modificacion-fila">
                     <div class="col-4 justify-content-center align-content-center" id="renombre-categoria-titulo-baja">
                         <h6 id="renombre-categoria-label-baja"> 
-                            Renombrar categoria:
+                            Nuevo Nombre de la Categoria:
                         </h6>
                     </div>
                     <div class="col-8 container-fluid justify-content-center align-content-center">
-                            <input class="col-12 form-control" minlength="8" maxlength="30" onchange="fnHabilitarPerfilcategoria('M',1)" id="renombre-categoria-modificacion-input" placeholder="Ingrese el nuevo Nombre de la categoria" ></input>                            
+                            <input class="col-12 form-control" minlength="8" maxlength="30"  id="renombre-categoria-modificacion-input" placeholder="Ingrese el Nuevo Nombre" ></input>                            
                         </div>
                   </div>
                   <div class="row py-2" id="padretipo-categoria-modificacion-fila">
                     <div class="col-4 justify-content-center align-content-center" id="padretipo-categoria-titulo-baja">
                         <h6 id="padretipo-categoria-label-baja"> 
-                            Nuevo Tipo al que pertenece:
+                            Nuevo Tipo al que Pertenece:
                         </h6>
                     </div>
                     <div class="col-8 container-fluid justify-content-center align-content-center">
-                            <input class="col-12 form-control" minlength="8" maxlength="30" onchange="fnHabilitarPerfilcategoria('M',1)" id="padretipo-categoria-modificacion-input" placeholder="Ingrese Tipo al que pertenece" ></input>                            
+                            <input class="col-12 form-control" minlength="8" maxlength="30"  id="padretipo-categoria-modificacion-input" placeholder="Ingrese Tipo" ></input>                            
                         </div>
                   </div>
                   <div class="row py-2" id="descripcion-categoria-modificacion-fila">
@@ -208,7 +195,21 @@ if(!$_SESSION['logged']){
                       </h6>
                     </div>
                     <div class="col-8 container-fluid justify-content-center align-content-center">
-                      <input class="col-12 form-control" minlength="8" maxlength="100" onchange="fnHabilitarPerfilcategoria('M',1)" id="descripcion-categoria-modificacion-input" placeholder="Ingrese descripción" ></input>                            
+                      <input class="col-12 form-control" minlength="8" maxlength="100"  id="descripcion-categoria-modificacion-input" placeholder="Ingrese Descripción" ></input>                            
+                    </div>
+                  </div>
+                  <div class="row py-2" id="estado-categoria-modificacion-fila">
+                    <div class="col-4 justify-content-center align-content-center" id="estado-categoria-modificacion-select">
+                      <h6 id="estado-articulo-modificacion-label-baja"> 
+                        Activa:
+                      </h6>
+                    </div>
+                    <div class="col-8 container-fluid justify-content-center align-content-center">
+                      <select class="form-select" id="acciones-estado-modificacion-categoria">
+                        <option id="acciones-estado-modificacion-categoria" value=""> Seleccione... </option>
+                        <option id="acciones-estado-modificacion-categoria" value="1"> Si </option>
+                        <option id="acciones-estado-modificacion-categoria" value="0"> No </option>
+                      </select>                 
                     </div>
                   </div>
                   <div class="row py-2" id="botones-modificacion-fila">
@@ -240,17 +241,15 @@ if(!$_SESSION['logged']){
 
     <!-- Funciones Propias JS -->
     <script type="text/javascript" src="../js/abmcategorias/fnHabilitarOpciones.js"></script>
-    <script type="text/javascript" src="../js/abmcategorias/fnAltaHabilitarPerfilcategoria.js"></script>
-    <script type="text/javascript" src="../js/abmcategorias/fnModificacionHabilitarPerfilcategoria.js"></script>
-    <script type="text/javascript" src="../js/abmcategorias/fnAltaPerfilesDecategoria.js"></script>
-    <script type="text/javascript" src="../js/abmcategorias/fnModificacionPerfilesDecategoria.js"></script>
     <script type="text/javascript" src="../js/abmcategorias/fnSinCambios.js"></script>
-    <script type="text/javascript" src="../js/abmcategorias/fnHabilitarPerfilcategoria.js"></script>
-    <script type="text/javascript" src="../js/abmcategorias/fnPerfilesDecategoria.js"></script>
     <script type="text/javascript" src="../js/abmcategorias/fnCrearcategoria.js"></script>
     <script type="text/javascript" src="../js/abmcategorias/fnBajacategoria.js"></script>
     <script type="text/javascript" src="../js/abmcategorias/fnModificarcategoria.js"></script>
-    <!-- JS Propios -->
-    <script src="../Js Propios/js-fechayhora.js"></script>
+    <script>
+      window.addEventListener('load', function() {
+          fnHabilitarOpciones(0);
+      });
+    </script>
+    <script src="../js/fnFechayHora.js"></script>
   </body>
 </html>

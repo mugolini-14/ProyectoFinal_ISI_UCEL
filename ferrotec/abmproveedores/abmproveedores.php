@@ -1,30 +1,18 @@
 <?php
-/*
-session_start();
-if(!$_SESSION['logged']){
-   header("Location: ../login.html");
-   exit;
-}elseif($_SESSION['usu_id_permisos'] <= 2){
-  header("Location: ../index/index.php");
-  exit;
-}
-*/
+  session_start();
+  if(!$_SESSION['logged']){
+    header("Location: ../login.php");
+  }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
   <head>
-  <script>
-    window.addEventListener('load', function() {
-        // Código que deseas ejecutar después de que la página se haya cargado completamente
-        fnHabilitarOpciones(0);
-    });
-  </script>
-
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta name="viewport" content="width=device-width", initial-scale="1.0">
-    <link rel="icon" type="image/x-icon" href="images/favicon.png">   <!-- Favicon descargado de icons8.com -->
+    <link rel="icon" type="image/x-icon" href="../images/favicon.png">   <!-- Favicon descargado de icons8.com -->
 
     <!-- Open Graph -->
     <meta property="og:title" content="Ferr O'Tec - Login" />
@@ -88,7 +76,7 @@ if(!$_SESSION['logged']){
                             </h6>
                         </div>
                         <div class="col-8 container-fluid justify-content-center align-content-center">
-                            <input class="col-12 form-control" minlength="8" maxlength="30"  id="nombre-proveedor-alta-input" placeholder="Ingrese Nombre de Proveedor" required></input>                            
+                            <input class="col-12 form-control" minlength="8" maxlength="30"  id="nombre-proveedor-alta-input" placeholder="Ingrese Nombre" required></input>                            
                         </div>
                     </div>
                     <div class="row py-2" id="descripcion-proveedor-alta-fila">
@@ -98,7 +86,7 @@ if(!$_SESSION['logged']){
                             </h6>
                         </div>
                         <div class="col-8 container-fluid justify-content-center align-content-center">
-                            <input class="col-12 form-control" minlength="8" maxlength="100"  id="descripcion-proveedor-alta-input" placeholder="Ingrese una Descripción" required></input>                            
+                            <input class="col-12 form-control" minlength="8" maxlength="100"  id="descripcion-proveedor-alta-input" placeholder="Ingrese Descripción" required></input>                            
                         </div>
                     </div>
                     <div class="row py-2" id="direccion-proveedor-alta-fila">
@@ -244,11 +232,11 @@ if(!$_SESSION['logged']){
                   <div class="row py-2" id="renombre-proveedor-modificacion-fila">
                     <div class="col-4 justify-content-center align-content-center" id="renombre-proveedor-modificacion-titulo">
                         <h6 id="renombre-proveedor-label"> 
-                            Renombre Del Proveedor:
+                            Nuevo Nombre Del Proveedor:
                         </h6>
                     </div>
                     <div class="col-8 container-fluid justify-content-center align-content-center">
-                          <input class="col-12 form-control" minlength="8" maxlength="30" id="renombre-proveedor-modificacion-input" placeholder="Ingrese Nombre" required></input>                            
+                          <input class="col-12 form-control" minlength="8" maxlength="30" id="renombre-proveedor-modificacion-input" placeholder="Ingrese Nuevo Nombre" required></input>                            
                     </div>
                   </div>
                   <div class="row py-2" id="descripcion-proveedor-modificacion-fila">
@@ -258,7 +246,7 @@ if(!$_SESSION['logged']){
                         </h6>
                     </div>
                     <div class="col-8 container-fluid justify-content-center align-content-center">
-                        <input class="col-12 form-control" minlength="8" maxlength="30"  id="descripcion-proveedor-modificacion-input" placeholder="Ingrese una Descripción" ></input>                            
+                        <input class="col-12 form-control" minlength="8" maxlength="100"  id="descripcion-proveedor-modificacion-input" placeholder="Ingrese Descripción" ></input>                            
                     </div>
                   </div>
                   <div class="row py-2" id="direccion-proveedor-modificacion-fila">
@@ -331,6 +319,20 @@ if(!$_SESSION['logged']){
                         <input class="col-12 form-control" minlength="8" maxlength="30"  id="cuit-proveedor-modificacion-input" placeholder="Ingrese CUIT" ></input>                            
                     </div>
                   </div>
+                  <div class="row py-2" id="estado-proveedor-modificacion-fila">
+                    <div class="col-4 justify-content-center align-content-center" id="estado-proveedor-modificacion-select">
+                      <h6 id="estado-articulo-modificacion-label-baja"> 
+                        Activo:
+                      </h6>
+                    </div>
+                    <div class="col-8 container-fluid justify-content-center align-content-center">
+                      <select class="form-select" id="acciones-estado-modificacion-proveedor">
+                        <option id="acciones-estado-modificacion-proveedor" value=""> Seleccione... </option>
+                        <option id="acciones-estado-modificacion-proveedor" value="1"> Si </option>
+                        <option id="acciones-estado-modificacion-proveedor" value="0"> No </option>
+                      </select>                 
+                    </div>
+                  </div>
                   <div class="row py-2" id="botones-modificacion-fila">
                     <div class="col-4 justify-content-end align-content-end" id="botones-modificacion-volver">
                       <button onclick="fnSinCambios('M','V')"  type="button" class="btn btn-primary col-12">
@@ -364,8 +366,11 @@ if(!$_SESSION['logged']){
     <script type="text/javascript" src=../js/abmproveedores/fnCrearProveedor.js> </script>
     <script type="text/javascript" src=../js/abmproveedores/fnBajaProveedor.js> </script>
     <script type="text/javascript" src=../js/abmproveedores/fnModificarProveedor.js> </script>
-
-    <!-- JS Propios -->
-    <script src="../Js Propios/js-fechayhora.js"></script>
+    <script>
+      window.addEventListener('load', function() {
+          fnHabilitarOpciones(0);
+      });
+    </script>
+    <script src="../js/fnFechayHora.js"></script>
   </body>
 </html>

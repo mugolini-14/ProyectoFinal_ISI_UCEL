@@ -1,5 +1,8 @@
 <?php
-
+/*
+    PHP:            registrar_venta.php
+    Descripción:    Inserta de la base de datos un registro de venta
+*/
 // Conexión a la base de datos
 require('../conectar/conectar.php');
 // Iniciar sesión si no está iniciada
@@ -15,10 +18,15 @@ if (isset($_GET['articulos']) && isset($_GET['totalGeneral']))  {
     if ($articulos !== null) {
 
         // Insertar en la tabla ventas antes del foreach
-        $stmtVentas = $conexion->prepare("INSERT INTO ventas (ventas_id_usuario, ventas_id_modopago, ventas_monto, ventas_suc) VALUES (?, ?, ?, ?)");
-        $ventas_suc = 1; // De momento solamente sucursal 1
+        $stmtVentas = $conexion->prepare("INSERT INTO historial_ventas (histventas_id_usuario, 
+                                                                        histventas_id_modopago,
+                                                                        histventas_monto, 
+                                                                        histventas_suc) 
+                                                                VALUES (?, ?, ?, ?)");
+        
+        $histventas_suc = 1; // De momento solamente sucursal 1
 
-        $stmtVentas->bind_param('iiii', $usuarioLogueado, $modoDePago, $totalGeneral, $ventas_suc);
+        $stmtVentas->bind_param('iidi', $usuarioLogueado, $modoDePago, $totalGeneral, $histventas_suc);
         
         if ($stmtVentas->execute()) {
             // Consultar el id de la venta realizada
@@ -28,33 +36,47 @@ if (isset($_GET['articulos']) && isset($_GET['totalGeneral']))  {
                 $nombreArticulo = $articulo['articulo'];
                 $id_articulo = (int)$articulo['id_article'];
                 $cantidad = (int)$articulo['cantidad'];
-                $total = (int)$articulo['total'];
+                $total = floatval($articulo['total']);
     
                 // Buscar y actualizar la cantidad en la base de datos
-                $stmt = $conexion->prepare("UPDATE articulos SET art_stock = art_stock - ? WHERE art_nombre = ?");
-                $stmt->bind_param('is', $cantidad, $nombreArticulo);
+                $stmt = $conexion->prepare("UPDATE articulos 
+                                            SET art_stock = art_stock - ? 
+                                            WHERE id = ?");
+
+                $stmt->bind_param('ii', $cantidad, $id_articulo);
     
                 if ($stmt->execute()) {
-                    // Buscar y actualizar la cantidad en la base de datos
-                    $stmtDetVentas = $conexion->prepare("INSERT INTO ventas_detalle (vendet_id_venta, vendet_id_art, vendet_nom_art, vendet_cantidad, vendet_monto) VALUES (?, ?, ?, ?, ?)");
-                    $stmtDetVentas->bind_param('iisii', $id_venta, $id_articulo, $nombreArticulo, $cantidad, $total);
+                    // Insertar la venta detalle
+                    $stmtDetVentas = $conexion->prepare("INSERT INTO historial_ventas_detalle (histvendet_id_venta,
+                                                                                              histvendet_id_art, 
+                                                                                              histvendet_cantidad, 
+                                                                                              histvendet_monto) 
+                                                                                       VALUES (?, ?, ?, ?)");
+
+                    $stmtDetVentas->bind_param('iiid', $id_venta, $id_articulo, $cantidad, $total);
+
         
                     if ($stmtDetVentas->execute()) {
-                        echo "Cantidad actualizada para el artículo: $nombreArticulo\n";
-                    } else {
+                        echo "Venta generada correctamente.\n";
+                    } 
+                    else {
                         echo "Error al actualizar la cantidad para el artículo: $nombreArticulo\n";
                     }
-                } else {
+                }
+                else {
                     echo "Error al actualizar la cantidad para el artículo: $nombreArticulo\n";
                 }
             }
-        } else {
-            echo "Error al registrar la venta total: $totalGeneral\n";
+        } 
+        else {
+            echo "Error al registrar la venta: " . $conexion->error;
         }       
-    } else {
+    } 
+    else {
         echo "Los datos de artículos no están en el formato esperado.";
     }
-} else {
+} 
+else {
     echo "No se recibieron datos de artículos.";
 }
 ?>

@@ -1,4 +1,4 @@
-//  fnBotonesventas
+//  Función:      fnBotonesventas(tipoAccion)
 //  Descripción:  Función de los Botones Cancelar y Volver de ventas
 //                Verifica si hay valores ingresados / seleccionados y pregunta según la cadena recibida 
 //  Parámetros:

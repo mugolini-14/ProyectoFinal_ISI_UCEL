@@ -1,30 +1,18 @@
 <?php
-/*
-session_start();
-if(!$_SESSION['logged']){
-   header("Location: ../login.html");
-   exit;
-}elseif($_SESSION['usu_id_permisos'] <= 2){
-  header("Location: ../index/index.php");
-  exit;
-}
-*/
+  session_start();
+  if(!$_SESSION['logged']){
+    header("Location: ../login.php");
+  }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
   <head>
-  <script>
-    window.addEventListener('load', function() {
-        // Código que deseas ejecutar después de que la página se haya cargado completamente
-        fnHabilitarOpciones(0);
-    });
-  </script>
-
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta name="viewport" content="width=device-width", initial-scale="1.0">
-    <link rel="icon" type="image/x-icon" href="images/favicon.png">   <!-- Favicon descargado de icons8.com -->
+    <link rel="icon" type="image/x-icon" href="../images/favicon.png">   <!-- Favicon descargado de icons8.com -->
 
     <!-- Open Graph -->
     <meta property="og:title" content="Ferr O'Tec - Login" />
@@ -42,7 +30,7 @@ if(!$_SESSION['logged']){
   <body style="background-color: #f2f2f2">
     <div class="container align-items-center justify-content-center">
       <div class="row justify-content-center">
-        <div class="col-md-6 mt-5">
+        <div class="col-md-8 mt-5">
           <div class="card">
             <div class="card-header">
                 <h4 style="float: left;">
@@ -84,21 +72,21 @@ if(!$_SESSION['logged']){
                     <div class="row py-2" id="nombre-tipo-alta-fila">
                         <div class="col-4 justify-content-center align-content-center" id="nombre-tipo-alta-titulo">
                             <h6 id="nombre-tipo-label"> 
-                                Nombre De tipo:
+                                Nombre Del Tipo:
                             </h6>
                         </div>
                         <div class="col-8 container-fluid justify-content-center align-content-center">
-                            <input class="col-12 form-control" minlength="8" maxlength="30" onchange="fnHabilitarPerfiltipo('A',1)" id="nombre-tipo-alta-input" placeholder="Ingrese Nombre de tipo" ></input>                            
+                            <input class="col-12 form-control" minlength="8" maxlength="30"  id="nombre-tipo-alta-input" placeholder="Ingrese Nombre" ></input>                            
                         </div>
                     </div>
                     <div class="row py-2" id="descripcion-tipo-alta-fila">
                         <div class="col-4 justify-content-center align-content-center" id="descripcion-tipo-alta-titulo">
                             <h6 id="descripcion-tipo-label"> 
-                                Descripcion:
+                                Descripción:
                             </h6>
                         </div>
                         <div class="col-8 container-fluid justify-content-center align-content-center">
-                            <input class="col-12 form-control" minlength="8" maxlength="100" onchange="fnHabilitarPerfiltipo('A',1)" id="descripcion-tipo-alta-input" placeholder="Ingrese descripción" ></input>                            
+                            <input class="col-12 form-control" minlength="8" maxlength="100"  id="descripcion-tipo-alta-input" placeholder="Ingrese Descripción" ></input>                            
                         </div>
                     </div>
                     <div class="row py-2" id="botones-alta-fila">
@@ -129,11 +117,11 @@ if(!$_SESSION['logged']){
                   <div class="row py-2" id="nombre-tipo-baja-fila">
                     <div class="col-4 justify-content-center align-content-center" id="nombre-tipo-titulo-baja">
                         <h6 id="nombre-tipo-label-baja"> 
-                            Nombre De tipo:
+                            Nombre Del Tipo:
                         </h6>
                     </div>
                     <div class="col-8 container-fluid justify-content-center align-content-center">
-                            <input class="col-12 form-control" minlength="8" maxlength="30" onchange="fnHabilitarPerfiltipo('B',1)" id="nombre-tipo-baja-input" placeholder="Ingrese Nombre" ></input>                            
+                            <input class="col-12 form-control" minlength="8" maxlength="30"  id="nombre-tipo-baja-input" placeholder="Ingrese Nombre" ></input>                            
                     </div>
                   </div>
                   <div class="row py-2" id="botones-baja-fila">
@@ -144,7 +132,7 @@ if(!$_SESSION['logged']){
                       </div>
                       <div class="col-4 justify-content-end align-content-end" id="botones-baja-dardebaja">
                         <button onclick="fnBajatipo()" type="button" class="btn btn-success col-12">
-                          Eliminar
+                          Dar de Baja
                         </button>
                       </div>
                       <div class="col-4 justify-content-end align-content-end" id="botones-baja-cancelar">
@@ -164,21 +152,21 @@ if(!$_SESSION['logged']){
                   <div class="row py-2" id="nombre-tipo-modificacion-fila">
                     <div class="col-4 justify-content-center align-content-center" id="nombre-tipo-titulo-baja">
                         <h6 id="nombre-tipo-label-baja"> 
-                            Nombre De tipo:
+                            Nombre Del Tipo:
                         </h6>
                     </div>
                     <div class="col-8 container-fluid justify-content-center align-content-center">
-                            <input class="col-12 form-control" minlength="8" maxlength="30" onchange="fnHabilitarPerfiltipo('M',1)" id="nombre-tipo-modificacion-input" placeholder="Ingrese Nombre de tipo" ></input>                            
+                            <input class="col-12 form-control" minlength="8" maxlength="30"  id="nombre-tipo-modificacion-input" placeholder="Ingrese Nombre" ></input>                            
                         </div>
                   </div>
                   <div class="row py-2" id="renombre-tipo-modificacion-fila">
                     <div class="col-4 justify-content-center align-content-center" id="renombre-tipo-titulo-baja">
                         <h6 id="renombre-tipo-label-baja"> 
-                            Renombrar Nombre De tipo:
+                            Nuevo Nombre Del Tipo:
                         </h6>
                     </div>
                     <div class="col-8 container-fluid justify-content-center align-content-center">
-                            <input class="col-12 form-control" minlength="8" maxlength="30" onchange="fnHabilitarPerfiltipo('M',1)" id="renombre-tipo-modificacion-input" placeholder="Ingrese el nuevo Nombre de tipo" ></input>                            
+                            <input class="col-12 form-control" minlength="8" maxlength="30"  id="renombre-tipo-modificacion-input" placeholder="Ingrese el Nuevo Nombre" ></input>                            
                         </div>
                   </div>
                   <div class="row py-2" id="descripcion-tipo-modificacion-fila">
@@ -188,7 +176,21 @@ if(!$_SESSION['logged']){
                       </h6>
                     </div>
                     <div class="col-8 container-fluid justify-content-center align-content-center">
-                      <input class="col-12 form-control" minlength="8" maxlength="100" onchange="fnHabilitarPerfiltipo('M',1)" id="descripcion-tipo-modificacion-input" placeholder="Ingrese descripción" ></input>                            
+                      <input class="col-12 form-control" minlength="8" maxlength="100"  id="descripcion-tipo-modificacion-input" placeholder="Ingrese Descripción" ></input>                            
+                    </div>
+                  </div>
+                  <div class="row py-2" id="estado-tipo-modificacion-fila">
+                    <div class="col-4 justify-content-center align-content-center" id="estado-tipo-modificacion-select">
+                      <h6 id="estado-articulo-modificacion-label-baja"> 
+                        Activo:
+                      </h6>
+                    </div>
+                    <div class="col-8 container-fluid justify-content-center align-content-center">
+                      <select class="form-select" id="acciones-estado-modificacion-tipo">
+                        <option id="acciones-estado-modificacion-tipo" value=""> Seleccione... </option>
+                        <option id="acciones-estado-modificacion-tipo" value="1"> Si </option>
+                        <option id="acciones-estado-modificacion-tipo" value="0"> No </option>
+                      </select>                 
                     </div>
                   </div>
                   <div class="row py-2" id="botones-modificacion-fila">
@@ -220,17 +222,16 @@ if(!$_SESSION['logged']){
 
     <!-- Funciones Propias JS -->
     <script type="text/javascript" src="../js/abmtipos/fnHabilitarOpciones.js"></script>
-    <script type="text/javascript" src="../js/abmtipos/fnAltaHabilitarPerfiltipo.js"></script>
-    <script type="text/javascript" src="../js/abmtipos/fnModificacionHabilitarPerfiltipo.js"></script>
-    <script type="text/javascript" src="../js/abmtipos/fnAltaPerfilesDetipo.js"></script>
-    <script type="text/javascript" src="../js/abmtipos/fnModificacionPerfilesDetipo.js"></script>
     <script type="text/javascript" src="../js/abmtipos/fnSinCambios.js"></script>
-    <script type="text/javascript" src="../js/abmtipos/fnHabilitarPerfiltipo.js"></script>
-    <script type="text/javascript" src="../js/abmtipos/fnPerfilesDetipo.js"></script>
     <script type="text/javascript" src="../js/abmtipos/fnCreartipo.js"></script>
     <script type="text/javascript" src="../js/abmtipos/fnBajatipo.js"></script>
     <script type="text/javascript" src="../js/abmtipos/fnModificartipo.js"></script>
-    <!-- JS Propios -->
-    <script src="../Js Propios/js-fechayhora.js"></script>
+    <script>
+      window.addEventListener('load', function() {
+          // Código que deseas ejecutar después de que la página se haya cargado completamente
+          fnHabilitarOpciones(0);
+      });
+    </script>
+    <script src="../js/fnFechayHora.js"></script>
   </body>
 </html>

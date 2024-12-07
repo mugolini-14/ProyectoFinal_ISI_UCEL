@@ -1,5 +1,8 @@
-// fnHabilitarOpciones
-// Descripción: Función que habilita los diferentes formularios según la acción a realizar
+//  Función: fnHabilitarOpciones(codigoaccion)
+//  Descripción: Función que habilita los diferentes formularios según la acción a realizar
+//  Parámetros:
+//  - codigoaccion: número entero que determina los elementos a mostrar según la acción seleccionada
+//
 
 function fnHabilitarOpciones(codigoaccion){ 
     if(codigoaccion==0){ // Inicialización / Seleccione
@@ -32,6 +35,7 @@ function fnHabilitarOpciones(codigoaccion){
         document.getElementById("email-proveedor-modificacion-fila").style.display = "none";
         document.getElementById("cuit-proveedor-modificacion-fila").style.display = "none";
         document.getElementById("botones-modificacion-fila").style.display = "none";
+        document.getElementById("estado-proveedor-modificacion-fila").style.display = "none";
 
         // Boton Principal Volver
         document.getElementById("botones-principal-volver-fila").style.display = '';
@@ -67,6 +71,7 @@ function fnHabilitarOpciones(codigoaccion){
         document.getElementById("email-proveedor-modificacion-fila").style.display = "none";
         document.getElementById("cuit-proveedor-modificacion-fila").style.display = "none";
         document.getElementById("botones-modificacion-fila").style.display = "none";
+        document.getElementById("estado-proveedor-modificacion-fila").style.display = "none";
 
         // Boton Principal Volver
         document.getElementById("botones-principal-volver-fila").style.display = "none";
@@ -102,6 +107,7 @@ function fnHabilitarOpciones(codigoaccion){
         document.getElementById("email-proveedor-modificacion-fila").style.display = "none";
         document.getElementById("cuit-proveedor-modificacion-fila").style.display = "none";
         document.getElementById("botones-modificacion-fila").style.display = "none";
+        document.getElementById("estado-proveedor-modificacion-fila").style.display = "none";
 
         // Boton Principal Volver
         document.getElementById("botones-principal-volver-fila").style.display = "none";
@@ -137,6 +143,7 @@ function fnHabilitarOpciones(codigoaccion){
         document.getElementById("email-proveedor-modificacion-fila").style.display = '';
         document.getElementById("cuit-proveedor-modificacion-fila").style.display = '';
         document.getElementById("botones-modificacion-fila").style.display = '';
+        document.getElementById("estado-proveedor-modificacion-fila").style.display = '';
 
         // Boton Principal Volver
         document.getElementById("botones-principal-volver-fila").style.display = "none";

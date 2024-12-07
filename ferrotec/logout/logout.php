@@ -1,4 +1,9 @@
 <?php
+/*
+    PHP:            logout.php
+    Descripción:    Cierra y libera la sesión del Usuario en el Sistema
+                    Inserta un registro en el Historial de Login indicando el cierre de sesión del Usuario
+*/
 require('../conectar/conectar.php');
 session_start(); // Para session_unset() y session_destroy() es necesario comenzar la session
 $id = $_SESSION['id'];

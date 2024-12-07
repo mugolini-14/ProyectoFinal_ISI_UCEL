@@ -47,7 +47,7 @@
                 </div>
                 <br>
                 <div class="form-group">
-                  <button style="float: left;" type="submit" class="btn btn-primary">
+                  <button style="float: left;" type="submit" class="btn btn-primary col-4">
                       Ingresar
                   </button>
                 </div>
@@ -57,7 +57,7 @@
                   <input type="text" class="form-control" id="usuario-restablecer" name="usuario-restablecer" placeholder="usuario-restablecer" hidden>
                 </div>
                 <div class="form-group">
-                  <button style="float: right;" type="submit" class="btn btn-primary">
+                  <button style="float: right;" type="submit" class="btn btn-primary col-4">
                       Restablecer Contraseña
                   </button>
                 </div>
@@ -71,7 +71,7 @@
     <!-- Bootstrap JS -->
     <script src="bootstrap/js/bootstrap.min.js"></script>
     <!-- JS Propios -->
-    <script src="Js Propios/js-fechayhora.js"></script>
+    <script src="js/fnFechayHora.js"></script>
     <script>
          document.getElementById('usuario').addEventListener('click', function(){
          document.getElementById('usuario-restablecer').value = this.value;

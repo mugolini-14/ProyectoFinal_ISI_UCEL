@@ -10,6 +10,7 @@ session_start();
 $id = $_SESSION['id'];
 $usu_email = $_SESSION['usu_email'];
 $usuario = $_SESSION['usu_username'];
+$codigoAleatorioGenerado = $_SESSION['numeroAleatorio'];
 
 function mostrarMailOculto($correo){    // Función que oculta caracteres del correo para dar indicio del mail enviado
     list($nombre,$dominio) = explode('@',$correo);        // Separa el dominio del nombre del correo
@@ -26,6 +27,7 @@ function mostrarMailOculto($correo){    // Función que oculta caracteres del co
     $correoOculto = $nombreoculto . '@' . $dominio;
     return $correoOculto;
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -33,12 +35,12 @@ function mostrarMailOculto($correo){    // Función que oculta caracteres del co
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta name="viewport" content="width=device-width", initial-scale="1.0">
-    <link rel="icon" type="image/x-icon" href="images/favicon.png">   <!-- Favicon descargado de icons8.com -->
+    <link rel="icon" type="image/x-icon" href="../images/favicon.png">   <!-- Favicon descargado de icons8.com -->
 
     <!-- Open Graph -->
     <meta property="og:title" content="Ferr O'Tec - Login" />
     <meta property="og:type" content="article" />
-    <meta property="og:url" content="login.html" />
+    <meta property="og:url" content="login.php" />
     <meta property="og:image" content="" />
     <meta property="og:description" content="Login" />
     <title>
@@ -64,47 +66,95 @@ function mostrarMailOculto($correo){    // Función que oculta caracteres del co
                 </h4>
             </div>
             <div class="card-body">
-              <form id="restablecer-contrasena-form">
-                <div class="form-group">
-                  Se le envió un correo con un código de Reestablecimiento de Contraseña al mail: 
-                  <?php $mail_oculto = mostrarMailOculto($usu_email); 
-                  echo "<b>" . $mail_oculto . "</b>";?>
-                </div>
-                <br>
-                <div class="form-group">
-                  <input type="text" class="form-control" id="codigo-aleatorio" name="codigo-aleatorio" placeholder="Introduzca el código aleatorio" >
-                </div>
-                <br>
-                <div class="form-group">
-                  <input type="password" class="form-control" id="contrasena" name="contrasena" placeholder="Nueva Contraseña">
-                </div>
-                <br>
-                <div class="form-group">
-                  <input type="password" class="form-control" id="repetir-contrasena" name="repetir-contrasena" placeholder="Repetir Contraseña">
-                </div>
-                <br>
-                <div class="form-group">
-                  <button onclick="fnValidarDatos()" type="submit" class="btn btn-primary">
-                      Enviar
-                  </button>
-                  <div style="float:right;" id="usuario-restablecer" class="form-group">
-                    <?php 
-                      echo "<i> Usuario: " . $usuario . "</i>";
-                    ?>
-                  </div>
-                </div>
+            <form id="restablecer-contrasena-form">
+              <table>
+                <tr>
+                  <td colspan="3">
+                    <div class="form-group col-12">
+                      Se le envió un correo con un código de Reestablecimiento de Contraseña al mail: 
+                      <?php $mail_oculto = mostrarMailOculto($usu_email); 
+                        echo "<b>" . $mail_oculto . "</b>";
+                      ?>
+                    </div>
+                  </td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <td rowspan="1" class="col-6" >
+                    <div class="form-group col-12">
+                      <input type="text" class="form-control col-12" id="codigo-aleatorio" name="codigo-aleatorio" placeholder="Introduzca el Código" >
+                      <br>
+                      <input type="password" class="form-control col-12" id="contrasena" name="contrasena" placeholder="Nueva Contraseña">
+                      <br>
+                      <input type="password" class="form-control col-12" id="repetir-contrasena" name="repetir-contrasena" placeholder="Repetir Contraseña">
+                      <br>
+                    </div>
+                  </td>
+                  <td class="col-1">
+
+                  </td>
+                  <td rowspan="1" class="col-5">
+                    <div class="form-group col-12">
+                      <label class="form-col-label"> La contraseña debe cumplir con las siguientes políticas: </label>
+                      <ul>
+                        <li>
+                          Debe tener entre 8 y 12 caracteres de largo
+                        </li>
+                        <li>
+                          Debe tener al menos una mayúscula
+                        </li>
+                        <li>
+                          Debe tener al menos una minúscula
+                        </li>
+                        <li>
+                          Debe tener al menos un número
+                        </li>
+                        <li>
+                          Debe tener al menos un símbolo
+                        </li>
+                      </ul>
+                    </div>
+                  </td>
+                </tr>
+              </table>
               </form>
+              <div class="form-group">
+                  <div class="form-group row">
+                    <div class="col-sm-4 d-flex align-items-center" style="float:left;" id="usuario-restablecer" class="form-group">
+                      <label class="form-col-label"> 
+                        <?php 
+                          echo "<i> Usuario: " . $usuario . "</i>";
+                        ?>
+                      </label>
+                    </div>
+                    <div class="col-sm-4">
+                      <button class="btn btn-primary col-12" onclick="fnVolverRestablecerContrasena()" type="submit">
+                          Volver
+                      </button>
+                    </div>
+                    <div class="col-sm-4">
+                      <button class="btn btn-success col-12" onclick="fnValidarDatos(codigoAleatorioGenerado)" type="submit">
+                          Enviar
+                      </button>
+                    </div>
+                  </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-
+  
     <!-- Bootstrap JS -->
     <script src="../bootstrap/js/bootstrap.min.js"></script>
     <!-- JS Propios -->
-    <script src="../Js Propios/js-fechayhora.js"></script>
     <script src="../js/restablecercontrasena/fnValidarDatos.js"></script>
+    <script src="../js/restablecercontrasena/fnVolverRestablecerContrasena.js"></script>
+    <script>
+      var codigoAleatorioGenerado = "<?php echo $codigoAleatorioGenerado; ?>";
+    </script>
+    <script src="../js/fnFechayHora.js"></script>
   </body>
 
 </html>

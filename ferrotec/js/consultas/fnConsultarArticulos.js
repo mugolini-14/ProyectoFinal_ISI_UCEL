@@ -38,6 +38,19 @@ function fnConsultarArticulos() {
                         celdaDescripcion.innerHTML = articulo.descripcion || 'No disponible';
                         celdaPrecioUnitario.innerHTML = articulo.precio || 'No disponible';
                         celdaStock.innerHTML = articulo.stock || 'No disponible';
+
+                        // Setea los ids de cada celda para el reporte
+                        celdaArticulo.setAttribute('id','articulo-nombre');
+                        celdaMarca.setAttribute('id','articulo-marca');
+                        celdaDescripcion.setAttribute('id','articulo-descripcion');
+                        celdaPrecioUnitario.setAttribute('id','articulo-precio');
+                        celdaStock.setAttribute('id','articulo-stock');
+
+                        celdaArticulo.classList.add('articulo-nombre');
+                        celdaMarca.classList.add('articulo-marca');
+                        celdaDescripcion.classList.add('articulo-descripcion');
+                        celdaPrecioUnitario.classList.add('articulo-precio');
+                        celdaStock.classList.add('articulo-stock');
                     });
                 } else if (response.status === 'success' && response.message.includes("No hay artículos")) {        // No hay artículos a Mostrar
                     var nuevaFila = tablaResultados.insertRow(-1);
@@ -45,6 +58,7 @@ function fnConsultarArticulos() {
                     celdaSinArticulos.textContent = response.message || 'No disponible';
                     celdaSinArticulos.colSpan = 5;                                                                  // Combinar celdas
                     celdaSinArticulos.style.textAlign = "center";                                                   // Alinear texto al Centro
+                    celdaSinArticulos.setAttribute('id','articulo-no-encontrado');
                 } else {                                                                    // Error en los datos
                     var nuevaFila = tablaResultados.insertRow(-1);
                     var celdaError = nuevaFila.insertCell(0);

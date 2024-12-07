@@ -1,4 +1,4 @@
-//  fnSinCambios
+//  Función: fnSinCambios(tipoFormulario,tipoAccion)
 //  Descripción:  Función de los Botones Cancelar y Volver del ABM de tipos
 //                Verifica si hay valores ingresados / seleccionados y pregunta según la cadena recibida 
 //  Parámetros:
@@ -8,11 +8,12 @@
 function fnSinCambios(tipoFormulario,tipoAccion){
 
   if(tipoFormulario == 'A'){
-    if( document.getElementById("nombre-tipo-alta-input").value != '' ||
-        document.getElementById("descripcion-tipo-alta-input").value != ''){ 
+    if( document.getElementById("padretipo-categoria-alta-input").value != '' ||
+        document.getElementById("nombre-categoria-alta-input").value != '' ||
+        document.getElementById("descripcion-categoria-alta-input").value != ''){ 
           if(tipoAccion == 'V'){
               if (confirm("¿Desea Salir Sin Guardar Cambios?")) {
-                location="../../index/index.php";
+                location="../index/index.php";
               } 
               else {
                 // Hacer Nada
@@ -20,8 +21,10 @@ function fnSinCambios(tipoFormulario,tipoAccion){
             }
           if(tipoAccion == 'C'){
             if (confirm("¿Desea Cancelar la Operación?")) {
-              document.getElementById("nombre-tipo-alta-input").value = '';
-              document.getElementById("descripcion-tipo-alta-input").value = '';
+              document.getElementById("padretipo-categoria-alta-input").value = '';
+              document.getElementById("nombre-categoria-alta-input").value = '';
+              document.getElementById("descripcion-categoria-alta-input").value = '';
+              document.getElementById("acciones-estado-modificacion-categoria").value = '';
             } 
             else { 
               // Hacer nada
@@ -29,8 +32,9 @@ function fnSinCambios(tipoFormulario,tipoAccion){
           } 
         }
     else{
-      if( document.getElementById("nombre-tipo-alta-input").value == '' ||
-          document.getElementById("descripcion-tipo-alta-input").value == '' ){
+      if( document.getElementById("padretipo-categoria-alta-input").value == '' &&
+          document.getElementById("nombre-categoria-alta-input").value == '' &&
+          document.getElementById("descripcion-categoria-alta-input").value == ''){
           if(tipoAccion == 'V'){
               location="../index/index.php";
            } 
@@ -48,7 +52,7 @@ function fnSinCambios(tipoFormulario,tipoAccion){
   }
 
   if(tipoFormulario == 'B'){
-    if( document.getElementById("nombre-tipo-baja-input").value != ''){ 
+    if( document.getElementById("nombre-categoria-baja-input").value != ''){ 
       if(tipoAccion == 'V'){
         if (confirm("¿Desea Salir Sin Guardar Cambios?")) {
           location="../index/index.php";
@@ -59,7 +63,7 @@ function fnSinCambios(tipoFormulario,tipoAccion){
       }
       if(tipoAccion == 'C'){
         if (confirm("¿Desea Cancelar?")) {
-          document.getElementById("nombre-tipo-baja-input").value = '';
+          document.getElementById("nombre-categoria-baja-input").value = '';
         } 
         else {
           // Hacer nada
@@ -67,7 +71,7 @@ function fnSinCambios(tipoFormulario,tipoAccion){
       }
     }
     else{
-      if( document.getElementById("nombre-tipo-baja-input").value == ''){ 
+      if( document.getElementById("nombre-categoria-baja-input").value == ''){ 
         if(tipoAccion == 'V'){
           location="../index/index.php";
         }
@@ -85,9 +89,11 @@ function fnSinCambios(tipoFormulario,tipoAccion){
   }
 
   if(tipoFormulario == 'M'){
-    if( document.getElementById("nombre-tipo-modificacion-input").value != '' ||
-        document.getElementById("renombre-tipo-modificacion-input").value != '' ||
-        document.getElementById("descripcion-tipo-modificacion-input").value != ''){ 
+    if( document.getElementById("padretipo-categoria-modificacion-input").value != '' ||
+        document.getElementById("nombre-categoria-modificacion-input").value != '' ||
+        document.getElementById("renombre-categoria-modificacion-input").value != '' ||
+        document.getElementById("descripcion-categoria-modificacion-input").value != '' ||
+        document.getElementById("acciones-estado-modificacion-categoria").value != ''){ 
           if(tipoAccion == 'V'){
             if (confirm("¿Desea Salir Sin Guardar Cambios?")) {
               location="../index/index.php";
@@ -98,9 +104,11 @@ function fnSinCambios(tipoFormulario,tipoAccion){
           }
           if(tipoAccion == 'C'){
             if (confirm("¿Desea Cancelar la Operación?")) {
-              document.getElementById("nombre-tipo-modificacion-input").value = '';
-              document.getElementById("renombre-tipo-modificacion-input").value = '';
-              document.getElementById("descripcion-tipo-modificacion-input").value = '';
+              document.getElementById("padretipo-categoria-modificacion-input").value = '';
+              document.getElementById("nombre-categoria-modificacion-input").value = '';
+              document.getElementById("renombre-categoria-modificacion-input").value = '';
+              document.getElementById("descripcion-categoria-modificacion-input").value = '';
+              document.getElementById("acciones-estado-modificacion-categoria").value = '';
             } 
             else {
               // Hacer nada
@@ -108,9 +116,11 @@ function fnSinCambios(tipoFormulario,tipoAccion){
           }
     }
     else{
-      if( document.getElementById("nombre-tipo-modificacion-input").value == '' ||
-          document.getElementById("renombre-tipo-modificacion-input").value == '' ||
-          document.getElementById("descripcion-tipo-modificacion-input").value == ''){ 
+      if( document.getElementById("padretipo-categoria-modificacion-input").value == '' &&
+          document.getElementById("nombre-categoria-modificacion-input").value == '' &&
+          document.getElementById("renombre-categoria-modificacion-input").value == '' &&
+          document.getElementById("descripcion-categoria-modificacion-input").value == '' &&
+          document.getElementById("acciones-estado-modificacion-categoria").value == ''){ 
           if(tipoAccion == 'V'){
             location="../index/index.php";
           }

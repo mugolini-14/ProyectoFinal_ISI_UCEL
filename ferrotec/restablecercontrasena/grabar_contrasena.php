@@ -1,4 +1,8 @@
 <?php
+/*
+    PHP:            grabar_contrasena.php
+    Descripción:    Actualiza la nueva contraseña escrita del Usuario
+*/
     // Conexión a la base de datos MySQL
     require('../conectar/conectar.php');
 

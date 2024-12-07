@@ -1,15 +1,20 @@
 //  fnValidarDatos
 //  Descripción: Función que valida los datos suministrados en el Restablecer Contraseña
 //  A partir de parámetros de entrada
-//      - Valida Longitud y Números de Código Aleatorio
+//      - Valida que el Código Aleatorio 
 //      - Valida Repetición de Contraseñas
 //      - Valida Longitud de Contraseñas
 //      - Valida Mayúsculas, Minúsculas, Números y Caracteres Especiales en la Contraseña
 //  Si pasa la validación, envia los datos a la base para guardar la contraseña en el usuario a restablecer
+//  Parámetros:
+//  - codigoAleatorioGenerado: El código generado en login_restablecer.php para validar si es correcto
+//
 
-function fnValidarDatos(){
+function fnValidarDatos(codigoAleatorioGenerado){
 
-    // Funciones auxilares de Control
+    //  Funciones auxilares de Control
+    //  Descripción: Funciones que validan las entradas del usuario según diferentes políticas aplicadas
+    //
 
     function fnValidarMayusculas(cadenacontrasena){
         var regex = /[A-Z]/;
@@ -22,45 +27,90 @@ function fnValidarDatos(){
     }
 
     function fnValidarNumeros(cadena){
-        return isNaN(parseFloat(cadena)) && isFinite(cadena);
+        const numero = Number(cadena);
+        return Number.isInteger(numero);
     }
 
     function fnValidarNumerosContrasena(cadena){
-        return isNaN(parseFloat(cadena)) && isFinite(cadena);
-    }
-
-    function fnValidarCaracteresEspeciales(cadena){
-        var regex = /[`!@#$%^&*()_\-+=\[\]{};':"\\|,.<>\/?~ ]/;
+        const regex = /\d/; 
         return regex.test(cadena);
     }
 
-    var codigoaleatorio = document.getElementById("codigo-aleatorio").value;
-    var contrasena = document.getElementById("contrasena").value;
-    var repetircontrasena = document.getElementById("repetir-contrasena").value;
+    function fnValidarCaracteresEspeciales(cadena){
+        var regex = /[`!@#%^&*()_\-+=\[\]{};':"\\|,.<>\/?~ ]/;
+        return regex.test(cadena);
+    }
 
-    if(codigoaleatorio.length < 8 || codigoaleatorio.length == 0){      // Codigo Aleatorio Vacío o menor a 8 caracteres -- Sale por Falso
-        alert('El Código Aleatorio no esta Bien Escrito.');
+    var codigoaleatorio = document.getElementById('codigo-aleatorio').value;
+    var contrasena = document.getElementById('contrasena').value;
+    var repetircontrasena = document.getElementById('repetir-contrasena').value;
+
+    var codigoAleatorioContenido = document.getElementById('codigo-aleatorio');
+    var contrasenaContenido = document.getElementById('contrasena');
+    var repetirContrasenaContenido = document.getElementById('repetir-contrasena');
+
+    if(codigoaleatorio == '' && contrasena == '' && repetircontrasena == ''){
+        // Validación inicial de contenido - Si no escribió Ningún Campo
+        alert('Por favor complete todos los campos.');
+        codigoAleatorioContenido.innerHTML = '';
+        contrasenaContenido.innerHTML = '';
+        repetirContrasenaContenido.innerHTML = '';
     }
-    else if(fnValidarNumeros(codigoaleatorio)==true){                   // Control de Números en Código Aleatorio -- Funcion No-Es-Nùmero - Sale por Verdaero
-        alert('El Código Aleatorio contiene Caracteres que No Son Números.');
+    else if(codigoaleatorio == '' || contrasena == '' || repetircontrasena == ''){
+        // Si no escribió alguno de los campos
+        alert('Por favor complete todos los campos.');
+        codigoAleatorioContenido.innerHTML = '';
+        contrasenaContenido.innerHTML = '';
+        repetirContrasenaContenido.innerHTML = '';
     }
-    else if(contrasena != repetircontrasena){                           // Las contraseñas no coinciden -- Sale por Verdadero
-        alert('La Contraseña y el Repetir Contraseña no coinciden.');
+    else if(codigoAleatorioGenerado !== codigoaleatorio){
+        // Si el código aleatorio coincide con el enviado en el mail
+        alert('El código de verificación es incorrecto.');
+        codigoAleatorioContenido.innerHTML = '';
+        contrasenaContenido.innerHTML = '';
+        repetirContrasenaContenido.innerHTML = '';
     }
-    else if(contrasena.length < 8 || contrasena.length > 12){           // Control de Longitud de Contraseña -- Sale por Falso
-        alert('La contraseña no tiene los Caracteres Necesarios.');
+    else if(contrasena.length < 8 || contrasena.length > 12){           
+        // El usuario no escribió la longitud adecuada de la contraseña
+        alert('La contraseña no cumple con las políticas solicitadas.');
+        codigoAleatorioContenido.innerHTML = '';
+        contrasenaContenido.innerHTML = '';
+        repetirContrasenaContenido.innerHTML = '';
     }
-    else if(fnValidarMayusculas(contrasena)==false){                    // Control de Mayúsculas -- Control por Expresión Regular -- Sale por Falso
-        alert('La contraseña no tiene al menos una Mayúscula');
+    else if(fnValidarMayusculas(contrasena)==false){                    
+        // Si la contraseña no tiene una Mayúscula
+        alert('La contraseña no cumple con las políticas solicitadas.');
+        codigoAleatorioContenido.innerHTML = '';
+        contrasenaContenido.innerHTML = '';
+        repetirContrasenaContenido.innerHTML = '';
     }
-    else if(fnValidarMinusculas(contrasena)==false){                    // Control de Minúsculas -- Control por Expresión Regular -- Sale por Falso
-        alert('La contraseña no tiene al menos una Minúscula');
+    else if(fnValidarMinusculas(contrasena)==false){                    
+        // Si la contraseña no tiene una Minúscula
+        alert('La contraseña no cumple con las políticas solicitadas.');
+        codigoAleatorioContenido.innerHTML = '';
+        contrasenaContenido.innerHTML = '';
+        repetirContrasenaContenido.innerHTML = '';
     }
-    else if(fnValidarNumerosContrasena(contrasena)==true){               // Control de Nùmeros en Contraseña -- Funcion No-Es-Nùmero - Sale por Verdaero
-        alert('La contraseña no tiene al menos un Número.');
+    else if(fnValidarNumerosContrasena(contrasena)==false){               
+        // Si la contraseña no tiene un número
+        alert('La contraseña no cumple con las políticas solicitadas.');
+        codigoAleatorioContenido.innerHTML = '';
+        contrasenaContenido.innerHTML = '';
+        repetirContrasenaContenido.innerHTML = '';
     }
-    else if(fnValidarCaracteresEspeciales(contrasena)==false){             // Control de Caracteres Especiales -- Control por Expresión Regular -- Sale por Falso
-        alert('La contraseña no tiene al menos un Caracter Especial.');
+    else if(fnValidarCaracteresEspeciales(contrasena)==false){             
+        // Si la contraseña no tiene un símbolo
+        alert('La contraseña no cumple con las políticas solicitadas.');
+        codigoAleatorioContenido.innerHTML = '';
+        contrasenaContenido.innerHTML = '';
+        repetirContrasenaContenido.innerHTML = '';
+    }
+    else if(contrasena != repetircontrasena){                           
+        // Si las contraseñas no son iguales
+        alert('Las contraseñas no coinciden.');
+        codigoAleatorioContenido.innerHTML = '';
+        contrasenaContenido.innerHTML = '';
+        repetirContrasenaContenido.innerHTML = '';
     }         
     else{                                                                  // Contraseña Válida
         if (confirm("¿Desea Restablecer la Contraseña?")) {

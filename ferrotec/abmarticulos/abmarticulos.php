@@ -1,30 +1,18 @@
 <?php
-/*
-session_start();
-if(!$_SESSION['logged']){
-   header("Location: ../login.php");
-   exit;
-}elseif($_SESSION['usu_id_permisos'] <= 2){
-  header("Location: ../index/index.php");
-  exit;
-}
-*/
+  session_start();
+  if(!$_SESSION['logged']){
+    header("Location: ../login.php");
+  }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
   <head>
-  <script>
-    window.addEventListener('load', function() {
-        // Código que deseas ejecutar después de que la página se haya cargado completamente
-        fnHabilitarOpciones(0);
-    });
-  </script>
-
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta name="viewport" content="width=device-width", initial-scale="1.0">
-    <link rel="icon" type="image/x-icon" href="images/favicon.png">   <!-- Favicon descargado de icons8.com -->
+    <link rel="icon" type="image/x-icon" href="../images/favicon.png">   <!-- Favicon descargado de icons8.com -->
 
     <!-- Open Graph -->
     <meta property="og:title" content="Ferr O'Tec - Login" />
@@ -42,7 +30,7 @@ if(!$_SESSION['logged']){
   <body style="background-color: #f2f2f2">
     <div class="container align-items-center justify-content-center">
       <div class="row justify-content-center">
-        <div class="col-md-6 mt-5">
+        <div class="col-md-8 mt-5">
           <div class="card">
             <div class="card-header">
                 <h4 style="float: left;">
@@ -66,10 +54,10 @@ if(!$_SESSION['logged']){
                     </div>
                     <div class="col-8 container-fluid justify-content-center align-content-center">
                       <select onchange="fnHabilitarOpciones(value)"class="form-select" id="acciones">
-                        <option id="acciones-seleccione" value="0"> Seleccione </option>
-                        <option id="acciones-alta" value="1"> Alta </option>
-                        <option id="acciones-baja" value="2"> Baja </option>
-                        <option id="acciones-modificacion" value="3"> Modificación </option>
+                        <option id="tipo-actividad" value="0"> Seleccione... </option>
+                        <option id="tipo-actividad" value="1"> Alta </option>
+                        <option id="tipo-actividad" value="2"> Baja </option>
+                        <option id="tipo-actividad" value="3"> Modificación </option>
                       </select>                            
                   </div>
                 </div>
@@ -84,11 +72,11 @@ if(!$_SESSION['logged']){
                     <div class="row py-2" id="nombre-articulo-alta-fila">
                         <div class="col-4 justify-content-center align-content-center" id="nombre-articulo-alta-titulo">
                             <h6 id="nombre-articulo-label"> 
-                                Nombre De articulo:
+                                Nombre De Artículo:
                             </h6>
                         </div>
                         <div class="col-8 container-fluid justify-content-center align-content-center">
-                            <input class="col-12 form-control" minlength="8" maxlength="30" onchange="fnHabilitarPerfilArticulo('A',1)" id="nombre-articulo-alta-input" placeholder="Ingrese Nombre de articulo" ></input>                            
+                            <input class="col-12 form-control" minlength="8" maxlength="30"  id="nombre-articulo-alta-input" placeholder="Ingrese Nombre" ></input>                            
                         </div>
                     </div>
                     <div class="row py-2" id="marca-articulo-alta-fila">
@@ -98,17 +86,17 @@ if(!$_SESSION['logged']){
                             </h6>
                         </div>
                         <div class="col-8 container-fluid justify-content-center align-content-center">
-                            <input class="col-12 form-control" minlength="8" maxlength="30" onchange="fnHabilitarPerfilArticulo('A',1)" id="marca-articulo-alta-input" placeholder="Ingrese Nombre de la marca del articulo" ></input>                            
+                            <input class="col-12 form-control" minlength="8" maxlength="30"  id="marca-articulo-alta-input" placeholder="Ingrese Nombre de la Marca" ></input>                            
                         </div>
                     </div>
                     <div class="row py-2" id="descripcion-articulo-alta-fila">
                         <div class="col-4 justify-content-center align-content-center" id="descripcion-articulo-alta-titulo">
                             <h6 id="descripcion-articulo-label"> 
-                                Descripcion:
+                                Descripción:
                             </h6>
                         </div>
                         <div class="col-8 container-fluid justify-content-center align-content-center">
-                            <input class="col-12 form-control" minlength="8" maxlength="100" onchange="fnHabilitarPerfilArticulo('A',1)" id="descripcion-articulo-alta-input" placeholder="Ingrese descripcion del articulo" ></input>                            
+                            <input class="col-12 form-control" minlength="8" maxlength="100"  id="descripcion-articulo-alta-input" placeholder="Ingrese Descripcion" ></input>                            
                         </div>
                     </div>
                     <div class="row py-2" id="precio-articulo-alta-fila">
@@ -118,17 +106,17 @@ if(!$_SESSION['logged']){
                             </h6>
                         </div>
                         <div class="col-8 container-fluid justify-content-center align-content-center">
-                            <input class="col-12 form-control" minlength="8" maxlength="20" onchange="fnHabilitarPerfilArticulo('A',1)" id="precio-articulo-alta-input" placeholder="Ingrese precio individual del articulo" ></input>                            
+                            <input class="col-12 form-control" minlength="8" maxlength="20"  id="precio-articulo-alta-input" placeholder="Ingrese Precio Unitario" ></input>                            
                         </div>
                     </div>
                     <div class="row py-2" id="cat-articulo-alta-fila">
                         <div class="col-4 justify-content-center align-content-center" id="cat-articulo-alta-titulo">
                             <h6 id="email-articulo-label"> 
-                                Categoría de artículo:
+                                Categoría de Artículo:
                             </h6>
                         </div>
                         <div class="col-8 container-fluid justify-content-center align-content-center">
-                            <input class="col-12 form-control" minlength="8" maxlength="30" onchange="fnHabilitarPerfilArticulo('A',1)" id="cat-articulo-alta-input" placeholder="Ingrese Categoría" ></input>                            
+                            <input class="col-12 form-control" minlength="8" maxlength="30"  id="cat-articulo-alta-input" placeholder="Ingrese Categoría" ></input>                            
                         </div>
                     </div>
                     <div class="row py-2" id="botones-alta-fila">
@@ -159,11 +147,11 @@ if(!$_SESSION['logged']){
                   <div class="row py-2" id="nombre-articulo-baja-fila">
                     <div class="col-4 justify-content-center align-content-center" id="nombre-articulo-titulo-baja">
                         <h6 id="nombre-articulo-label-baja"> 
-                            Nombre De articulo:
+                            Nombre De Artículo:
                         </h6>
                     </div>
                     <div class="col-8 container-fluid justify-content-center align-content-center">
-                            <input class="col-12 form-control" minlength="8" maxlength="30" onchange="fnHabilitarPerfilArticulo('B',1)" id="nombre-articulo-baja-input" placeholder="Ingrese Nombre" ></input>                            
+                            <input class="col-12 form-control" minlength="8" maxlength="30" id="nombre-articulo-baja-input" placeholder="Ingrese Nombre" ></input>                            
                         </div>
                   </div>
                   <div class="row py-2" id="botones-baja-fila">
@@ -194,61 +182,75 @@ if(!$_SESSION['logged']){
                 <div class="row py-2" id="nombre-articulo-modificacion-fila">
                     <div class="col-4 justify-content-center align-content-center" id="nombre-articulo-titulo-baja">
                         <h6 id="nombre-articulo-label-baja"> 
-                            Nombre De articulo a modificar:
+                            Nombre De Artículo a Modificar:
                         </h6>
                     </div>
                     <div class="col-8 container-fluid justify-content-center align-content-center">
-                            <input class="col-12 form-control" minlength="8" maxlength="30" onchange="fnHabilitarPerfilArticulo('M',1)" id="nombre-articulo-modificacion-input" placeholder="Ingrese Nombre de articulo" ></input>                            
+                            <input class="col-12 form-control" minlength="8" maxlength="30" id="nombre-articulo-modificacion-input" placeholder="Ingrese Nombre" ></input>                            
                         </div>
                   </div>
                   <div class="row py-2" id="renombre-articulo-modificacion-fila">
                     <div class="col-4 justify-content-center align-content-center" id="renombre-articulo-titulo-baja">
                         <h6 id="renombre-articulo-label-baja"> 
-                            Nuevo nombre De articulo:
+                            Nuevo Nombre De Artículo:
                         </h6>
                     </div>
                     <div class="col-8 container-fluid justify-content-center align-content-center">
-                            <input class="col-12 form-control" minlength="8" maxlength="30" onchange="fnHabilitarPerfilArticulo('M',1)" id="renombre-articulo-modificacion-input" placeholder="Ingrese Nombre de articulo" ></input>                            
+                            <input class="col-12 form-control" minlength="8" maxlength="30" id="renombre-articulo-modificacion-input" placeholder="Ingrese el Nuevo Nombre" ></input>                            
                         </div>
                   </div>
                   <div class="row py-2" id="marca-articulo-modificacion-fila">
                     <div class="col-4 justify-content-center align-content-center" id="marca-articulo-titulo-baja">
                       <h6 id="marca-articulo-label-baja"> 
-                      Marca:
+                        Marca:
                       </h6>
                     </div>
                     <div class="col-8 container-fluid justify-content-center align-content-center">
-                      <input class="col-12 form-control" minlength="8" maxlength="30" onchange="fnHabilitarPerfilArticulo('M',1)" id="marca-articulo-modificacion-input" placeholder="Ingrese Marca del Artículo" ></input>                            
+                      <input class="col-12 form-control" minlength="8" maxlength="30" id="marca-articulo-modificacion-input" placeholder="Ingrese Marca" ></input>                            
                     </div>
                   </div>
                   <div class="row py-2" id="descripcion-articulo-modificacion-fila">
                     <div class="col-4 justify-content-center align-content-center" id="descripcion-articulo-titulo-baja">
                       <h6 id="descripcion-articulo-label-baja"> 
-                      Descripcion:
+                        Descripción:
                       </h6>
                     </div>
                     <div class="col-8 container-fluid justify-content-center align-content-center">
-                      <input class="col-12 form-control" minlength="8" maxlength="100" onchange="fnHabilitarPerfilArticulo('M',1)" id="descripcion-articulo-modificacion-input" placeholder="Ingrese una descripción del Artículo" ></input>                            
+                      <input class="col-12 form-control" minlength="8" maxlength="100" id="descripcion-articulo-modificacion-input" placeholder="Ingrese Descripción" ></input>                            
                     </div>
                   </div>
                   <div class="row py-2" id="precio-articulo-modificacion-fila">
                     <div class="col-4 justify-content-center align-content-center" id="precio-articulo-titulo-baja">
                       <h6 id="precio-articulo-label-baja"> 
-                      Precio:
+                        Precio:
                       </h6>
                     </div>
                     <div class="col-8 container-fluid justify-content-center align-content-center">
-                      <input class="col-12 form-control" minlength="8" maxlength="20" onchange="fnHabilitarPerfilArticulo('M',1)" id="precio-articulo-modificacion-input" placeholder="Ingrese precio del artículo" ></input>                            
+                      <input class="col-12 form-control" minlength="8" maxlength="20" id="precio-articulo-modificacion-input" placeholder="Ingrese Precio Unitario" ></input>                            
                     </div>
                   </div>
                   <div class="row py-2" id="cat-articulo-modificacion-fila">
                     <div class="col-4 justify-content-center align-content-center" id="cat-articulo-titulo-baja">
                       <h6 id="cat-articulo-label-baja"> 
-                      Categoría de artículo:
+                        Categoría de Artículo:
                       </h6>
                     </div>
                     <div class="col-8 container-fluid justify-content-center align-content-center">
-                      <input class="col-12 form-control" minlength="8" maxlength="30" onchange="fnHabilitarPerfilArticulo('M',1)" id="cat-articulo-modificacion-input" placeholder="Ingrese categoría de artículo" ></input>                            
+                      <input class="col-12 form-control" minlength="8" maxlength="30" id="cat-articulo-modificacion-input" placeholder="Ingrese Categoría" ></input>                            
+                    </div>
+                  </div>
+                  <div class="row py-2" id="estado-articulo-modificacion-fila">
+                    <div class="col-4 justify-content-center align-content-center" id="estado-articulo-modificacion-select">
+                      <h6 id="estado-articulo-modificacion-label-baja"> 
+                        Activo:
+                      </h6>
+                    </div>
+                    <div class="col-8 container-fluid justify-content-center align-content-center">
+                      <select class="form-select" id="acciones-estado-modificacion-articulo">
+                        <option id="acciones-estado-modificacion-articulo" value=""> Seleccione... </option>
+                        <option id="acciones-estado-modificacion-articulo" value="1"> Si </option>
+                        <option id="acciones-estado-modificacion-articulo" value="0"> No </option>
+                      </select>                 
                     </div>
                   </div>
                   <div class="row py-2" id="botones-modificacion-fila">
@@ -277,20 +279,17 @@ if(!$_SESSION['logged']){
 
     <!-- Bootstrap JS -->
     <script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
-
     <!-- Funciones Propias JS -->
     <script type="text/javascript" src="../js/abmarticulos/fnHabilitarOpciones.js"></script>
-    <script type="text/javascript" src="../js/abmarticulos/fnAltaHabilitarPerfilarticulo.js"></script>
-    <script type="text/javascript" src="../js/abmarticulos/fnModificacionHabilitarPerfilarticulo.js"></script>
-    <script type="text/javascript" src="../js/abmarticulos/fnAltaPerfilesDearticulo.js"></script>
-    <script type="text/javascript" src="../js/abmarticulos/fnModificacionPerfilesDearticulo.js"></script>
     <script type="text/javascript" src="../js/abmarticulos/fnSinCambios.js"></script>
-    <script type="text/javascript" src="../js/abmarticulos/fnHabilitarPerfilArticulo.js"></script>
-    <script type="text/javascript" src="../js/abmarticulos/fnPerfilesDearticulo.js"></script>
-    <script type="text/javascript" src="../js/abmarticulos/fnCreararticulo.js"></script>
+    <script type="text/javascript" src="../js/abmarticulos/fnCrearArticulo.js"></script>
     <script type="text/javascript" src="../js/abmarticulos/fnBajaArticulo.js"></script>
     <script type="text/javascript" src="../js/abmarticulos/fnModificarArticulo.js"></script>
-    <!-- JS Propios -->
-    <script src="../Js Propios/js-fechayhora.js"></script>
+    <script src="../js/fnFechayHora.js"></script>
+    <script>
+      window.addEventListener('load', function() {
+          fnHabilitarOpciones(0);
+      });
+  </script>
   </body>
 </html>

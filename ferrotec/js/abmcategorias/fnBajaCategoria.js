@@ -1,9 +1,10 @@
-//  fnBajacategoria
-//  Descripción: Función que envía el formulario a la base de datos para Dar de Baja una categoria
+//  Función: fnBajacategoria()
+//  Descripción: Función que envía el formulario a la base de datos para Dar de Baja una Categoría de Artículo
 //  A partir de validaciones iniciales
-//  (Baja Lógica)
-//  Valida si hay una categoria seleccionado en el Formulario
-//  Si está seleccionado envía el formulario con los datos sumnistrados
+//  Valida si hay un articulo escrito en el Formulario
+//  Si está escrito envía el formulario con los datos sumnistrados
+//
+
 function fnBajacategoria(){
     var nombrecategoria = document.getElementById("nombre-categoria-baja-input").value;
     if(nombrecategoria == ''){
@@ -16,7 +17,7 @@ function fnBajacategoria(){
 
             // Enviar la solicitud AJAX
             var xhr = new XMLHttpRequest();
-            xhr.open("POST", "../abmcategorias/bajacategoria/borrar_categoria.php", true);
+            xhr.open("POST", "../abmcategorias/bajacategoria/baja_categoria.php", true);
             xhr.onreadystatechange = function() {
                 if (xhr.readyState === 4 && xhr.status === 200) {
                     alert(xhr.responseText); // Muestra la respuesta del servidor
