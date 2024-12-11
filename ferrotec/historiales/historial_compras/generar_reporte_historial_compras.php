@@ -215,7 +215,7 @@
             <p style='float:left;'> <b> Detalle de Compras: </b> </p>" . "
             <table>
                 <tr>
-                    <td>Venta Nro.</td>
+                    <td>Compra Nro.</td>
                     <td>Artículo</td>
                     <td>Cantidad</td>
                     <td>Monto</td>
@@ -227,7 +227,7 @@
     ";
 
     // ------------------------ IMPRESIÓN DEL PDF CON DATOS ----------------------------------------------------- //
-    // Imprime las Ventas
+    // Imprime las Compras
     $pdf->writeHTMLCell(0, 0, '', '', $html_reporte_compras, 0, 1, 0, true, '', true);
 
     // Salto de página para el detalle

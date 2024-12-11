@@ -135,7 +135,7 @@ $(document).ready(function() {
                                 <td id="cantidad-ventas" class="cantidad-ventas"> ${data.suma_cant_ventas} Ventas </td>
                             </tr>
                             <tr>
-                                <td><b>Monto Total Pagado (***)</b>: </td>
+                                <td><b>Monto Total Cobrado (***)</b>: </td>
                                 <td id="monto-total" class="monto-total"> $ ${data.suma} </td>
                             </tr>
                             <tr>
@@ -143,7 +143,7 @@ $(document).ready(function() {
                                 <td> </td>
                             </tr>
                             <tr>
-                                <td ><b> Cantidad de Compras Realizadas Promedio por Día </b>: </td>
+                                <td ><b> Cantidad de Ventas Realizadas Promedio por Día </b>: </td>
                                 <td id="cantidad-ventas-promedio-dia" class="cantidad-ventas-promedio-dia"> ${data.suma_cant_ventas_prom} Ventas por día </td>
                             </tr>
                             <tr>
@@ -151,7 +151,7 @@ $(document).ready(function() {
                                 <td id="cantidad-articulos-promedio-dia" class="cantidad-articulos-promedio-dia"> ${data.suma_cant_art_prom} Unidades por Día </td>
                             </tr>
                             <tr>
-                                <td><b> Monto Pagado Promedio por Día </b>: </td>
+                                <td><b> Monto Cobrado Promedio por Día </b>: </td>
                                 <td id="monto-promedio-dia" class="monto-promedio-dia"> $ ${data.suma_prom} </td>
                             </tr>
                             <tr>

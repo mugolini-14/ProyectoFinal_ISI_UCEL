@@ -94,19 +94,19 @@
                                                 <label class="form-check-label" for="filtrar-todos">Todos</label>
                                             </div>
                                             <div class="form-check form-check-inline col-1">
-                                                <input class="form-check-input" type="radio" name="filtro-opcion-pago" id="filtrar-efectivo" value="1">
+                                                <input class="form-check-input" type="radio" name="filtro-opcion-pago" id="filtrar-efectivo" value="2">
                                                 <label class="form-check-label" for="filtrar-efectivo">Efectivo</label>
                                             </div>
                                             <div class="form-check form-check-inline col-1">
-                                                <input class="form-check-input" type="radio" name="filtro-opcion-pago" id="filtrar-debito" value="2">
+                                                <input class="form-check-input" type="radio" name="filtro-opcion-pago" id="filtrar-debito" value="3">
                                                 <label class="form-check-label" for="filtrar-debito">Débito</label>
                                             </div>
                                             <div class="form-check form-check-inline col-1">
-                                                <input class="form-check-input" type="radio" name="filtro-opcion-pago" id="filtrar-credito" value="3">
+                                                <input class="form-check-input" type="radio" name="filtro-opcion-pago" id="filtrar-credito" value="4">
                                                 <label class="form-check-label" for="filtrar-credito">Crédito</label>
                                             </div>
                                             <div class="form-check form-check-inline col-3">
-                                                <input class="form-check-input" type="radio" name="filtro-opcion-pago" id="filtrar-noespecificado" value="3">
+                                                <input class="form-check-input" type="radio" name="filtro-opcion-pago" id="filtrar-noespecificado" value="1">
                                                 <label class="form-check-label" for="filtrar-credito">Págo No Especificado</label>
                                             </div>
                                             <div class="col text-end">
