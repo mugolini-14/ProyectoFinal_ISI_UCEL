@@ -32,7 +32,7 @@
             $descripcionArticulo = $fila['art_descripcion'];
             $precioArticulo = $fila['art_precio'];
 
-        // Se procede a eliminar el articulo
+        // Se procede a dar de baja el articulo
         $dardebajaArticulo = "UPDATE articulos 
                               SET art_activo = 0 
                               WHERE art_nombre = '$nombreArticulo'";

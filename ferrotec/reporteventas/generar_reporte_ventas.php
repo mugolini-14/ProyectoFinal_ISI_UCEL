@@ -203,7 +203,7 @@
                     <td>".$cantidadVentas."</td>
                 </tr>
                 <tr>
-                    <td><b>Monto Total Cobrado (***)</b>:</td>
+                    <td><b>Monto Total Pagado (***)</b>:</td>
                     <td>".$montoTotal."</td>
                 </tr>
             </table>
@@ -220,7 +220,7 @@
                     <td>".$cantidadArticulosPromedioDia."</td>
                 </tr>
                 <tr>
-                    <td><b>Monto Cobrado Promedio por Día</b>:</td>
+                    <td><b>Monto Pagado Promedio por Día</b>:</td>
                     <td>".$montoPromedioDia."</td>
                 </tr>
             </table>
@@ -228,7 +228,7 @@
             <H4>Referencias:</H4>
             <br>
             <p><b>(*)</b>:  Se consideran todos los días en el rango seleccionado inclusive feriados y fines de semana.</p>
-            <p><b>(**)</b>: Se computan todas las ventas que contienen uno o varios artículos seleccionados, la venta es por cliente.
+            <p><b>(**)</b>: Se computan todas las compras que contienen uno o varios artículos seleccionados, la compra es por cliente.
             <p><b>(***)</b>:  Se considera solamente el/los artículos seleccionados.
         </body>
     </html>";

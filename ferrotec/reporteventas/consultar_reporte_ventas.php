@@ -197,7 +197,7 @@ if (!empty($id_ventas_fecha)) {
 
 
     if ($filtroOpcionPago > 0) {
-        $consulta_ven_pago = "SELECT id FROM historial_ventas WHERE histventas_id_modopago = $filtroOpcionPago";
+        $consulta_ven_pago = "SELECT id FROM ventas WHERE ventas_id_modopago = $filtroOpcionPago";
         $resultado_ven_pago = $conexion->query($consulta_ven_pago);
         $id_ventas_pago = [];
         if ($resultado_ven_pago->num_rows > 0) {
@@ -455,10 +455,10 @@ if (!empty($id_ventas_fecha)) {
                 $consulta_sum_cant_art .= " AND id IN ($ids_ventas_detalle_lista)";
                 $consulta_sum .= " AND id IN ($ids_ventas_detalle_lista)";
 
-                // Selecciono los ID de las ventas de la tabla historial_ventas_detalle para posteriormente buscarlos en la tabla ventas
+                // Selecciono los ID de las ventas de la tabla ventas_detalle para posteriormente buscarlos en la tabla ventas
 
                 $consulta_ven_id = "SELECT histvendet_id_venta 
-                                    FROM historial_ventas_detalle 
+                                    FROM ventas_detalle 
                                     WHERE id IN ($ids_ventas_detalle_lista)";
 
                 $resultado_ven_id = $conexion->query($consulta_ven_id);

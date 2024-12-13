@@ -7,11 +7,6 @@
     $usu_username=$_POST['usuario'];
     $usu_password=$_POST['contrasena'];
 
-    $consulta = sprintf("SELECT usu_nombre, usu_apellido, id, usu_id_permisos FROM usuarios 
-        WHERE usu_username='$usu_username' AND usu_password='$usu_password'",
-        mysqli_real_escape_string($conexion,$usu_username),
-        mysqli_real_escape_string($conexion,$usu_password));
-
     $sql = mysqli_query($conexion,"SELECT * FROM usuarios
                         WHERE usu_username='$usu_username' AND
                         usu_password='$usu_password'
