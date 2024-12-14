@@ -14,7 +14,6 @@
     <link rel="icon" type="image/x-icon" href="../images/favicon.png">
     <title>Ferr O' Tec</title>
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body style="background-color: #f2f2f2">
     <div class="container-fluid align-items-center justify-content-center">
@@ -162,7 +161,9 @@
 
     <!-- Bootstrap JS -->
     <script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- JS -->
+    <!-- jquery JS -->
+    <script src="../js/jquery/jquery-3.7.1.js"></script>
+    <!-- JS propios -->
     <script src="../Js/compras/compras.js"></script>
     <script type="text/javascript" src="../Js/fnBotonesGeneral.js"></script>
     <script src="../js/fnFechayHora.js"></script>
