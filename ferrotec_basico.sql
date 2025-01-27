@@ -529,6 +529,7 @@ INSERT INTO `usuarios` (`usu_id_permisos`, `usu_username`, `usu_nombre`, `usu_ap
 (3, 'garcial', 'Leandro', 'Garcia', 'Alem 950', 'Lobo4marco', '0', 1, 'lea_garcia@live.com'),
 (2, 'lopezm', 'Marcia', 'Lopez', 'San Lorenzo 1245', '23145aN12', '0', 1, 'marc_lo_1245@yahoo.com'),
 (1, 'userSinPer', 'Usuario', 'Sin Permisos', 'Dirección S/N', 'ferrotec', '0', 1, 'ferrotec-noresponder@outlook.com');
+(4, 'admin', 'Admin', 'Admin', 'S/D', 'ferrotec', '0', 1, 'ferrotec-noresponder@outlook.com'),
 
 -- --------------------------------------------------------
 
