@@ -224,7 +224,7 @@ $(document).ready(function() {
                         contentType: 'application/json', // Especificar el tipo de contenido como JSON
                         data: { articulos: JSON.stringify(articulos) },
                         success: function(response) {
-                            if(response == "Venta generada correctamente.\n"){
+                            if(response == "Venta generada correctamente."){
                                 alert('Venta generada correctamente.');
                                 $('#tabla-articulos tbody').empty();
                                 $('#total-general').text('0.00');

@@ -8,7 +8,7 @@ require('../conectar/conectar.php');
 // Iniciar sesión si no está iniciada
 session_start();
 $usuarioLogueado = $_SESSION['id'];
-
+$errores = []; // Array para almacenar errores en el procesamiento de los artículos
 // Recibir los datos del GET
 if (isset($_GET['articulos']) && isset($_GET['totalGeneral']))  {
     $articulos = json_decode($_GET['articulos'], true);
@@ -56,27 +56,32 @@ if (isset($_GET['articulos']) && isset($_GET['totalGeneral']))  {
                     $stmtDetVentas->bind_param('iiid', $id_venta, $id_articulo, $cantidad, $total);
 
         
-                    if ($stmtDetVentas->execute()) {
-                        echo "Venta generada correctamente.\n";
-                    } 
-                    else {
-                        echo "Error al actualizar la cantidad para el artículo: $nombreArticulo\n";
+                    if (!$stmtDetVentas->execute()) {
+                        // Error al registrar el detalle del artículo
+                        $errores[] = "Error al registrar el detalle del artículo: $nombreArticulo";
                     }
                 }
                 else {
-                    echo "Error al actualizar la cantidad para el artículo: $nombreArticulo\n";
+                    $errores[] = "Error al actualizar la cantidad para el artículo: $nombreArticulo\n";
                 }
             }
         } 
         else {
-            echo "Error al registrar la venta: " . $conexion->error;
+            $errores[] = "Error al registrar la venta: " . $conexion->error;
         }       
     } 
     else {
-        echo "Los datos de artículos no están en el formato esperado.";
+        $errores[] = "Los datos de artículos no están en el formato esperado.";
     }
 } 
 else {
-    echo "No se recibieron datos de artículos.";
+    $errores[] = "No se recibieron datos de artículos.";
+}
+
+//Función final que valida si hubo errores o no 
+if (empty($errores)) {
+    echo "Venta generada correctamente.";
+} else {
+    echo "Errores:\n" . implode("\n", $errores);
 }
 ?>
